@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retos Futuro · App</title>
+<meta name="theme-color" content="#202A49">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Retos Futuro">
+<meta name="description" content="La Ruta del Inversionista de Futuro Casa de Valores: 5 retos gratuitos para saber cuánto puedes ahorrar, dominar tu tarjeta, descubrir tu perfil de inversionista y aprender cómo funcionan la renta fija y las acciones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F4FB; --surface:#FFFFFF; --ink:#1A2240; --muted:#4D5679; --line:#1A2240; --soft:#E9EBF8; --hair:#D5D9EE;
+  --navy:#202A49; --on-navy:#F3F4FB; --mag:#FD4CFF; --on-mag:#1A2240; --blue:#2F5BFF; --lav:#C9A8FF; --good:#0E9F6E; --mid:#D99A00; --bad:#E0245E;
+  --grad:linear-gradient(90deg,#FD4CFF 0%,#8B5CFF 45%,#3F78FF 100%);
+  --hero:linear-gradient(150deg,#202A49 0%,#202A49 50%,#2A2FB0 100%);
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --paper:#121834; --surface:#1C2447; --ink:#F1F2FA; --muted:#AEB4D3; --line:#F1F2FA; --soft:#262F57; --hair:#323C68; --blue:#6F92FF; --good:#34D399; --mid:#FBBF24; --bad:#FB7185; color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --paper:#121834; --surface:#1C2447; --ink:#F1F2FA; --muted:#AEB4D3; --line:#F1F2FA; --soft:#262F57; --hair:#323C68; --blue:#6F92FF; --good:#34D399; --mid:#FBBF24; --bad:#FB7185; color-scheme:dark; }
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.03rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--mag);outline-offset:3px}
+a{color:inherit}
+.num{font-variant-numeric:tabular-nums}
+.up{color:var(--good)}.down{color:var(--bad)}
+main{max-width:64rem;margin:0 auto;padding:1rem 1rem 2.5rem}
+.narrow{max-width:34rem;margin:0 auto}
+.view{display:none}.view.on{display:block;animation:in .25s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.view.on{animation:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--mag);color:var(--on-mag);border:3px solid var(--line);border-radius:14px;padding:.85rem 1.2rem;font-weight:900;font-size:1.05rem;box-shadow:5px 5px 0 var(--line);transition:transform .08s,box-shadow .08s;text-decoration:none;text-align:center}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--line)}
+.btn.ghost{background:var(--surface);color:var(--ink)}
+.btn.wide{width:100%}
+.btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none;transform:none}
+.link{background:none;border:0;padding:.3rem 0;font-weight:700;text-decoration:underline;color:var(--muted)}
+h1{font-size:clamp(2rem,6.5vw,3.2rem);line-height:1.02;font-weight:900;letter-spacing:-.03em;margin:0 0 .7rem}
+h2{font-size:clamp(1.45rem,4.5vw,1.9rem);line-height:1.1;font-weight:900;letter-spacing:-.02em;margin:0 0 .5rem}
+h3{font-size:1.1rem;font-weight:800;margin:0}
+.sub{color:var(--muted);margin:0 0 1.1rem}
+.logo{display:block;height:2rem;width:auto}
+
+/* Barra */
+.bar-top{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin:0 0 1rem}
+.bar-top .home{background:none;border:0;padding:0;display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--muted)}
+.mini-pass{display:flex;gap:.3rem;align-items:center;font-weight:800;font-size:.85rem;color:var(--muted)}
+.mini-pass i{width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.8rem;border:2px solid var(--line);background:var(--surface)}
+.mini-pass i.on{background:var(--mag);color:var(--on-mag)}
+
+/* Portada */
+.hero{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:26px;padding:1.5rem 1.4rem 1.7rem;box-shadow:7px 7px 0 var(--line);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-4rem;bottom:-1.6rem;width:60%;height:4.6rem;border-radius:999px;background:var(--grad);opacity:.9}
+.hero > *{position:relative;z-index:1}
+.kicker{display:inline-block;margin:1.4rem 0 .7rem;background:var(--mag);color:var(--on-mag);font-weight:900;font-size:.85rem;border-radius:999px;padding:.25rem .8rem}
+.hero p.lead{max-width:44ch;opacity:.92;margin:0 0 1.4rem;font-size:1.08rem}
+.hero .row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.hero .btn.ghost{background:transparent;color:var(--on-navy);border-color:var(--on-navy);box-shadow:5px 5px 0 #3F78FF}
+.facts{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.3rem;font-weight:700;font-size:.9rem;opacity:.9}
+.facts b{display:block;font-size:1.3rem;font-weight:900}
+
+/* Pasaporte */
+.pass{background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:1.1rem 1.1rem 1.2rem;box-shadow:5px 5px 0 var(--line);margin:1.6rem 0}
+.pass-h{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.stamps{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:.9rem}
+.stamp{aspect-ratio:1;border:3px dashed var(--hair);border-radius:50%;display:grid;place-items:center;font-size:clamp(1.4rem,5vw,2.1rem);filter:grayscale(1);opacity:.45;position:relative}
+.stamp.on{border-style:solid;border-color:var(--line);background:var(--soft);filter:none;opacity:1}
+.stamp.on::after{content:"✓";position:absolute;right:-2px;bottom:-2px;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--good);color:#fff;font-size:.8rem;font-weight:900;display:grid;place-items:center}
+.pbar{height:12px;border-radius:99px;background:var(--soft);border:2.5px solid var(--line);overflow:hidden;margin-top:.9rem}
+.pbar i{display:block;height:100%;background:var(--grad);transition:width .5s}
+
+/* Ruta */
+.route{display:grid;gap:.9rem}
+.step{display:grid;grid-template-columns:3.4rem 1fr auto;gap:.9rem;align-items:center;background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:1rem;box-shadow:5px 5px 0 var(--line);text-align:left;width:100%}
+.step .n{width:3.4rem;height:3.4rem;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;background:var(--soft);border:2.5px solid var(--line)}
+.step.done .n{background:var(--mag)}
+.step h3{font-size:1.12rem;line-height:1.2}
+.step .lvl{font-size:.78rem;font-weight:800;color:var(--muted);letter-spacing:.02em}
+.step p{margin:.25rem 0 0;color:var(--muted);font-size:.9rem;line-height:1.4}
+.step .go{font-weight:900;font-size:.88rem;white-space:nowrap;border:2.5px solid var(--line);border-radius:12px;padding:.35rem .7rem;background:var(--mag);color:var(--on-mag)}
+.step.done .go{background:var(--soft);color:var(--ink)}
+@media (max-width:520px){.step{grid-template-columns:3rem 1fr}.step .go{grid-column:2;justify-self:start}.step .n{width:3rem;height:3rem;font-size:1.45rem}}
+.season{display:grid;gap:.8rem;margin-top:.6rem}
+@media (min-width:700px){.season{grid-template-columns:repeat(4,1fr)}}
+.sc{background:var(--surface);border:2.5px solid var(--line);border-radius:18px;padding:.9rem;text-decoration:none;display:flex;flex-direction:column;gap:.3rem}
+.sc .e{font-size:1.8rem;line-height:1}
+.sc b{font-size:1rem;line-height:1.2}
+.sc small{color:var(--muted);font-weight:600;font-size:.82rem;line-height:1.35}
+.sc .when{margin-top:auto;font-size:.75rem;font-weight:900;color:var(--blue)}
+.sc.soon{opacity:.75;border-style:dashed}
+.seo{margin-top:2.2rem;display:grid;gap:1rem}
+@media (min-width:760px){.seo{grid-template-columns:1fr 1fr}}
+.seo details{background:var(--surface);border:2px solid var(--hair);border-radius:14px;padding:.8rem .95rem}
+.seo summary{font-weight:800;cursor:pointer}
+.seo p{color:var(--muted);margin:.5rem 0 0;font-size:.93rem}
+
+/* Componentes de reto */
+.prog{display:flex;gap:.3rem;margin:0 0 1.1rem}
+.prog i{flex:1;height:8px;border-radius:99px;background:var(--hair)}
+.prog i.on{background:var(--grad)}
+.card{background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:1.2rem 1.1rem;box-shadow:6px 6px 0 var(--line)}
+.intro .em{font-size:3.2rem;line-height:1}
+.q{font-size:clamp(1.35rem,5.4vw,1.75rem);line-height:1.15;font-weight:900;letter-spacing:-.02em;margin:0 0 .4rem}
+.opts{display:grid;gap:.6rem;margin-top:1rem}
+.opt{display:grid;grid-template-columns:2.2rem 1fr;gap:.55rem;align-items:center;text-align:left;background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.8rem .9rem;font-weight:700;box-shadow:4px 4px 0 var(--line);transition:transform .08s,box-shadow .08s}
+.opt .oe{font-size:1.4rem;line-height:1}
+.opt.picked{background:var(--mag);color:var(--on-mag);transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.opt.good{background:var(--good);color:#fff;border-color:var(--good)}
+.opt.badp{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt[disabled]{cursor:default}
+.explain{margin-top:1rem;background:var(--soft);border-radius:14px;padding:.8rem .9rem;font-weight:600;font-size:.95rem}
+.explain b{display:block;margin-bottom:.2rem}
+.slider{margin:.9rem 0 0}
+.slider .t{display:flex;justify-content:space-between;gap:.6rem;font-weight:700;font-size:.93rem}
+.slider .t output{font-weight:900}
+.slider input{width:100%;accent-color:var(--mag);height:1.6rem}
+.slider small{display:block;color:var(--muted);font-size:.78rem;font-weight:600}
+.sumbox{position:sticky;bottom:calc(.6rem + env(safe-area-inset-bottom,0px));background:var(--navy);color:var(--on-navy);border:3px solid var(--line);border-radius:16px;padding:.7rem .9rem;margin-top:1rem;display:flex;justify-content:space-between;gap:.6rem;font-weight:800;z-index:5}
+.sumbox b{font-size:1.15rem;font-weight:900}
+.fld{display:block;margin:.8rem 0}
+.fld span{display:block;font-weight:800;font-size:.9rem;margin-bottom:.3rem}
+.fld input{width:100%;padding:.8rem .9rem;border:3px solid var(--line);border-radius:14px;background:var(--surface);font-weight:800}
+.money{position:relative}
+.money::before{content:"$";position:absolute;left:.85rem;top:50%;transform:translateY(-50%);font-weight:900;color:var(--muted)}
+.money input{padding-left:1.8rem}
+.chips{display:flex;gap:.45rem;flex-wrap:wrap}
+.chip{border:2.5px solid var(--line);background:var(--surface);border-radius:999px;padding:.45rem .9rem;font-weight:800}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.err{color:var(--bad);font-weight:800;min-height:1.3rem;margin:.4rem 0}
+
+/* Resultado */
+.result{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:24px;padding:1.3rem 1.2rem 1.2rem;box-shadow:7px 7px 0 var(--line);text-align:center;position:relative;overflow:hidden}
+.result::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--grad)}
+.result .logo{margin:0 auto .9rem;height:1.8rem}
+.result .re{font-size:3.4rem;line-height:1}
+.result .rk{color:var(--lav);font-weight:800;margin:.5rem 0 .1rem;font-size:.92rem}
+.result .rt{font-size:clamp(1.6rem,7vw,2.2rem);font-weight:900;line-height:1.05;margin:0 0 .5rem}
+.result .rv{font-size:clamp(2.6rem,12vw,3.6rem);font-weight:900;line-height:1;margin:.3rem 0}
+.result p{margin:0 auto .6rem;max-width:32ch;opacity:.92}
+.result .ft{display:flex;justify-content:space-between;gap:.5rem;margin-top:.9rem;padding-top:.6rem;border-top:2px dashed rgba(255,255,255,.35);font-size:.8rem;font-weight:700;opacity:.85}
+.got{display:flex;align-items:center;gap:.7rem;background:var(--soft);border:2.5px solid var(--line);border-radius:16px;padding:.7rem .9rem;margin:1.2rem 0;font-weight:800}
+.got .e{font-size:1.8rem}
+.tips{display:grid;gap:.7rem;margin:1rem 0}
+.tip{display:grid;grid-template-columns:2.3rem 1fr;gap:.7rem;background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.85rem .9rem}
+.tip .e{font-size:1.6rem;line-height:1}
+.tip h3{font-size:1rem;margin:0 0 .2rem}
+.tip p{margin:0;color:var(--muted);font-size:.92rem}
+.actions{display:grid;gap:.75rem;margin-top:1.2rem}
+.cmp{display:grid;gap:.6rem;margin:1rem 0}
+.cr{background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.75rem .85rem}
+.cr .top{display:flex;justify-content:space-between;gap:.5rem;font-weight:800}
+.cr .top b{font-size:1.15rem;font-weight:900}
+.cr .bar{height:12px;border-radius:99px;background:var(--soft);overflow:hidden;margin:.45rem 0 .35rem}
+.cr .bar i{display:block;height:100%}
+.cr small{display:block;color:var(--muted);font-weight:600;font-size:.82rem;line-height:1.4}
+.cr.best{border-color:var(--mag);box-shadow:4px 4px 0 var(--mag)}
+.mixbar{display:flex;height:22px;border:3px solid var(--line);border-radius:99px;overflow:hidden;margin:.5rem 0;background:var(--soft)}
+.mixbar span{display:block;height:100%}
+.co{display:grid;grid-template-columns:2.4rem 1fr auto;gap:.6rem;align-items:center;background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.7rem .75rem;margin-bottom:.6rem}
+.co .oe{font-size:1.9rem;line-height:1;text-align:center}
+.co b{display:block;line-height:1.2}
+.co .ix{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.35rem}
+.co .ix span{font-size:.72rem;font-weight:800;border:2px solid var(--hair);border-radius:99px;padding:.05rem .45rem;background:var(--paper)}
+.ctr{display:flex;align-items:center;gap:.35rem}
+.ctr button{width:2.3rem;height:2.3rem;border:3px solid var(--line);border-radius:11px;background:var(--paper);font-weight:900;font-size:1.25rem;line-height:1}
+.ctr button.plus{background:var(--mag);color:var(--on-mag)}
+.ctr button[disabled]{opacity:.35}
+.ctr output{min-width:3.3rem;text-align:center;font-weight:900}
+.chart{width:100%;display:block}
+.yr{background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:1rem}
+.yr .val{font-size:clamp(2.2rem,10vw,3rem);font-weight:900;line-height:1}
+.news{min-height:3.6rem;background:var(--soft);border-radius:12px;padding:.6rem .8rem;font-weight:700;font-size:.93rem;margin-top:.7rem}
+.legal{font-size:.75rem;color:var(--muted);margin-top:2rem;line-height:1.45}
+.toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.65rem 1rem;border-radius:12px;font-weight:800;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.on{opacity:1}
+.cert{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:26px;padding:1.4rem 1.2rem;box-shadow:7px 7px 0 var(--line);text-align:center;position:relative;overflow:hidden}
+.cert::before{content:"";position:absolute;left:0;right:0;top:0;height:9px;background:var(--grad)}
+.cert .logo{margin:.5rem auto 1rem}
+.cert .nm{font-size:clamp(1.8rem,8vw,2.4rem);font-weight:900;line-height:1.05;margin:.4rem 0;overflow-wrap:anywhere}
+.cert .stamps{max-width:22rem;margin:1rem auto 0}
+.cert .stamp.on{background:rgba(255,255,255,.12);border-color:var(--on-navy)}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:.8rem;margin:0 0 1rem}
+.topbar a{font-weight:800;color:var(--muted);text-decoration:none;font-size:.92rem}
+
+.hero{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:26px;padding:1.4rem 1.3rem 1.6rem;box-shadow:7px 7px 0 var(--line);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-3rem;bottom:-1.4rem;width:65%;height:4.2rem;border-radius:999px;background:var(--grad);opacity:.9}
+.hero > *{position:relative;z-index:1}
+.kicker{display:inline-block;margin:1.2rem 0 .7rem;background:var(--mag);color:var(--on-mag);font-weight:900;font-size:.85rem;border-radius:999px;padding:.25rem .8rem}
+.hero p{opacity:.92;margin:0 0 1.2rem;max-width:36ch}
+.mini{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin:0 0 1.3rem;max-width:22rem}
+.mini i{aspect-ratio:1;border-radius:4px;background:rgba(255,255,255,.18)}
+.mini i.on{background:#FD4CFF}
+.howto{display:grid;gap:.6rem;margin:1.4rem 0}
+.howto div{display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;background:var(--surface);border:2.5px solid var(--line);border-radius:14px;padding:.7rem .8rem;font-weight:600;font-size:.95rem}
+.howto b{font-size:1.4rem;line-height:1}
+
+.vers{display:grid;gap:.7rem}
+.ver{display:grid;grid-template-columns:2.6rem 1fr auto;gap:.7rem;align-items:center;text-align:left;background:var(--surface);border:3px solid var(--line);border-radius:18px;padding:.85rem .9rem;box-shadow:4px 4px 0 var(--line)}
+.ver .e{font-size:1.9rem;line-height:1}
+.ver b{display:block;font-size:1.05rem}
+.ver small{display:block;color:var(--muted);font-weight:600;font-size:.86rem;line-height:1.35}
+.ver .goal{font-weight:900;font-size:1.15rem;white-space:nowrap}
+.ver[aria-pressed="true"]{background:var(--mag);color:var(--on-mag);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
+.ver[aria-pressed="true"] small{color:var(--on-mag)}
+.tag{display:inline-block;font-size:.7rem;font-weight:900;border-radius:99px;padding:.05rem .5rem;background:var(--navy);color:var(--on-navy);margin-left:.3rem;vertical-align:middle}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{border:2.5px solid var(--line);background:var(--surface);border-radius:999px;padding:.5rem .95rem;font-weight:800}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* Tablero */
+.dash{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:24px;padding:1.2rem 1.1rem;box-shadow:7px 7px 0 var(--line);position:relative;overflow:hidden}
+.dash .vn{color:var(--lav);font-weight:800;font-size:.9rem;margin:0}
+.dash .big{font-size:clamp(2.6rem,12vw,3.6rem);font-weight:900;line-height:1;margin:.3rem 0 .1rem}
+.dash .of{opacity:.85;font-weight:700}
+.pb{height:16px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;margin:.9rem 0 .5rem;border:2px solid rgba(255,255,255,.5)}
+.pb i{display:block;height:100%;background:var(--grad);transition:width .6s}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.6rem}
+.stats div{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.22);border-radius:12px;padding:.45rem .55rem;font-size:.75rem;font-weight:700;line-height:1.25}
+.stats b{display:block;font-size:1.15rem;font-weight:900}
+.week{background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:1rem;margin:1.2rem 0;box-shadow:5px 5px 0 var(--line);display:grid;gap:.6rem}
+.week .wk{font-weight:800;color:var(--muted);font-size:.9rem}
+.week .wa{font-size:2.2rem;font-weight:900;line-height:1}
+.board{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin-top:.7rem}
+@media (min-width:560px){.board{grid-template-columns:repeat(13,1fr)}}
+.cell{aspect-ratio:1;border:2.5px solid var(--line);border-radius:10px;background:var(--surface);display:grid;place-items:center;font-weight:900;font-size:clamp(.7rem,2.6vw,.88rem);position:relative;padding:0;line-height:1.05;font-variant-numeric:tabular-nums}
+.cell small{display:block;font-size:.58rem;font-weight:700;color:var(--muted)}
+.cell.on{background:var(--mag);color:var(--on-mag)}
+.cell.on small{color:var(--on-mag)}
+.cell.on::after{content:"✓";position:absolute;top:1px;right:3px;font-size:.6rem}
+.cell.now{outline:3px solid var(--blue);outline-offset:2px}
+.cell.pending{border-style:dashed}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.8rem;font-weight:700;color:var(--muted);margin-top:.6rem}
+.legend i{display:inline-block;width:.9rem;height:.9rem;border-radius:4px;border:2px solid var(--line);vertical-align:middle;margin-right:.3rem}
+.miles{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:1.2rem 0}
+.mile{background:var(--surface);border:2.5px solid var(--line);border-radius:14px;padding:.55rem .5rem;text-align:center;font-size:.75rem;font-weight:700;opacity:.55}
+.mile.on{opacity:1;background:var(--soft)}
+.mile b{display:block;font-size:1.3rem;line-height:1.2}
+.card{background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:1.1rem;box-shadow:5px 5px 0 var(--line);margin:1.2rem 0}
+.row2{display:grid;gap:.7rem}
+@media (min-width:560px){.row2{grid-template-columns:1fr 1fr}}
+.fld{display:block;margin:.7rem 0}
+.fld span{display:block;font-weight:800;font-size:.9rem;margin-bottom:.3rem}
+.fld input{width:100%;padding:.75rem .85rem;border:3px solid var(--line);border-radius:14px;background:var(--paper);font-weight:800}
+.err{color:var(--bad);font-weight:800;min-height:1.3rem;margin:.3rem 0}
+.ok{color:var(--good);font-weight:800}
+dialog{border:3px solid var(--line);border-radius:22px;padding:0;max-width:26rem;width:calc(100% - 1.5rem);background:var(--surface);color:var(--ink);box-shadow:7px 7px 0 var(--line)}
+dialog::backdrop{background:rgba(18,24,52,.6)}
+.dl{padding:1.3rem 1.2rem;text-align:center}
+.dl .e{font-size:3.4rem;line-height:1}
+.dl .v{font-size:2.4rem;font-weight:900;line-height:1;margin:.4rem 0}
+.dl .actions{display:grid;gap:.7rem;margin-top:1rem}
+.explain{background:var(--soft);border-radius:14px;padding:.75rem .85rem;font-weight:600;font-size:.93rem;text-align:left;margin-top:.8rem}
+.legal{font-size:.75rem;color:var(--muted);margin-top:2rem;line-height:1.45}
+.toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.65rem 1rem;border-radius:12px;font-weight:800;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.on{opacity:1}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:10px;height:16px;border-radius:2px;animation:cf 2.6s ease-in forwards}
+@keyframes cf{to{transform:translate3d(var(--dx),110vh,0) rotate(var(--r))}}
+.print-only{display:none}
+@media print{
+  body{background:#fff;color:#000}
+  .no-print,.toast,dialog{display:none !important}
+  .tab,.v52{display:none !important}
+  #t-semanas,#v-board{display:block !important}
+  .appbar,.bottom{display:none !important}
+  #v-board > *:not(.print-area){display:none !important}
+  .print-only{display:block}
+  .board{grid-template-columns:repeat(7,1fr);gap:6px}
+  .cell{border:1.5px solid #000;background:#fff !important;color:#000 !important;font-size:14px}
+  .cell.on::after{content:"✗";font-size:16px}
+}
+
+/* ===== APP MÓVIL ===== */
+main{max-width:34rem;padding:.9rem 1rem calc(6.5rem + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:var(--navy)}
+.appbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--navy);color:var(--on-navy);border-bottom:3px solid var(--line)}
+.appbar-in{max-width:34rem;margin:0 auto;padding:.65rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.appbar .logo{height:1.7rem}
+.appbar .ttl{font-weight:800;color:var(--lav);font-size:.9rem;margin-left:.5rem}
+.badge{display:flex;align-items:center;gap:.35rem;background:#2A3560;border:2px solid #5B6699;color:var(--on-navy);border-radius:999px;padding:.25rem .7rem;font-weight:900;font-size:.85rem}
+.tab{display:none}.tab.on{display:block;animation:in .25s ease-out}
+@media (prefers-reduced-motion: reduce){.tab.on{animation:none}}
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:3px solid var(--line);padding:.35rem .4rem calc(.35rem + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(4,1fr)}
+.bottom button{background:none;border:0;display:grid;justify-items:center;gap:.1rem;padding:.35rem .2rem;font-weight:800;font-size:.72rem;color:var(--muted);border-radius:12px}
+.bottom button span{font-size:1.4rem;line-height:1}
+.bottom button[aria-current="page"]{color:var(--ink);background:var(--soft)}
+.bottom button[aria-current="page"] span{transform:translateY(-1px)}
+body.inreto .bottom,body.inreto .appbar{display:none}
+body.inreto main{padding-bottom:2rem}
+.hi{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:24px;padding:1.2rem 1.1rem 1.3rem;box-shadow:6px 6px 0 var(--line);position:relative;overflow:hidden}
+.hi::after{content:"";position:absolute;right:-3rem;bottom:-1.3rem;width:62%;height:3.6rem;border-radius:999px;background:var(--grad);opacity:.85}
+.hi > *{position:relative;z-index:1}
+.hi h1{font-size:clamp(1.7rem,7.5vw,2.2rem);margin:.2rem 0 .6rem}
+.hi .pb2{height:12px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;margin:.5rem 0 1rem;border:2px solid rgba(255,255,255,.45)}
+.hi .pb2 i{display:block;height:100%;background:var(--grad);transition:width .5s}
+.hi .k{color:var(--lav);font-weight:800;margin:0;font-size:.9rem}
+.next{width:100%;display:grid;grid-template-columns:2.6rem 1fr auto;gap:.7rem;align-items:center;text-align:left;background:var(--mag);color:var(--on-mag);border:3px solid var(--line);border-radius:18px;padding:.8rem .9rem;box-shadow:4px 4px 0 var(--line)}
+.next .e{font-size:2rem;line-height:1}
+.next small{display:block;font-weight:700;font-size:.78rem}
+.next b{display:block;line-height:1.2}
+.next .arrow{font-weight:900;font-size:1.3rem}
+.tile{display:block;width:100%;text-align:left;background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:1rem;box-shadow:5px 5px 0 var(--line);margin-top:1.1rem}
+.tile .lbl{display:block;font-weight:800;color:var(--muted);font-size:.85rem}
+.tile b{display:block;font-size:1.35rem;font-weight:900;margin:.2rem 0}
+.tile p{margin:.3rem 0 0;color:var(--muted);font-weight:600;font-size:.92rem}
+.tile .pbar{margin-top:.5rem}
+.tipday{display:grid;grid-template-columns:2.3rem 1fr;gap:.6rem;background:var(--soft);border-radius:16px;padding:.85rem .9rem;margin-top:1.1rem}
+.tipday .e{font-size:1.6rem;line-height:1}
+.tipday b{display:block;font-size:.95rem}
+.tipday p{margin:.2rem 0 0;color:var(--muted);font-size:.9rem}
+.hscroll{display:grid;grid-auto-flow:column;grid-auto-columns:72%;gap:.7rem;overflow-x:auto;padding:.2rem .2rem .9rem;scroll-snap-type:x mandatory;margin:0 -1rem;padding-left:1rem;padding-right:1rem}
+.hscroll .sc{scroll-snap-align:start}
+.sech{margin:1.6rem 0 .5rem;font-size:1.25rem}
+.install{background:var(--surface);border:2.5px dashed var(--line);border-radius:16px;padding:.9rem 1rem;margin-top:1.4rem;font-size:.9rem}
+.install b{display:block;margin-bottom:.3rem}
+.install p{margin:.2rem 0;color:var(--muted)}
+.v52 .card{margin:1.2rem 0}
+.toast{bottom:calc(5.6rem + env(safe-area-inset-bottom,0px))}
+body.inreto .toast{bottom:calc(1rem + env(safe-area-inset-bottom,0px))}
+.season{grid-template-columns:1fr 1fr !important}
+</style>
+</head>
+<body>
+<header class="appbar"><div class="appbar-in"><span style="display:flex;align-items:center"><img class="logo" src="data:image/png;base64,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" alt="Futuro Casa de Valores"><span class="ttl">Retos</span></span><button class="badge" id="badge" aria-label="Ver mi pasaporte">🎓 <span id="badgeN">0/5</span></button></div></header>
+<main>
+  <!-- INICIO -->
+  <section class="tab" id="t-inicio">
+    <div class="hi">
+      <p class="k">Retos Futuro</p>
+      <h1>Domina tu dinero, un reto a la vez</h1>
+      <p id="iProg" style="margin:0;font-weight:800"></p>
+      <div class="pb2" aria-hidden="true"><i id="iBar"></i></div>
+      <button class="next" id="iNext" type="button"></button>
+    </div>
+    <button class="tile" id="iWeek" type="button"></button>
+    <div class="tipday" id="iTip"></div>
+    <h2 class="sech">Retos de temporada</h2>
+    <div class="hscroll" id="iSeason"></div>
+    <button class="btn wide" id="hStart" style="display:none">Empezar</button>
+  </section>
+
+  <!-- RETOS -->
+  <section class="tab" id="t-retos">
+    <h2 style="margin-top:.3rem">La Ruta del Inversionista</h2>
+    <p class="sub">5 retos para pasar de ahorrar a invertir. Cada uno te da una insignia para tu pasaporte.</p>
+    <div class="route" id="route"></div>
+    <h2 id="seasonT" class="sech">Retos de temporada</h2>
+    <div class="season" id="season"></div>
+    <section class="seo" aria-label="Preguntas frecuentes">
+      <details><summary>¿Cuánto debería ahorrar cada mes?</summary><p>Una guía muy usada es la regla 50/30/20: 50% de tus ingresos para necesidades, 30% para gustos y 20% para ahorro e inversión. Si hoy no llegas al 20%, empieza con un monto pequeño y automático el día que cobras. El reto “¿Cuánto podrías estar ahorrando?” te muestra tu número.</p></details>
+      <details><summary>¿Cómo usar bien la tarjeta de crédito?</summary><p>Paga el total del mes para no pagar intereses, conoce tu fecha de corte, usa menos del 30% de tu cupo y difiere solo lo que va a durar más que la deuda. Evita los avances de efectivo, que cobran intereses desde el primer día.</p></details>
+      <details><summary>¿Qué es el perfil de inversionista?</summary><p>Es una forma de conocer cuánto riesgo puedes y quieres asumir según tus objetivos, tu plazo y tu reacción ante las caídas. Puede ser conservador, moderado o agresivo. Antes de invertir en una casa de valores, se completa un perfil formal.</p></details>
+      <details><summary>¿Qué diferencia hay entre una póliza y un bono?</summary><p>En una póliza le prestas tu dinero a un banco por un plazo fijo. En un bono o papel comercial le prestas al Estado o a una empresa a través del mercado de valores. Ambos son renta fija: sabes de antemano cuánto vas a ganar si el emisor cumple. Las tasas y riesgos dependen de cada emisor y su calificación.</p></details>
+      <details><summary>¿Cómo funcionan las acciones?</summary><p>Una acción es una parte de una empresa. Ganas si su precio sube o si reparte dividendos, y puedes perder si le va mal. Indicadores como el dividendo, el precio/utilidad y la volatilidad ayudan a entender cada empresa.</p></details>
+      <details><summary>¿Quién está detrás de Retos Futuro?</summary><p>Futuro Casa de Valores, que conecta inversionistas con empresas a través del mercado de valores ecuatoriano. Los retos son educativos y gratuitos; no constituyen asesoría de inversión personalizada.</p></details>
+    </section>
+  </section>
+
+  <!-- 52 SEMANAS -->
+  <section class="tab" id="t-semanas">
+  <!-- PORTADA -->
+  <section class="v52" id="v-start">
+    
+    <div class="hero">
+      
+      <span class="kicker">📅 Reto de temporada · 2027</span>
+      <h1>Reto de las 52 semanas</h1>
+      <p>Ahorra $1 la primera semana, $2 la segunda, $3 la tercera… y termina el año con <b>$1.378</b>. Sin darte cuenta.</p>
+      <div class="mini" id="heroMini" aria-hidden="true"></div>
+      <button class="btn" id="goVers">Quiero hacer el reto 💪</button>
+    </div>
+    <div class="howto">
+      <div><b>1️⃣</b><span>Elige tu versión: hay una para cada bolsillo, desde $689 hasta $2.756 al año.</span></div>
+      <div><b>2️⃣</b><span>Cada semana guarda el monto que te toca y táchalo en tu tabla.</span></div>
+      <div><b>3️⃣</b><span>Cada trimestre te mostramos cómo poner a trabajar lo que llevas ahorrado.</span></div>
+    </div>
+  </section>
+
+  <!-- ELEGIR VERSIÓN -->
+  <section class="v52" id="v-vers">
+    <div class="topbar no-print"><button class="link" id="backStart">← Volver</button><span></span></div>
+    <h2>Elige tu versión del reto</h2>
+    <p class="sub">Todas duran 52 semanas. Elige la que mejor encaje con tu bolsillo.</p>
+    <div class="vers" id="vers"></div>
+    <h2 style="margin-top:1.6rem">¿Cuándo empiezas?</h2>
+    <div class="chips" id="startChips"></div>
+    <p class="sub" id="startTxt" style="margin-top:.6rem"></p>
+    <button class="btn wide" id="create">Crear mi tabla</button>
+  </section>
+
+  <!-- TABLERO -->
+  <section class="v52" id="v-board">
+    
+    <div class="dash no-print" id="dash"></div>
+    <div class="week no-print" id="week"></div>
+    <div class="miles no-print" id="miles"></div>
+    <div class="print-area">
+      <h2 class="print-only">Mi Reto de las 52 semanas · Retos Futuro</h2>
+      <h2 class="no-print">Mi tabla</h2>
+      <p class="sub no-print" id="boardHint"></p>
+      <div class="board" id="board"></div>
+      <div class="legend no-print"><span><i style="background:var(--mag)"></i>Ahorrado</span><span><i style="outline:3px solid var(--blue);outline-offset:1px"></i>Esta semana</span><span><i style="border-style:dashed"></i>Semana pasada pendiente</span></div>
+      <p class="print-only">Tacha cada casilla cuando guardes su monto. Futuro Casa de Valores · Retos Futuro</p>
+    </div>
+    <div class="card no-print">
+      <h3>¿Y si tu ahorro trabajara por ti?</h3>
+      <p class="sub" id="invTxt" style="margin:.4rem 0 .8rem"></p>
+      <a class="btn ghost wide" href="#rentafija">Aprende cómo en el reto ¿Póliza o bono?</a>
+    </div>
+    <div class="row2 no-print">
+      <button class="btn" id="share">Compartir mi avance</button>
+      <button class="btn ghost" id="dare">Retar a alguien</button>
+    </div>
+    <div class="card no-print">
+      <h3>📲 Recordatorio semanal por WhatsApp</h3>
+      <p class="sub" style="margin:.4rem 0 0">Cada semana te escribimos cuánto te toca guardar. Gratis, y te sales cuando quieras.</p>
+      <form id="leadf" novalidate>
+        <label class="fld"><span>Tu nombre</span><input id="lname" autocomplete="given-name" placeholder="Ej. Andrea"></label>
+        <label class="fld"><span>Tu WhatsApp</span><input id="lphone" inputmode="tel" autocomplete="tel" placeholder="09XXXXXXXX"></label>
+        <p class="err" id="lerr" role="alert"></p>
+        <button class="btn wide" type="submit">Activar recordatorios</button>
+      </form>
+      <p class="ok" id="lok" hidden></p>
+    </div>
+    <div class="row2 no-print" style="margin-top:.4rem">
+      <button class="btn ghost" id="print">🖨️ Imprimir mi tabla</button>
+      <button class="btn ghost" id="change">Cambiar de versión</button>
+    </div>
+  </section>
+
+  
+</section>
+
+  <!-- PASAPORTE -->
+  <section class="tab" id="t-pasaporte">
+    <section class="pass" aria-labelledby="passT" style="margin-top:.3rem">
+      <div class="pass-h"><h2 id="passT" style="margin:0">Mi pasaporte financiero</h2><span class="sub" id="passTxt" style="margin:0"></span></div>
+      <div class="stamps" id="stamps"></div>
+      <div class="pbar" aria-hidden="true"><i id="pbar"></i></div>
+    </section>
+    <div id="certBox"></div>
+    <div class="install">
+      <b>📲 Lleva Retos Futuro en tu pantalla de inicio</b>
+      <p><b style="display:inline">iPhone:</b> toca el botón Compartir y elige “Agregar a pantalla de inicio”.</p>
+      <p><b style="display:inline">Android:</b> abre el menú del navegador y elige “Instalar app” o “Agregar a pantalla principal”.</p>
+    </div>
+  </section>
+
+  <!-- RETO EN CURSO -->
+  <section class="tab" id="t-reto"><div id="reto"></div></section>
+
+  <p class="legal">Retos Futuro es una iniciativa educativa y gratuita de Futuro Casa de Valores. Las tasas, empresas y resultados son de ejemplo o simulados y no constituyen recomendación ni asesoría de inversión. Los perfiles son orientativos y no reemplazan el perfil formal del inversionista. Tu avance se guarda en este dispositivo. Toda inversión conlleva riesgos. Casa de Valores Futuro FUTUROCAPITAL S.A.</p>
+</main>
+<nav class="bottom" aria-label="Navegación principal">
+  <button data-t="inicio"><span aria-hidden="true">🏠</span>Inicio</button>
+  <button data-t="retos"><span aria-hidden="true">🎯</span>Retos</button>
+  <button data-t="semanas"><span aria-hidden="true">📅</span>52 semanas</button>
+  <button data-t="pasaporte"><span aria-hidden="true">🎓</span>Pasaporte</button>
+</nav>
+<dialog id="dlg"><div class="dl" id="dlgB"></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(function(){
+"use strict";
+var $=function(id){ return document.getElementById(id); };
+function el(t,c,x){ var e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e; }
+var money=function(v){ return (v<0?"−":"")+"$"+Math.round(Math.abs(v)).toLocaleString("es-EC"); };
+var pc=function(v,d){ return (v<0?"−":"")+Math.abs(v).toFixed(d==null?0:d).replace(".",",")+"%"; };
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var LOGO=function(){ return document.querySelector(".logo").src; };
+function toast(m){ var t=$("toast"); t.textContent=m; t.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(function(){ t.classList.remove("on"); },2400); }
+function share(text){ if(navigator.share) navigator.share({title:"Retos Futuro",text:text}).catch(function(){}); else window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener"); }
+var UTM=function(path,c){ return "https://futurocasadevalores.com/"+path+"?utm_source=retos-futuro&utm_medium=portal&utm_campaign="+c; };
+
+// ================= ESTADO =================
+var S={done:{}, name:""};
+try{ var ls=JSON.parse(localStorage.getItem("retos-futuro-v1")||"null"); if(ls&&ls.done) S=ls; }catch(e){}
+function save(){ try{ localStorage.setItem("retos-futuro-v1",JSON.stringify(S)); }catch(e){} }
+
+var RETOS=[
+  {id:"ahorro", e:"💰", lvl:"RETO 1 · AHORRO", t:"¿Cuánto podrías estar ahorrando?", d:"Descubre cuánto ganas, en qué se te va y cuánto más podrías ahorrar cada mes.", min:5, badge:"Ahorrador"},
+  {id:"tarjeta", e:"💳", lvl:"RETO 2 · CRÉDITO", t:"¿Tu tarjeta te maneja a ti?", d:"8 preguntas para saber si le sacas provecho a tu tarjeta de crédito o si ella te saca provecho a ti.", min:4, badge:"Maestro del crédito"},
+  {id:"perfil", e:"🧭", lvl:"RETO 3 · PERFIL", t:"¿Qué tipo de inversionista eres?", d:"Descubre si eres tortuga, búho o águila, y qué mezcla de inversiones va contigo.", min:3, badge:"Inversionista consciente"},
+  {id:"rentafija", e:"🏛️", lvl:"RETO 4 · RENTA FIJA", t:"¿Póliza o bono? Descubre dónde gana más tu dinero", d:"Simula cuánto ganarías en una póliza, un bono del Estado o papel comercial, y entiende cómo funcionan.", min:6, badge:"Conocedor de renta fija"},
+  {id:"acciones", e:"📈", lvl:"RETO 5 · ACCIONES", t:"Sé accionista por un día", d:"Conoce los indicadores clave, arma tu portafolio de acciones y vive un año en la bolsa en segundos.", min:7, badge:"Accionista"}
+];
+var BY={}; RETOS.forEach(function(r,i){ r.i=i; BY[r.id]=r; });
+var SEASON=[
+  {e:"📅", t:"Reto de las 52 semanas", d:"Ahorra $1 la primera semana, $2 la segunda… y llega a $1.378.", when:"Empieza el 1 de enero", url:"#semanas", inapp:true},
+  {e:"🎄", t:"Navidad con plata", d:"¿Empiezas 2027 con plata o endeudado? Arma tu plan de diciembre.", when:"Diciembre", url:"../navidad-con-plata/"},
+  {e:"😅", t:"Chirómetro", d:"¿Qué tan chiro eres de verdad? El test que todos comparten.", when:"Todo el año", url:"../chirometro/"},
+  {e:"🏆", t:"Reto Récord: Inversionista por un día", d:"Súmate al récord de estudiantes armando su primer portafolio.", when:"Evento especial", url:"../reto-record/"}
+];
+function doneCount(){ return RETOS.filter(function(r){ return S.done[r.id]; }).length; }
+function nextReto(){ return RETOS.filter(function(r){ return !S.done[r.id]; })[0]; }
+
+// ================= PORTADA =================
+function renderStamps(box,dark){
+  box.innerHTML="";
+  RETOS.forEach(function(r){ var s=el("span","stamp"+(S.done[r.id]?" on":""),r.e); s.title=r.badge+(S.done[r.id]?" · conseguida":" · pendiente"); s.setAttribute("aria-label",r.badge+(S.done[r.id]?", conseguida":", pendiente")); box.appendChild(s); });
+}
+function renderHome(){
+  var n=doneCount();
+  renderStamps($("stamps"));
+  $("pbar").style.width=(n/5*100)+"%";
+  $("passTxt").textContent = n===5 ? "¡Completaste la ruta! 🎓" : n+" de 5 insignias · al completar las 5 recibes tu certificado";
+  $("hStart").textContent = n===0 ? "Empezar la ruta" : n===5 ? "Ver mi certificado 🎓" : "Continuar: reto "+(nextReto().i+1);
+  var rt=$("route"); rt.innerHTML="";
+  RETOS.forEach(function(r){
+    var b=el("button","step"+(S.done[r.id]?" done":"")); b.type="button";
+    b.appendChild(el("span","n",r.e));
+    var t=el("span"); t.appendChild(el("span","lvl",r.lvl+" · "+r.min+" MIN")); t.appendChild(el("h3",null,r.t)); t.appendChild(el("p",null,S.done[r.id]?"✓ "+S.done[r.id].sum:r.d)); b.appendChild(t);
+    b.appendChild(el("span","go",S.done[r.id]?"Repetir":"Empezar →"));
+    b.addEventListener("click",function(){ go(r.id); });
+    rt.appendChild(b);
+  });
+  if(n===5){ var c=el("button","btn wide","🎓 Recibir mi certificado de la Ruta del Inversionista"); c.type="button"; c.addEventListener("click",function(){ go("pasaporte"); }); rt.appendChild(c); }
+  var se=$("season"); se.innerHTML="";
+  SEASON.forEach(function(s){
+    var a=el(s.url?"a":"div","sc"+(s.soon?" soon":"")); if(s.url){ a.href=s.url; if(!s.inapp){ a.target="_blank"; a.rel="noopener"; } }
+    a.appendChild(el("span","e",s.e)); a.appendChild(el("b",null,s.t)); a.appendChild(el("small",null,s.d)); a.appendChild(el("span","when",s.when)); se.appendChild(a);
+  });
+}
+$("hStart").addEventListener("click",function(){ var n=nextReto(); go(n?n.id:"pasaporte"); });
+
+
+// ================= MARCO DE CADA RETO =================
+var box=null, cur=null;
+function frame(r,stepIdx,steps){
+  box=$("reto"); box.innerHTML="";
+  var top=el("div","bar-top");
+  var h=el("button","home"); h.type="button"; var lg=el("img","logo"); lg.src=LOGO(); lg.alt="Futuro Casa de Valores"; lg.style.height="1.6rem"; h.appendChild(lg); h.append("← Salir"); h.addEventListener("click",function(){ go("retos"); }); top.appendChild(h);
+  var mp=el("span","mini-pass"); RETOS.forEach(function(x){ mp.appendChild(el("i",S.done[x.id]?"on":"",x.e)); }); mp.setAttribute("aria-label",doneCount()+" de 5 insignias"); top.appendChild(mp);
+  box.appendChild(top);
+  if(steps){ var p=el("div","prog"); p.setAttribute("aria-hidden","true"); for(var k=0;k<steps;k++) p.appendChild(el("i",k<=stepIdx?"on":"")); box.appendChild(p); }
+  return box;
+}
+function intro(r,text,bullets,start){
+  var b=frame(r,0,0), c=el("div","card intro");
+  c.appendChild(el("div","em",r.e)); c.appendChild(el("p","sub",r.lvl+" · "+r.min+" minutos")).style.margin=".6rem 0 .2rem";
+  c.appendChild(el("h2",null,r.t)); c.appendChild(el("p",null,text));
+  if(bullets){ var ul=el("ul"); ul.style.paddingLeft="1.2rem"; ul.style.color="var(--muted)"; bullets.forEach(function(x){ ul.appendChild(el("li",null,x)); }); c.appendChild(ul); }
+  var bt=el("button","btn wide","Empezar"); bt.type="button"; bt.style.marginTop=".6rem"; bt.addEventListener("click",start); c.appendChild(bt);
+  b.appendChild(c); window.scrollTo(0,0);
+}
+function resultCard(o){
+  var c=el("div","result"); var lg=el("img","logo"); lg.src=LOGO(); lg.alt="Futuro Casa de Valores"; c.appendChild(lg);
+  if(o.e) c.appendChild(el("div","re",o.e));
+  if(o.k) c.appendChild(el("p","rk",o.k));
+  if(o.vFirst&&o.v) c.appendChild(el("p","rv num",o.v));
+  if(o.t) c.appendChild(el("p","rt",o.t));
+  if(o.v&&!o.vFirst) c.appendChild(el("p","rv num",o.v));
+  if(o.p) c.appendChild(el("p",null,o.p));
+  var ft=el("div","ft"); ft.appendChild(el("span",null,"Retos Futuro")); ft.appendChild(el("span",null,BY[cur].lvl.split(" · ")[0])); c.appendChild(ft);
+  return c;
+}
+function finish(r,sum,shareText,extra){
+  var first=!S.done[r.id];
+  S.done[r.id]={sum:sum, ts:Date.now()}; save();
+  var b=box;
+  var g=el("div","got"); g.appendChild(el("span","e",r.e)); g.appendChild(el("span",null,(first?"¡Ganaste la insignia ":"Insignia ")+"“"+r.badge+"”! Llevas "+doneCount()+" de 5."));
+  b.appendChild(g);
+  if(extra) b.appendChild(extra);
+  var a=el("div","actions");
+  var nx=nextReto();
+  var n1=el("button","btn wide", nx ? "Siguiente: "+nx.t+" →" : "🎓 Recibir mi certificado"); n1.type="button"; n1.addEventListener("click",function(){ go(nx?nx.id:"pasaporte"); }); a.appendChild(n1);
+  var s1=el("button","btn ghost wide","Compartir mi resultado"); s1.type="button"; s1.addEventListener("click",function(){ share(shareText); }); a.appendChild(s1);
+  var h1=el("button","link","Volver a los retos"); h1.type="button"; h1.addEventListener("click",function(){ go("retos"); }); a.appendChild(h1);
+  b.appendChild(a);
+  if(first) toast("🏅 Insignia conseguida: "+r.badge);
+}
+function tipsBox(list,title){
+  var w=el("div"); if(title) w.appendChild(el("h2",null,title)).style.marginTop="1.4rem";
+  var t=el("div","tips"); list.forEach(function(x){ var d=el("div","tip"); d.appendChild(el("span","e",x[0])); var s=el("div"); s.appendChild(el("h3",null,x[1])); s.appendChild(el("p",null,x[2])); d.appendChild(s); t.appendChild(d); }); w.appendChild(t);
+  return w;
+}
+// Pregunta de opción múltiple genérica
+function askQ(r,stepIdx,steps,q,opts,onPick,o){
+  o=o||{}; var b=frame(r,stepIdx,steps);
+  if(o.pre) b.appendChild(o.pre);
+  if(!o.sub){ b.appendChild(el("p","sub","Pregunta "+stepIdx+" de "+(steps-2))).style.margin="0 0 .3rem"; }
+  b.appendChild(el("h2","q",q));
+  if(o.sub) b.appendChild(el("p","sub",o.sub));
+  var list=el("div","opts"), locked=false;
+  opts.forEach(function(op,i){
+    var bt=el("button","opt"); bt.type="button"; bt.appendChild(el("span","oe",op.e||"•")); bt.appendChild(el("span",null,op.t));
+    bt.addEventListener("click",function(){ if(locked) return; onPick(i,bt,list,function(){ locked=true; }); });
+    list.appendChild(bt);
+  });
+  b.appendChild(list); window.scrollTo(0,0);
+  return b;
+}
+// ================= RETO 1: AHORRO =================
+function retoAhorro(){
+  var r=BY.ahorro, D={ing:0, g:{}};
+  var CATS=[
+    ["viv","🏠","Vivienda","Arriendo o dividendo de la casa",.25,"n"],["sup","🛒","Comida del supermercado","Lo que compras para la casa",.15,"n"],
+    ["ser","💡","Servicios y celular","Luz, agua, internet, plan del celular",.07,"n"],["tra","🚌","Transporte","Bus, gasolina, taxis, parqueo",.09,"n"],
+    ["deu","💳","Deudas y cuotas","Tarjeta, préstamos, compras diferidas",.12,"n"],["fue","🍔","Comer fuera y delivery","Almuerzos, salidas, apps de comida",.09,"g"],
+    ["sus","📺","Suscripciones","Streaming, música, gimnasio, apps",.03,"g"],["com","🛍️","Compras y gustos","Ropa, tecnología, salidas, regalos",.10,"g"]
+  ];
+  intro(r,"Con unas preguntas rápidas vamos a ver cuánto ganas, en qué se te va el dinero y cuánto más podrías ahorrar sin dejar de vivir.",["Tarda 5 minutos","No pedimos datos personales","Al final recibes tus 3 mejores consejos"],step1);
+  function step1(){
+    var b=frame(r,1,3);
+    b.appendChild(el("h2","q","¿Cuánto te llega al mes?"));
+    b.appendChild(el("p","sub","Tu ingreso neto: lo que cae en tu cuenta, sumando todos tus ingresos."));
+    var ch=el("div","chips"); var inp; [500,800,1200,2000,3500].forEach(function(v){ var c=el("button","chip",money(v)); c.type="button"; c.setAttribute("aria-pressed","false"); c.addEventListener("click",function(){ inp.value=v; ch.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed",x===c?"true":"false"); }); }); ch.appendChild(c); });
+    b.appendChild(ch);
+    var l=el("label","fld"); l.appendChild(el("span",null,"O escribe el monto exacto")); var m=el("div","money"); inp=el("input"); inp.type="number"; inp.inputMode="decimal"; inp.min="0"; inp.placeholder="Ej. 950"; if(D.ing) inp.value=D.ing; m.appendChild(inp); l.appendChild(m); b.appendChild(l);
+    var er=el("p","err"); er.setAttribute("role","alert"); b.appendChild(er);
+    var go1=el("button","btn wide","Siguiente →"); go1.type="button";
+    go1.addEventListener("click",function(){ var v=parseFloat(inp.value); if(!(v>=100)){ er.textContent="Escribe un ingreso mensual de al menos $100."; return; } D.ing=v; CATS.forEach(function(c){ if(D.g[c[0]]==null) D.g[c[0]]=Math.round(v*c[4]/5)*5; }); step2(); });
+    b.appendChild(go1);
+  }
+  function step2(){
+    var b=frame(r,2,3);
+    b.appendChild(el("h2","q","¿Cuánto gastas al mes en cada cosa?"));
+    b.appendChild(el("p","sub","Pusimos valores de referencia. Muévelos hasta que se parezcan a tu realidad."));
+    var sum=el("div","sumbox"); var s1=el("span"), s2=el("b","num"); sum.appendChild(s1); sum.appendChild(s2);
+    function upd(){ var g=total(); var left=D.ing-g; s1.textContent=left>=0?"Te queda al mes":"Te falta al mes"; s2.textContent=money(Math.abs(left)); s2.className="num "+(left>=0?"":"down"); }
+    CATS.forEach(function(c){
+      var w=el("div","slider"); var id="sl-"+c[0]; var t=el("div","t"); var lb=el("label",null,c[1]+" "+c[2]); lb.htmlFor=id; var o=el("output","num",money(D.g[c[0]])); t.appendChild(lb); t.appendChild(o); w.appendChild(t);
+      w.appendChild(el("small",null,c[3]));
+      var s=el("input"); s.type="range"; s.id=id; s.min="0"; s.step="5"; s.max=String(Math.max(Math.round(D.ing*0.6/5)*5,D.g[c[0]])); s.value=D.g[c[0]];
+      s.addEventListener("input",function(){ D.g[c[0]]=+s.value; o.textContent=money(+s.value); upd(); }); w.appendChild(s); b.appendChild(w);
+    });
+    b.appendChild(sum); upd();
+    var go2=el("button","btn wide","Ver cuánto podría ahorrar →"); go2.type="button"; go2.style.marginTop="1rem"; go2.addEventListener("click",result); b.appendChild(go2);
+  }
+  function total(){ return CATS.reduce(function(s,c){ return s+(D.g[c[0]]||0); },0); }
+  function result(){
+    var g=D.g, act=D.ing-total(), actP=act/D.ing*100;
+    var cuts=[["fue",.4,"🍔","Come fuera la mitad de veces","Lleva almuerzo dos o tres días por semana y limita el delivery al fin de semana."],["sus",.5,"📺","Haz limpieza de suscripciones","Cancela las que no usaste el último mes. Puedes rotarlas: una plataforma a la vez."],["com",.3,"🛍️","Aplica la regla de las 24 horas","Antes de una compra no planificada, espera un día. La mayoría de antojos desaparecen."],["sup",.1,"🛒","Compra con lista en el supermercado","Ir con lista y sin hambre reduce hasta un 10% de la compra."]];
+    var pot=Math.max(0,act), gains=[];
+    cuts.forEach(function(c){ var s=(g[c[0]]||0)*c[1]; if(s>=5){ pot+=s; gains.push({s:s,c:c}); } });
+    gains.sort(function(a,b){ return b.s-a.s; });
+    var lvl = actP<0?["🚨","Gastas más de lo que ganas"]:actP<10?["🌱","Ahorrador en construcción"]:actP<20?["🐜","Buen ahorrador"]:["⭐","Ahorrador estrella"];
+    var b=frame(r,3,3);
+    b.appendChild(resultCard({e:lvl[0],k:"Tu nivel: "+lvl[1],t:"Podrías ahorrar",v:money(pot)+" al mes",p:(act>=0?"Hoy te quedan "+money(act)+" ("+pc(actP)+" de tu ingreso).":"Hoy gastas "+money(-act)+" más de lo que ganas.")+" Con pequeños cambios, en un año juntarías "+money(pot*12)+"."}));
+    var nec=g.viv+g.sup+g.ser+g.tra+g.deu, gus=g.fue+g.sus+g.com;
+    var T=[];
+    gains.slice(0,2).forEach(function(x){ T.push([x.c[2],x.c[3]+": +"+money(x.s)+" al mes",x.c[4]]); });
+    if(g.deu>D.ing*0.2) T.push(["💳","Tus deudas se llevan el "+pc(g.deu/D.ing*100)+" de tu ingreso","Lo recomendable es que no pasen del 20 al 30%. Paga primero la deuda con la tasa más alta y evita nuevos diferidos."]);
+    T.push(["🤖","Págate primero","El día que cobras, transfiere automáticamente tu ahorro a otra cuenta. Lo que no ves, no lo gastas."]);
+    T.push(["📊","Tu regla 50/30/20","Necesidades: "+pc(nec/D.ing*100)+" (ideal 50%). Gustos: "+pc(gus/D.ing*100)+" (ideal 30%). Ahorro: "+pc(Math.max(0,actP))+" (ideal 20%)."]);
+    T.push(["🛟","Arma tu fondo de emergencia","Junta de 3 a 6 meses de gastos ("+money(total()*3)+" a "+money(total()*6)+") antes de invertir en algo con riesgo."]);
+    b.appendChild(tipsBox(T.slice(0,3),"Tus 3 mejores consejos"));
+    finish(r,"Podrías ahorrar "+money(pot)+" al mes","💰 Acabo de descubrir que podría ahorrar "+money(pot)+" al mes con pequeños cambios. ¿Y tú cuánto podrías ahorrar? Haz el reto gratis en Retos Futuro.");
+  }
+}
+
+// ================= RETO 2: TARJETA =================
+function retoTarjeta(){
+  var r=BY.tarjeta, pts=0, tips=[];
+  var Q=[
+    {q:"Cuando llega tu estado de cuenta, ¿cuánto pagas?", o:[["El total del mes",3],["Más del mínimo, pero no todo",1],["El pago mínimo",0],["Depende del mes",1]], x:"Pagando el total no pagas intereses. Con el pago mínimo, una compra pequeña termina costando mucho más y tardas meses en pagarla.", tip:["💵","Paga el total cada mes","Si no puedes, paga lo más posible y deja de usar la tarjeta hasta ponerte al día."]},
+    {q:"¿Sabes tu fecha de corte y tu fecha máxima de pago?", o:[["Sí, las dos",3],["Solo la fecha de pago",1],["No las conozco",0]], x:"Si compras justo después de la fecha de corte, esa compra entra en el siguiente estado de cuenta y tienes más días para pagarla sin intereses.", tip:["📅","Anota tu fecha de corte","Haz tus compras grandes justo después del corte para ganar días de financiamiento sin costo."]},
+    {q:"¿Qué parte de tu cupo usas normalmente?", o:[["Menos del 30%",3],["Entre 30% y 70%",1],["Casi todo",0]], x:"Usar menos del 30% de tu cupo cuida tu historial de crédito y te deja margen para una emergencia.", tip:["📉","Usa menos del 30% de tu cupo","Si siempre llegas al límite, es una señal de que tus gastos superan tus ingresos."]},
+    {q:"¿Difieres compras del día a día, como comida, salidas o ropa?", o:[["Nunca",3],["A veces",1],["Casi siempre",0]], x:"Diferir lo que se consume rápido significa seguir pagándolo meses después, muchas veces con intereses.", tip:["🧾","Difiere solo lo que dura","Si lo vas a diferir, que sea algo que dure más que la deuda."]},
+    {q:"¿Has sacado avances de efectivo con tu tarjeta?", o:[["Nunca",3],["Una vez, por emergencia",1],["Varias veces",0]], x:"Los avances de efectivo suelen cobrar intereses desde el primer día y una comisión adicional. Están entre las formas más caras de endeudarse.", tip:["🚫","Evita los avances de efectivo","Para emergencias, es mejor tener un fondo propio que pagar intereses desde el primer día."]},
+    {q:"¿Cada cuánto revisas los movimientos de tu tarjeta?", o:[["Cada semana o en la app",3],["Cuando llega el estado de cuenta",2],["Casi nunca",0]], x:"Revisar seguido te ayuda a detectar cargos que no reconoces y suscripciones que olvidaste cancelar.", tip:["🔎","Revisa tus movimientos cada semana","Activa las notificaciones de compra en la app de tu banco."]},
+    {q:"¿Aprovechas los beneficios de tu tarjeta (millas, puntos, descuentos, seguros)?", o:[["Sí, los conozco y los uso",3],["Sé que existen, pero no los uso",1],["No sé cuáles tiene",0]], x:"Muchas tarjetas incluyen beneficios que ya estás pagando en tu cuota anual. Si no los usas, estás regalando dinero.", tip:["🎁","Conoce los beneficios de tu tarjeta","Revisa qué incluye tu tarjeta y compara si su costo anual vale la pena."]},
+    {q:"¿Cuántas tarjetas de crédito tienes?", o:[["Una o dos que controlo bien",3],["Tres o más, pero las controlo",2],["Varias, y a veces pago una con otra",0]], x:"Pagar una tarjeta con otra es una señal de alerta: la deuda crece aunque parezca que la estás pagando.", tip:["✂️","Simplifica tus tarjetas","Quédate con las que realmente usas y cancela las que solo suman cuotas y tentaciones."]}
+  ];
+  intro(r,"Responde 8 preguntas y descubre si le sacas el máximo provecho a tu tarjeta de crédito. En cada respuesta aprenderás algo nuevo.",["Tarda 4 minutos","Aprendes con cada pregunta","Al final sabrás qué personaje eres"],function(){ ask(0); });
+  function ask(i){
+    var q=Q[i], best=Math.max.apply(null,q.o.map(function(o){ return o[1]; }));
+    var b=askQ(r,i+1,Q.length+2,q.q,q.o.map(function(o){ return {t:o[0],e:"•"}; }),function(j,bt,list,lock){
+      lock(); pts+=q.o[j][1]; if(q.o[j][1]<best) tips.push(q.tip);
+      list.querySelectorAll(".opt").forEach(function(x,k){ x.disabled=true; if(q.o[k][1]===best) x.classList.add("good"); else if(k===j) x.classList.add("badp"); });
+      var ex=el("div","explain"); ex.appendChild(el("b",null,q.o[j][1]===best?"✅ ¡Muy bien!":"💡 Dato clave")); ex.append(q.x); b.appendChild(ex);
+      var n=el("button","btn wide",i<Q.length-1?"Siguiente →":"Ver mi resultado →"); n.type="button"; n.style.marginTop="1rem"; n.addEventListener("click",function(){ if(i<Q.length-1) ask(i+1); else result(); }); b.appendChild(n);
+      n.scrollIntoView({behavior:reduce?"auto":"smooth",block:"nearest"});
+    });
+  }
+  function result(){
+    var A = pts>=20?["👑","Maestro de la Tarjeta","Usas la tarjeta a tu favor: aprovechas sus días sin intereses y sus beneficios sin endeudarte."]:
+            pts>=14?["😎","Usuario Responsable","Vas bien, pero hay detalles que te están costando dinero sin que lo notes."]:
+            pts>=8?["🌀","Diferidor Serial","La tarjeta te ayuda a llegar a fin de mes, pero te está cobrando caro por hacerlo."]:
+                   ["⛓️","Prisionero del Pago Mínimo","Hoy la tarjeta te maneja a ti. La buena noticia: con tres cambios puedes recuperar el control."];
+    var b=frame(r,Q.length+1,Q.length+2);
+    b.appendChild(resultCard({e:A[0],k:"Tu resultado: "+pts+" de 24 puntos",t:A[1],p:A[2]}));
+    var T=tips.slice(0,3); if(!T.length) T=[["🏆","Sigue así","Revisa cada año si la cuota de manejo de tus tarjetas vale la pena frente a sus beneficios."],["📈","Pon tu buen hábito a trabajar","Lo que ahorras en intereses puedes invertirlo. El reto 4 te muestra cómo."]];
+    b.appendChild(tipsBox(T,"Lo que más te conviene cambiar"));
+    finish(r,"Eres “"+A[1]+"”","💳 Hice el reto “¿Tu tarjeta te maneja a ti?” y salí "+A[0]+" “"+A[1]+"”. ¿Qué tal te va a ti con la tarjeta? Hazlo gratis en Retos Futuro.");
+  }
+}
+
+// ================= RETO 3: PERFIL =================
+function retoPerfil(){
+  var r=BY.perfil, pts=0, emer=3;
+  var Q=[
+    {q:"¿Para cuándo necesitarías el dinero que inviertas?", o:[["⏱️","En menos de 1 año",1],["🗓️","Entre 1 y 5 años",2],["🌳","En más de 5 años",3]]},
+    {q:"Inviertes $1.000 y en un mes valen $800. ¿Qué haces?", o:[["😰","Vendo todo para no perder más",1],["🧘","Espero a que se recupere",2],["🛒","Compro más, ahora está barato",3]]},
+    {q:"¿Qué buscas principalmente con tu dinero?", o:[["🛡️","Que no pierda valor",1],["⚖️","Que crezca de forma equilibrada",2],["🚀","Que crezca lo más posible",3]]},
+    {q:"¿Qué opción prefieres para el próximo año?", o:[["🔒","Ganar seguro un 6%",1],["📊","Ganar entre 0% y 15%",2],["🎢","Entre perder 15% y ganar 30%",3]]},
+    {q:"¿Cuánta experiencia tienes invirtiendo?", o:[["🐣","Ninguna todavía",1],["🏦","Pólizas o ahorros a plazo",2],["📈","Acciones, bonos o fondos",3]]},
+    {q:"¿Tienes un fondo de emergencia de 3 a 6 meses de gastos?", o:[["❌","No",1],["🪙","Algo, menos de 3 meses",2],["✅","Sí",3]], k:"emer"},
+    {q:"¿Qué parte de tus ahorros pondrías en inversiones?", o:[["🤏","Menos de la cuarta parte",1],["✋","Entre la cuarta parte y la mitad",2],["💪","Más de la mitad",3]]}
+  ];
+  intro(r,"Siete preguntas para descubrir qué tipo de inversionista eres según tu plazo, tus objetivos y cómo reaccionas ante las caídas.",["Tarda 3 minutos","No hay respuestas buenas ni malas","Resultado orientativo y educativo"],function(){ ask(0); });
+  function ask(i){
+    var q=Q[i];
+    askQ(r,i+1,Q.length+2,q.q,q.o.map(function(o){ return {e:o[0],t:o[1]}; }),function(j,bt,list,lock){
+      lock(); pts+=q.o[j][2]; if(q.k==="emer") emer=q.o[j][2];
+      bt.classList.add("picked"); setTimeout(function(){ if(i<Q.length-1) ask(i+1); else result(); }, reduce?0:280);
+    });
+  }
+  function result(){
+    var P = pts<=11 ? {e:"🐢",n:"Tortuga",k:"Conservador",d:"Avanzas seguro y sin sobresaltos. Prefieres proteger tu dinero antes que arriesgarlo.",mix:[["Renta fija",75,"#3F78FF"],["Acciones",10,"#FD4CFF"],["Liquidez",15,"#C9A8FF"]],i:"Bonos del Estado, papel comercial y obligaciones de emisores con alta calificación."}
+          : pts<=16 ? {e:"🦉",n:"Búho",k:"Moderado",d:"Piensas antes de actuar. Buscas crecer, pero sin perder el sueño por las caídas.",mix:[["Renta fija",55,"#3F78FF"],["Acciones",35,"#FD4CFF"],["Liquidez",10,"#C9A8FF"]],i:"Una base de renta fija con una parte en acciones de empresas sólidas que paguen dividendos."}
+          : {e:"🦅",n:"Águila",k:"Agresivo",d:"Miras lejos y no te asustan las turbulencias. Buscas el mayor crecimiento en el largo plazo.",mix:[["Renta fija",30,"#3F78FF"],["Acciones",65,"#FD4CFF"],["Liquidez",5,"#C9A8FF"]],i:"Más peso en acciones diversificadas por sectores, con renta fija como amortiguador."};
+    var b=frame(r,Q.length+1,Q.length+2);
+    b.appendChild(resultCard({e:P.e,k:"Perfil orientativo: "+P.k,t:"Eres "+P.n,p:P.d}));
+    var c=el("div","card"); c.style.marginTop="1.2rem"; c.appendChild(el("h3",null,"Una mezcla de referencia para un perfil "+P.k.toLowerCase()));
+    var mb=el("div","mixbar"); P.mix.forEach(function(m){ var s=el("span"); s.style.width=m[1]+"%"; s.style.background=m[2]; mb.appendChild(s); }); c.appendChild(mb);
+    P.mix.forEach(function(m){ var p=el("p",null,m[0]+": "+m[1]+"%"); p.style.margin=".15rem 0"; p.style.fontWeight="800"; c.appendChild(p); });
+    c.appendChild(el("p","sub",P.i)).style.margin=".6rem 0 0";
+    b.appendChild(c);
+    var T=[];
+    if(emer<3) T.push(["🛟","Antes de invertir con riesgo, completa tu fondo de emergencia","Junta de 3 a 6 meses de gastos en algo líquido y seguro. Así nunca tendrás que vender una inversión en mal momento."]);
+    T.push(["🧩","Tu perfil puede cambiar","Con más experiencia, ingresos o plazo, tu perfil evoluciona. Revísalo cada año."]);
+    T.push(["📝","Para invertir de verdad, haz tu perfil formal","Este resultado es educativo. Antes de invertir, una casa de valores te aplica un perfil formal para recomendarte productos adecuados."]);
+    b.appendChild(tipsBox(T,"Para tener en cuenta"));
+    var cta=el("a","btn ghost wide","Hacer mi perfil formal en Portafolio de Futuro"); cta.href=UTM("portafolio","perfil-inversionista"); cta.target="_blank"; cta.rel="noopener"; cta.style.marginTop=".4rem";
+    finish(r,"Eres "+P.n+" ("+P.k.toLowerCase()+")","🧭 Hice el test de Retos Futuro y soy "+P.e+" "+P.n+", un inversionista "+P.k.toLowerCase()+". ¿Tú eres tortuga, búho o águila? Descúbrelo gratis.",cta);
+  }
+}
+// ================= RETO 4: RENTA FIJA =================
+function retoRentaFija(){
+  var r=BY.rentafija, D={m:5000, p:360};
+  // Tasas de ejemplo (anuales). null = no disponible para ese plazo.
+  var OPS=[
+    {id:"aho", e:"🐷", n:"Cuenta de ahorros", t:{180:1.0,360:1.0,720:1.0}, c:"#C9A8FF", d:"Tu dinero está disponible cuando quieras, pero casi no crece.", who:"Le prestas al banco · retiras cuando quieras"},
+    {id:"pol", e:"🏦", n:"Póliza en un banco", t:{180:5.0,360:6.5,720:7.0}, c:"#8B5CFF", d:"Le prestas al banco por un plazo fijo. Si retiras antes, puedes perder intereses.", who:"Le prestas al banco · plazo fijo"},
+    {id:"pap", e:"📄", n:"Papel comercial AA+", t:{180:7.5,360:8.5,720:null}, c:"#12B5E8", d:"Le prestas a una empresa calificada a menos de un año, a través de la bolsa.", who:"Le prestas a una empresa · vence en menos de 1 año", na:"El papel comercial vence en menos de un año."},
+    {id:"obl", e:"🏭", n:"Obligaciones AAA", t:{180:7.8,360:8.2,720:8.6}, c:"#3F78FF", d:"Le prestas a una empresa sólida que te paga intereses periódicos. Se puede vender en la bolsa antes del vencimiento.", who:"Le prestas a una empresa · se negocia en bolsa"},
+    {id:"bon", e:"🇪🇨", n:"Bono del Estado", t:{180:6.3,360:8.5,720:8.9}, c:"#202A49", d:"Le prestas al Estado ecuatoriano y te paga intereses. A corto plazo existen los CETES.", who:"Le prestas al Estado · se negocia en bolsa"}
+  ];
+  intro(r,"Elige cuánto quieres invertir y por cuánto tiempo, y compara cuánto ganarías en cada opción de renta fija. Después, tres preguntas rápidas para confirmar lo que aprendiste.",["Tarda 6 minutos","Tasas de ejemplo con fines educativos","Aprendes a calcular tus propios intereses"],simulate);
+  function simulate(){
+    var b=frame(r,1,5);
+    b.appendChild(el("h2","q","¿Cuánto quieres invertir y por cuánto tiempo?"));
+    b.appendChild(el("p","sub","En renta fija sabes desde el inicio cuánto vas a ganar si el emisor cumple."));
+    b.appendChild(el("p",null,"Monto")).style.cssText="font-weight:800;margin:.4rem 0";
+    var cm=el("div","chips"); [1000,5000,10000,25000].forEach(function(v){ var c=el("button","chip",money(v)); c.type="button"; c.setAttribute("aria-pressed",D.m===v?"true":"false"); c.addEventListener("click",function(){ D.m=v; cm.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed",x===c?"true":"false"); }); draw(); }); cm.appendChild(c); }); b.appendChild(cm);
+    b.appendChild(el("p",null,"Plazo")).style.cssText="font-weight:800;margin:.9rem 0 .4rem";
+    var cp=el("div","chips"); [[180,"6 meses"],[360,"1 año"],[720,"2 años"]].forEach(function(v){ var c=el("button","chip",v[1]); c.type="button"; c.setAttribute("aria-pressed",D.p===v[0]?"true":"false"); c.addEventListener("click",function(){ D.p=v[0]; cp.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed",x===c?"true":"false"); }); draw(); }); cp.appendChild(c); }); b.appendChild(cp);
+    var list=el("div","cmp"); b.appendChild(list);
+    var how=el("div","explain"); b.appendChild(how);
+    function draw(){
+      list.innerHTML="";
+      var vals=OPS.map(function(o){ var t=o.t[D.p]; return t==null?null:D.m*t/100*D.p/360; });
+      var max=Math.max.apply(null,vals.filter(function(v){ return v!=null; }));
+      OPS.forEach(function(o,i){
+        var v=vals[i], d=el("div","cr"+(v===max?" best":""));
+        var tp=el("div","top"); tp.appendChild(el("span",null,o.e+" "+o.n)); tp.appendChild(el("b","num",v==null?"No aplica":"+"+money(v))); d.appendChild(tp);
+        var bar=el("div","bar"); var bi=el("i"); bi.style.width=v==null?"0":(v/max*100)+"%"; bi.style.background=o.c; bar.appendChild(bi); d.appendChild(bar);
+        d.appendChild(el("small",null,v==null?o.na:"Tasa de ejemplo: "+String(o.t[D.p]).replace(".",",")+"% anual · "+o.who));
+        list.appendChild(d);
+      });
+      var best=OPS[vals.indexOf(max)], low=vals[0];
+      how.innerHTML=""; how.appendChild(el("b",null,"¿Cómo se calcula?"));
+      how.append("Interés = monto × tasa × días ÷ 360. Por ejemplo, en "+best.n.toLowerCase()+": "+money(D.m)+" × "+String(best.t[D.p]).replace(".",",")+"% × "+D.p+" ÷ 360 = "+money(max)+". Frente a la cuenta de ahorros, la diferencia es de "+money(max-low)+".");
+    }
+    draw();
+    var bt=el("button","btn wide","Entender las diferencias →"); bt.type="button"; bt.style.marginTop="1rem"; bt.addEventListener("click",learn); b.appendChild(bt);
+  }
+  function learn(){
+    var b=frame(r,2,5);
+    b.appendChild(el("h2","q","Lo que debes saber antes de elegir"));
+    b.appendChild(tipsBox([
+      ["📈","Más tasa suele significar más plazo o más riesgo","Te pagan más cuando prestas por más tiempo o a un emisor con más riesgo. Por eso hay que mirar ambas cosas, no solo la tasa."],
+      ["🏅","La calificación de riesgo","Las calificadoras evalúan la capacidad de pago del emisor. AAA es la más alta. Una calificación menor suele venir con una tasa mayor."],
+      ["💧","La liquidez","Una póliza normalmente se mantiene hasta su vencimiento. Los bonos y obligaciones se pueden vender en la bolsa antes de vencer, aunque el precio puede variar."],
+      ["🏛️","¿Dónde se compran?","Las pólizas, en los bancos. Los bonos del Estado, el papel comercial y las obligaciones, en la bolsa de valores, a través de una casa de valores."]
+    ]));
+    var bt=el("button","btn wide","Ponerme a prueba →"); bt.type="button"; bt.addEventListener("click",function(){ quiz(0); }); b.appendChild(bt);
+  }
+  var QZ=[
+    {q:"Si inviertes $10.000 al 8% anual durante 180 días (base 360), ¿cuánto ganas?", o:["$400","$800","$80"], ok:0, x:"$10.000 × 8% × 180 ÷ 360 = $400. Medio año, la mitad del interés anual."},
+    {q:"¿Qué indica una calificación de riesgo AAA?", o:["Que el Estado garantiza la inversión","La más alta capacidad de pago del emisor","Que paga la tasa más alta del mercado"], ok:1, x:"La calificación mide la capacidad del emisor para pagar. No es una garantía, pero AAA es el nivel más alto."},
+    {q:"¿Por qué un bono suele pagar más que una cuenta de ahorros?", o:["Porque prestas por más tiempo y asumes el riesgo del emisor","Porque puedes retirarlo cuando quieras","Porque no tiene ningún riesgo"], ok:0, x:"A mayor plazo y riesgo, mayor tasa. La cuenta de ahorros paga poco porque tu dinero está disponible en todo momento."}
+  ];
+  var hits=0;
+  function quiz(i){
+    var q=QZ[i], tries=0;
+    var b=askQ(r,3,5,q.q,q.o.map(function(t){ return {t:t,e:"•"}; }),function(j,bt,list,lock){
+      tries++;
+      if(j===q.ok){ lock(); if(tries===1) hits++; bt.classList.add("good"); list.querySelectorAll(".opt").forEach(function(x){ x.disabled=true; });
+        var ex=el("div","explain"); ex.appendChild(el("b",null,"✅ ¡Correcto!")); ex.append(q.x); b.appendChild(ex);
+        var n=el("button","btn wide",i<QZ.length-1?"Siguiente pregunta →":"Ver mi resultado →"); n.type="button"; n.style.marginTop="1rem"; n.addEventListener("click",function(){ if(i<QZ.length-1) quiz(i+1); else result(); }); b.appendChild(n);
+        n.scrollIntoView({behavior:reduce?"auto":"smooth",block:"nearest"});
+      } else { bt.classList.add("badp"); bt.disabled=true; toast("Casi. Intenta otra vez."); }
+    },{sub:"Pregunta "+(i+1)+" de "+QZ.length});
+  }
+  function result(){
+    var b=frame(r,4,5);
+    var best=Math.max.apply(null,OPS.map(function(o){ var t=o.t[D.p]; return t==null?0:t; }));
+    var gain=D.m*best/100*D.p/360, low=D.m*OPS[0].t[D.p]/100*D.p/360;
+    b.appendChild(resultCard({e:"🏛️",k:"Acertaste "+hits+" de 3 a la primera",t:"Ya sabes cómo funciona la renta fija",p:"Con "+money(D.m)+" a "+(D.p===180?"6 meses":D.p===360?"1 año":"2 años")+", la mejor opción del ejemplo te daría "+money(gain)+" en lugar de "+money(low)+" en una cuenta de ahorros."}));
+    var cta=el("a","btn ghost wide","Conocer la renta fija en Portafolio de Futuro"); cta.href=UTM("portafolio","renta-fija"); cta.target="_blank"; cta.rel="noopener"; cta.style.marginTop="1rem";
+    finish(r,"Con "+money(D.m)+" ganarías "+money(gain-low)+" más que en ahorros","🏛️ Aprendí que con "+money(D.m)+" podría ganar "+money(gain-low)+" más en renta fija que en una cuenta de ahorros. ¿Póliza o bono? Descúbrelo gratis en Retos Futuro.",cta);
+  }
+}
+
+// ================= RETO 5: ACCIONES =================
+function retoAcciones(){
+  var r=BY.acciones, A={};
+  var CO=[
+    {id:"sup", e:"🏪", n:"Cadena de supermercados", dy:4.5, pu:14, rk:"Bajo", c:"#FD4CFF", d:"La gente compra comida pase lo que pase."},
+    {id:"cem", e:"🏗️", n:"Cementera", dy:7.0, pu:11, rk:"Medio", c:"#F59E0B", d:"Depende de cuánto se construye en el país."},
+    {id:"ban", e:"🏦", n:"Banco", dy:4.0, pu:9, rk:"Medio", c:"#8B5CFF", d:"Gana prestando dinero. Sufre en las crisis."},
+    {id:"cam", e:"🦐", n:"Camaronera exportadora", dy:1.0, pu:22, rk:"Alto", c:"#E0245E", d:"Puede crecer mucho o caer fuerte según los precios del mundo."},
+    {id:"beb", e:"🥤", n:"Empresa de bebidas", dy:8.0, pu:16, rk:"Bajo", c:"#3F78FF", d:"Marcas conocidas y ventas estables todo el año."}
+  ];
+  CO.forEach(function(c){ A[c.id]=0; });
+  var PATH={sup:[1,1.012,1.02,1.035,1.03,0.975,0.985,1.0,1.025,1.04,1.055,1.07,1.09],cem:[1,1.01,1.03,1.05,1.04,0.94,0.95,0.97,1.0,1.03,1.05,1.07,1.08],ban:[1,1.015,1.03,1.04,1.035,0.88,0.9,0.93,0.97,1.0,1.015,1.03,1.045],cam:[1,1.05,1.12,1.16,1.1,0.86,0.75,0.82,0.95,1.04,1.1,1.15,1.19],beb:[1,1.005,1.015,1.04,1.04,0.99,1.0,1.01,1.03,1.04,1.06,1.07,1.08]};
+  var NEWS={1:"📈 Empieza el año con optimismo.",2:"🦐 Sube el precio del camarón en el mundo.",3:"💰 Las empresas reparten dividendos.",4:"🌧️ Suben las tasas de interés en el mundo.",5:"⚠️ ¡Crisis! Una mala noticia económica hace caer la bolsa.",6:"🦐 Cae el precio del camarón.",7:"🧘 Quien no vendió por miedo empieza a ver la calma.",8:"🌤️ La economía se recupera poco a poco.",9:"📈 Las acciones recuperan lo perdido.",10:"🦐 Vuelve a subir el camarón.",11:"🎄 Buen fin de año para las empresas.",12:"🏁 ¡Termina tu año en la bolsa!"};
+  intro(r,"Primero aprendes los tres indicadores que todo inversionista mira. Después repartes $10.000 entre cinco empresas y vives un año en la bolsa en segundos, con crisis incluida.",["Tarda 7 minutos","Empresas y resultados simulados","Aprendes a diversificar"],lesson);
+  function lesson(){
+    var b=frame(r,1,6);
+    b.appendChild(el("h2","q","Los 3 indicadores que todo inversionista mira"));
+    b.appendChild(tipsBox([
+      ["🎁","Dividendo","Es la parte de las ganancias que la empresa reparte a sus accionistas. Un dividendo de 5% significa que por cada $100 invertidos recibirías unos $5 al año, si la empresa mantiene su política."],
+      ["🏷️","Precio / Utilidad (P/U)","Cuántos dólares pagas por cada $1 que gana la empresa al año. Un P/U de 10 significa que pagas $10 por cada $1 de ganancia. Más bajo suele ser más barato, pero no siempre mejor."],
+      ["🎢","Riesgo (volatilidad)","Qué tanto sube y baja el precio. Las empresas de riesgo alto pueden ganar mucho o perder mucho en poco tiempo."]
+    ]));
+    var bt=el("button","btn wide","Ponerme a prueba →"); bt.type="button"; bt.addEventListener("click",function(){ quiz(0); }); b.appendChild(bt);
+  }
+  var QZ=[
+    {q:"Compras una acción de $100 que paga 6% de dividendo. ¿Cuánto recibes al año?", o:["$6","$60","$0,60"], ok:0, x:"$100 × 6% = $6 al año por esa acción."},
+    {q:"Una empresa tiene un P/U de 10. ¿Qué significa?", o:["Que su precio subió 10%","Que pagas $10 por cada $1 que gana al año","Que reparte $10 de dividendo"], ok:1, x:"El P/U compara el precio con las ganancias anuales de la empresa."}
+  ];
+  function quiz(i){
+    var q=QZ[i];
+    var b=askQ(r,2,6,q.q,q.o.map(function(t){ return {t:t,e:"•"}; }),function(j,bt,list,lock){
+      if(j===q.ok){ lock(); bt.classList.add("good"); list.querySelectorAll(".opt").forEach(function(x){ x.disabled=true; });
+        var ex=el("div","explain"); ex.appendChild(el("b",null,"✅ ¡Correcto!")); ex.append(q.x); b.appendChild(ex);
+        var n=el("button","btn wide",i<QZ.length-1?"Siguiente →":"¡A invertir! →"); n.type="button"; n.style.marginTop="1rem"; n.addEventListener("click",function(){ if(i<QZ.length-1) quiz(i+1); else build(); }); b.appendChild(n);
+      } else { bt.classList.add("badp"); bt.disabled=true; toast("Casi. Intenta otra vez."); }
+    },{sub:"Pregunta "+(i+1)+" de "+QZ.length});
+  }
+  function used(){ return CO.reduce(function(s,c){ return s+A[c.id]; },0); }
+  function build(){
+    var b=frame(r,3,6);
+    b.appendChild(el("h2","q","Reparte tus $10.000"));
+    b.appendChild(el("p","sub","Tienes 10 fichas de $1.000. Mira los indicadores y decide como inversionista."));
+    var rows=[];
+    CO.forEach(function(c){
+      var d=el("div","co"); d.appendChild(el("span","oe",c.e));
+      var t=el("span"); t.appendChild(el("b",null,c.n)); var ix=el("span","ix"); ["Dividendo "+String(c.dy).replace(".",",")+"%","P/U "+c.pu,"Riesgo "+c.rk.toLowerCase()].forEach(function(x){ ix.appendChild(el("span",null,x)); }); t.appendChild(ix); t.appendChild(el("small",null,c.d)); t.lastChild.style.cssText="display:block;color:var(--muted);font-size:.8rem;font-weight:600;margin-top:.25rem"; d.appendChild(t);
+      var ct=el("div","ctr"); var mi=el("button",null,"−"); mi.type="button"; mi.setAttribute("aria-label","Quitar $1.000 de "+c.n); var o=el("output",null,"$0"); var pl=el("button","plus","+"); pl.type="button"; pl.setAttribute("aria-label","Agregar $1.000 a "+c.n);
+      mi.addEventListener("click",function(){ if(A[c.id]>0){ A[c.id]--; upd(); } }); pl.addEventListener("click",function(){ if(used()<10){ A[c.id]++; upd(); } });
+      ct.appendChild(mi); ct.appendChild(o); ct.appendChild(pl); d.appendChild(ct); rows.push({c:c,o:o,mi:mi,pl:pl}); b.appendChild(d);
+    });
+    var mb=el("div","mixbar"); b.appendChild(mb);
+    var go5=el("button","btn wide"); go5.type="button"; go5.addEventListener("click",year); b.appendChild(go5);
+    function upd(){ var u=used(); rows.forEach(function(x){ x.o.textContent=money(A[x.c.id]*1000); x.mi.disabled=!A[x.c.id]; x.pl.disabled=u>=10; });
+      mb.innerHTML=""; CO.forEach(function(c){ if(!A[c.id]) return; var s=el("span"); s.style.width=(A[c.id]*10)+"%"; s.style.background=c.c; mb.appendChild(s); });
+      go5.disabled=u<10; go5.textContent=u<10?"Te faltan "+(10-u)+(10-u===1?" ficha":" fichas"):"Vivir mi año en la bolsa →"; }
+    upd();
+  }
+  function series(al){ var s=[]; for(var m=0;m<=12;m++) s.push(CO.reduce(function(t,c){ return t+al[c.id]*1000*PATH[c.id][m]; },0)); return s; }
+  function drop(s){ var pk=s[0], md=0; s.forEach(function(v){ pk=Math.max(pk,v); md=Math.min(md,(v-pk)/pk); }); return -md*100; }
+  function year(){
+    var b=frame(r,4,6), s=series(A);
+    b.appendChild(el("h2","q","Tu año en la bolsa"));
+    var y=el("div","yr"); var mth=el("p",null,"Inicio"); mth.style.cssText="font-weight:900;margin:0"; var val=el("div","val num","$10.000"); var chg=el("div",null,""); chg.style.fontWeight="900";
+    var svg=document.createElementNS("http://www.w3.org/2000/svg","svg"); svg.setAttribute("viewBox","0 0 600 190"); svg.setAttribute("class","chart"); svg.setAttribute("role","img"); svg.setAttribute("aria-label","Valor de tu portafolio durante el año");
+    var nw=el("div","news","Empieza tu año…"); nw.setAttribute("aria-live","polite");
+    y.appendChild(mth); y.appendChild(val); y.appendChild(chg); y.appendChild(svg); y.appendChild(nw); b.appendChild(y);
+    var all=s.concat(series({sup:0,cem:0,ban:0,cam:10,beb:0})), mx=Math.max.apply(null,all)*1.02, mn=Math.min.apply(null,all)*0.98;
+    var X=function(i){ return 8+i*584/12; }, Y=function(v){ return 10+(mx-v)*170/(mx-mn); };
+    var M=["Inicio","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"], m=0;
+    function step(){
+      mth.textContent=M[m]+" · mes "+m+" de 12"; val.textContent=money(s[m]); var c=(s[m]/10000-1)*100; chg.textContent=(c>=0?"+":"")+pc(c,1)+" desde el inicio"; chg.className=c>=0?"up":"down";
+      if(m>0) nw.textContent=NEWS[m];
+      var pts=s.slice(0,m+1).map(function(v,i){ return X(i).toFixed(1)+","+Y(v).toFixed(1); });
+      svg.innerHTML='<line x1="8" x2="592" y1="'+Y(10000)+'" y2="'+Y(10000)+'" stroke="var(--hair)" stroke-width="2" stroke-dasharray="6 6"/>'+(m>0?'<polyline points="'+pts.join(" ")+'" fill="none" stroke="#8B5CFF" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>':'')+'<circle cx="'+X(m)+'" cy="'+Y(s[m])+'" r="8" fill="#FD4CFF" stroke="var(--line)" stroke-width="3"/>';
+      if(m<12){ m++; setTimeout(step, reduce?0:(m===5||m===6?1400:750)); } else done(s);
+    }
+    step();
+  }
+  function done(s){
+    var fin=s[12], dd=drop(s), cam=series({sup:0,cem:0,ban:0,cam:10,beb:0}), n=CO.filter(function(c){ return A[c.id]>0; }).length, mxA=Math.max.apply(null,CO.map(function(c){ return A[c.id]; }));
+    var divs=CO.reduce(function(t,c){ return t+A[c.id]*1000*c.dy/100; },0);
+    var b=box;
+    var t = mxA>=7 ? ["🥚","Pusiste casi todo en una canasta","En el peor momento tu portafolio cayó "+pc(dd,1)+". Diversificando, la caída habría sido mucho menor."]
+          : n>=3 ? ["🧺","¡Diversificaste como un profesional!","Repartiste entre "+n+" empresas: en la crisis tu peor caída fue de "+pc(dd,1)+", mientras quien apostó todo a la camaronera llegó a perder "+pc(drop(cam),1)+"."]
+          : ["🌱","Buen comienzo","La próxima vez prueba con 3 o más empresas de sectores distintos: así la crisis te afecta menos."];
+    var res=el("div"); res.style.marginTop="1.2rem";
+    res.appendChild(resultCard({e:t[0],k:"Terminaste el año con",v:money(fin),vFirst:true,t:t[1],p:t[2]+" Además, cobraste unos "+money(divs)+" en dividendos."}));
+    b.appendChild(res);
+    b.appendChild(tipsBox([["🧘","La lección de mayo","Quien vendió por miedo en la crisis convirtió una caída temporal en una pérdida real. Quien esperó, recuperó su dinero."],["⏳","Las acciones son para el largo plazo","Invierte en acciones solo el dinero que no vas a necesitar en varios años."]],"Lo que te deja este año"));
+    var cta=el("a","btn ghost wide","Aprender más en la Comunidad Futuro"); cta.href=UTM("comunidad/premium","acciones"); cta.target="_blank"; cta.rel="noopener"; cta.style.marginTop=".4rem";
+    finish(r,"Terminaste el año con "+money(fin),"📈 Fui accionista por un día en Retos Futuro: armé mi portafolio, sobreviví a una crisis y terminé el año con "+money(fin)+". ¿Te animas?",cta);
+    b.querySelector(".got").scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  }
+}
+
+// ================= CERTIFICADO =================
+function renderCert(){
+  var b=$("certBox"); b.innerHTML="";
+  var n=doneCount();
+  if(n<5){
+    var c=el("div","card"); c.appendChild(el("h2",null,"Te faltan "+(5-n)+(5-n===1?" reto":" retos")+" para tu certificado"));
+    var nx=nextReto(); var bt=el("button","btn wide","Continuar: "+nx.t); bt.type="button"; bt.style.marginTop="1rem"; bt.addEventListener("click",function(){ go(nx.id); }); c.appendChild(bt); b.appendChild(c); return;
+  }
+  if(!S.name){
+    var f=el("div","card"); f.appendChild(el("h2",null,"🎓 ¡Completaste la Ruta del Inversionista!")); f.appendChild(el("p","sub","Escribe tu nombre como quieres que aparezca en tu certificado."));
+    var l=el("label","fld"); l.appendChild(el("span",null,"Tu nombre")); var i=el("input"); i.maxLength=40; i.autocomplete="name"; i.placeholder="Ej. Daniela Torres"; l.appendChild(i); f.appendChild(l);
+    var er=el("p","err"); f.appendChild(er);
+    var g=el("button","btn wide","Generar mi certificado"); g.type="button"; g.addEventListener("click",function(){ var v=i.value.trim(); if(v.length<3){ er.textContent="Escribe tu nombre completo."; return; } S.name=v; save(); renderCert(); }); f.appendChild(g);
+    b.appendChild(f); return;
+  }
+  var ce=el("div","cert"); var lg=el("img","logo"); lg.src=LOGO(); lg.alt="Futuro Casa de Valores"; ce.appendChild(lg);
+  ce.appendChild(el("p",null,"Certificado · Ruta del Inversionista")).style.cssText="color:var(--lav);font-weight:800;margin:0";
+  ce.appendChild(el("p","nm",S.name));
+  ce.appendChild(el("p",null,"completó los 5 retos de Retos Futuro: ahorro, crédito, perfil de inversionista, renta fija y acciones.")).style.cssText="max-width:30ch;margin:0 auto;opacity:.92";
+  var st=el("div","stamps"); renderStamps(st); ce.appendChild(st);
+  ce.appendChild(el("p",null,new Date().toLocaleDateString("es-EC",{day:"numeric",month:"long",year:"numeric"}))).style.cssText="margin:1rem 0 0;font-weight:700;opacity:.8;font-size:.85rem";
+  b.appendChild(ce);
+  var a=el("div","actions");
+  var s1=el("button","btn wide","Compartir en LinkedIn o WhatsApp"); s1.type="button"; s1.addEventListener("click",function(){ share("🎓 Completé la Ruta del Inversionista de Futuro Casa de Valores: aprendí a ahorrar, a usar bien mi tarjeta, conocí mi perfil de inversionista y cómo funcionan la renta fija y las acciones. Son 5 retos gratis, ¡te los recomiendo!"); }); a.appendChild(s1);
+  var p1=el("a","btn ghost wide","Dar el siguiente paso: invertir con Futuro"); p1.href=UTM("portafolio","certificado"); p1.target="_blank"; p1.rel="noopener"; a.appendChild(p1);
+  a.appendChild(el("p","sub","Toma una captura de tu certificado para guardarlo.")).style.textAlign="center";
+  b.appendChild(a);
+}
+
+// ================= APP: INICIO Y NAVEGACIÓN =================
+var TIPS=[["💡","Págate primero","El día que cobras, transfiere tu ahorro antes de gastar. Lo que no ves, no lo gastas."],["💳","La fecha de corte importa","Compra justo después de tu fecha de corte y tendrás más días para pagar sin intereses."],["🧺","Diversifica","No pongas todo tu dinero en una sola inversión: si a una le va mal, las otras te protegen."],["🛟","Fondo de emergencia","Junta de 3 a 6 meses de gastos antes de invertir en algo con riesgo."],["⏳","La regla de las 24 horas","Antes de una compra por impulso, espera un día. La mayoría de antojos desaparecen."],["📈","El tiempo es tu aliado","Mientras antes empieces a invertir, más trabaja el interés compuesto a tu favor."],["🚫","Desconfía de lo fácil","Si te prometen 10% mensual garantizado, es estafa hasta que se demuestre lo contrario."]];
+function r52State(){ try{ return JSON.parse(localStorage.getItem("reto52-v1")||"null"); }catch(e){ return null; } }
+var V52={clasica:[function(w){return w;},"Clásica",1378],inversa:[function(w){return 53-w;},"Inversa",1378],estudiante:[function(w){return w*0.5;},"Estudiante",689],doble:[function(w){return w*2;},"Doble",2756],libre:[function(w){return w;},"Libre",1378]};
+function renderInicio(){
+  var n=doneCount(), nx=nextReto();
+  $("iProg").textContent = n===5 ? "¡Completaste la Ruta del Inversionista! 🎓" : "Llevas "+n+" de 5 retos";
+  $("iBar").style.width=(n/5*100)+"%";
+  var nb=$("iNext"); nb.innerHTML="";
+  if(nx){ nb.appendChild(el("span","e",nx.e)); var t=el("span"); t.appendChild(el("small",null,n===0?"Empieza por aquí":"Tu siguiente reto")); t.appendChild(el("b",null,nx.t)); nb.appendChild(t); nb.appendChild(el("span","arrow","→")); nb.onclick=function(){ go(nx.id); }; }
+  else { nb.appendChild(el("span","e","🎓")); var t2=el("span"); t2.appendChild(el("small",null,"¡Lo lograste!")); t2.appendChild(el("b",null,"Ver mi certificado")); nb.appendChild(t2); nb.appendChild(el("span","arrow","→")); nb.onclick=function(){ go("pasaporte"); }; }
+  var w=$("iWeek"); w.innerHTML=""; var st=r52State();
+  w.appendChild(el("span","lbl","📅 Reto de las 52 semanas"));
+  if(st && V52[st.v]){
+    var V=V52[st.v], d=Math.floor((new Date().setHours(0,0,0,0)-new Date(st.start+"T00:00:00"))/86400000), wn=d<0?0:Math.min(52,Math.floor(d/7)+1);
+    var sv=st.marks.reduce(function(s,x){ return s+V[0](x); },0);
+    w.appendChild(el("b","num",money(sv)+" de "+money(V[2])));
+    var bar=el("div","pbar"); var bi=el("i"); bi.style.width=(sv/V[2]*100)+"%"; bar.appendChild(bi); w.appendChild(bar);
+    w.appendChild(el("p",null, wn===0 ? "Tu reto empieza pronto. ¡Puedes ir adelantando!" : st.v==="libre" ? "Semana "+wn+": tacha una casilla esta semana." : (st.marks.indexOf(wn)>=0 ? "Semana "+wn+" lista ✅" : "Semana "+wn+": te toca guardar "+money(V[0](wn)))));
+  } else {
+    w.appendChild(el("b",null,"Ahorra $1.378 en un año"));
+    w.appendChild(el("p",null,"$1 la primera semana, $2 la segunda… Empieza el 1 de enero o cuando quieras."));
+  }
+  w.onclick=function(){ go("semanas"); };
+  var tp=TIPS[new Date().getDate()%TIPS.length], tb=$("iTip"); tb.innerHTML=""; tb.appendChild(el("span","e",tp[0])); var tt=el("span"); tt.appendChild(el("b",null,"Dato del día: "+tp[1])); tt.appendChild(el("p",null,tp[2])); tb.appendChild(tt);
+  var sr=$("iSeason"); sr.innerHTML="";
+  SEASON.forEach(function(s){ var a=el(s.url?"a":"div","sc"+(s.soon?" soon":"")); if(s.url){ a.href=s.url; if(!s.inapp){ a.target="_blank"; a.rel="noopener"; } }
+    a.appendChild(el("span","e",s.e)); a.appendChild(el("b",null,s.t)); a.appendChild(el("span","when",s.when)); sr.appendChild(a); });
+  $("badgeN").textContent=n+"/5";
+}
+function renderPasaporte(){
+  renderStamps($("stamps")); var n=doneCount();
+  $("pbar").style.width=(n/5*100)+"%";
+  $("passTxt").textContent = n===5 ? "¡Completaste la ruta! 🎓" : n+" de 5 insignias · al completar las 5 recibes tu certificado";
+  renderCert();
+}
+var RUN={ahorro:retoAhorro, tarjeta:retoTarjeta, perfil:retoPerfil, rentafija:retoRentaFija, acciones:retoAcciones};
+var TABS=["inicio","retos","semanas","pasaporte"];
+function go(h){ if(location.hash.replace("#","")!==h) location.hash=h; else route(); }
+function route(){
+  var h=location.hash.replace("#","")||"inicio";
+  if(h==="certificado") h="pasaporte";
+  document.querySelectorAll(".tab").forEach(function(t){ t.classList.remove("on"); });
+  var inReto=!!RUN[h]; document.body.classList.toggle("inreto",inReto);
+  if(inReto){ cur=h; $("t-reto").classList.add("on"); RUN[h](); }
+  else {
+    if(TABS.indexOf(h)<0) h="inicio";
+    $("t-"+h).classList.add("on");
+    if(h==="inicio") renderInicio(); else if(h==="retos") renderHome(); else if(h==="pasaporte") renderPasaporte(); else if(window.r52Refresh) window.r52Refresh();
+    document.querySelectorAll(".bottom button").forEach(function(b){ if(b.dataset.t===h) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
+  }
+  $("badgeN").textContent=doneCount()+"/5";
+  window.scrollTo(0,0);
+}
+document.querySelectorAll(".bottom button").forEach(function(b){ b.addEventListener("click",function(){ go(b.dataset.t); }); });
+$("badge").addEventListener("click",function(){ go("pasaporte"); });
+window.addEventListener("hashchange",route);
+window.addEventListener("r52change",function(){ if(document.getElementById("t-inicio").classList.contains("on")) renderInicio(); });
+route();
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var $=function(id){ return document.getElementById(id); };
+function el(t,c,x){ var e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e; }
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function money(v,d){ var dec=d!=null?d:(Math.round(v)!==v?2:0); return "$"+v.toLocaleString("es-EC",{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
+function toast(m){ var t=$("toast"); t.textContent=m; t.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(function(){ t.classList.remove("on"); },2400); }
+function share(t){ if(navigator.share) navigator.share({title:"Reto de las 52 semanas",text:t}).catch(function(){}); else window.open("https://wa.me/?text="+encodeURIComponent(t),"_blank","noopener"); }
+function show(id){ document.querySelectorAll(".v52").forEach(function(v){ v.classList.remove("on"); }); $(id).classList.add("on"); window.scrollTo(0,0); }
+
+// ---------- Versiones ----------
+var VERS=[
+  {id:"clasica", e:"📈", n:"Clásica", d:"$1 la semana 1, $2 la semana 2… hasta $52.", amt:function(w){ return w; }, pop:true},
+  {id:"inversa", e:"🔄", n:"Inversa", d:"Empiezas con $52 y terminas con $1. Diciembre se vuelve fácil.", amt:function(w){ return 53-w; }},
+  {id:"estudiante", e:"🎒", n:"Estudiante", d:"De $0,50 en $0,50: arrancas con $0,50 y terminas con $26.", amt:function(w){ return w*0.5; }},
+  {id:"doble", e:"🚀", n:"Doble", d:"$2 la semana 1, $4 la semana 2… hasta $104.", amt:function(w){ return w*2; }},
+  {id:"libre", e:"🎲", n:"Libre", d:"Cada semana tachas la casilla que quieras, de $1 a $52. Tú decides según cómo estés.", amt:function(w){ return w; }, free:true}
+];
+VERS.forEach(function(v){ v.goal=0; for(var w=1;w<=52;w++) v.goal+=v.amt(w); });
+var BYV={}; VERS.forEach(function(v){ BYV[v.id]=v; });
+
+// ---------- Estado ----------
+var S=null;
+try{ S=JSON.parse(localStorage.getItem("reto52-v1")||"null"); }catch(e){}
+function save(){ try{ localStorage.setItem("reto52-v1",JSON.stringify(S)); }catch(e){} }
+var pick={v:"clasica", start:"2027-01-01"};
+var TODAY=new Date(); TODAY.setHours(0,0,0,0);
+function pd(s){ var a=s.split("-"); return new Date(+a[0],+a[1]-1,+a[2]); }
+function iso(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function fdate(d){ return d.toLocaleDateString("es-EC",{day:"numeric",month:"long",year:"numeric"}); }
+
+// ---------- Portada ----------
+(function(){ var m=$("heroMini"); for(var i=0;i<52;i++) m.appendChild(el("i",i<17?"on":"")); })();
+$("goVers").addEventListener("click",function(){ renderVers(); show("v-vers"); });
+$("backStart").addEventListener("click",function(){ show(S?"v-board":"v-start"); if(S) renderBoard(); });
+
+function renderVers(){
+  var box=$("vers"); box.innerHTML="";
+  VERS.forEach(function(v){
+    var b=el("button","ver"); b.type="button"; b.setAttribute("aria-pressed",pick.v===v.id?"true":"false");
+    b.appendChild(el("span","e",v.e)); var t=el("span"); var nb=el("b",null,v.n); if(v.pop) nb.appendChild(el("span","tag","La más popular")); t.appendChild(nb); t.appendChild(el("small",null,v.d)); b.appendChild(t);
+    b.appendChild(el("span","goal num",money(v.goal)));
+    b.addEventListener("click",function(){ pick.v=v.id; renderVers(); }); box.appendChild(b);
+  });
+  var ch=$("startChips"); ch.innerHTML="";
+  var next=new Date(TODAY); var dd=(8-next.getDay())%7||7; next.setDate(next.getDate()+dd);
+  var opts=[["2027-01-01","1 de enero de 2027"],[iso(TODAY),"Hoy"],[iso(next),"El próximo lunes"]];
+  if(TODAY>=pd("2027-01-01")) opts.shift();
+  if(!opts.some(function(o){ return o[0]===pick.start; })) pick.start=opts[0][0];
+  opts.forEach(function(o){ var c=el("button","chip",o[1]); c.type="button"; c.setAttribute("aria-pressed",pick.start===o[0]?"true":"false"); c.addEventListener("click",function(){ pick.start=o[0]; renderVers(); }); ch.appendChild(c); });
+  var st=pd(pick.start), end=new Date(st); end.setDate(end.getDate()+52*7-1);
+  $("startTxt").textContent="Tu reto irá del "+fdate(st)+" al "+fdate(end)+". Meta: "+money(BYV[pick.v].goal)+".";
+}
+$("create").addEventListener("click",function(){
+  if(S && S.marks && S.marks.length && !confirmChange) { askChange(); return; }
+  S={v:pick.v, start:pick.start, marks:[], miles:[], created:Date.now()}; save(); window.dispatchEvent(new Event("r52change")); confirmChange=false; renderBoard(); show("v-board");
+  toast("¡Tu tabla está lista! "+BYV[S.v].e);
+});
+var confirmChange=false;
+function askChange(){
+  var b=openDlg(); b.appendChild(el("div","e","⚠️")); b.appendChild(el("h2",null,"¿Empezar una tabla nueva?"));
+  b.appendChild(el("p","sub","Perderás las casillas que ya marcaste en tu tabla actual."));
+  var a=el("div","actions"); var y=el("button","btn","Sí, empezar de nuevo"); y.type="button"; y.addEventListener("click",function(){ closeDlg(); confirmChange=true; $("create").click(); });
+  var n=el("button","btn ghost","Mejor no"); n.type="button"; n.addEventListener("click",closeDlg); a.appendChild(y); a.appendChild(n); b.appendChild(a);
+}
+
+// ---------- Cálculos ----------
+function weekNow(){ var d=Math.floor((TODAY-pd(S.start))/86400000); return d<0?0:Math.min(52,Math.floor(d/7)+1); }
+function saved(){ var V=BYV[S.v]; return S.marks.reduce(function(s,w){ return s+V.amt(w); },0); }
+function streak(){
+  var wn=weekNow(); if(!wn||BYV[S.v].free) return null;
+  var s=0, w=wn; if(S.marks.indexOf(w)<0) w--; while(w>=1 && S.marks.indexOf(w)>=0){ s++; w--; } return s;
+}
+function weekDate(w){ var d=pd(S.start); d.setDate(d.getDate()+(w-1)*7); return d; }
+
+// ---------- Tablero ----------
+function renderBoard(){
+  var V=BYV[S.v], wn=weekNow(), sv=saved(), n=S.marks.length;
+  var dash=$("dash"); dash.innerHTML="";
+  dash.appendChild(el("p","vn",V.e+" Versión "+V.n.toLowerCase()+" · meta "+money(V.goal)));
+  dash.appendChild(el("div","big num",money(sv)));
+  dash.appendChild(el("div","of","ahorrados de "+money(V.goal)));
+  var pb=el("div","pb"); var pi=el("i"); pi.style.width=(sv/V.goal*100)+"%"; pb.appendChild(pi); dash.appendChild(pb);
+  var st=el("div","stats"), sk=streak();
+  [[n+" de 52","casillas"],[sk==null?(wn?"Semana "+wn:"—"):(sk+(sk===1?" semana":" semanas")),sk==null?"en curso":"de racha 🔥"],[money(V.goal-sv),"te faltan"]].forEach(function(x){ var d=el("div"); d.appendChild(el("b","num",x[0])); d.append(x[1]); st.appendChild(d); });
+  dash.appendChild(st);
+
+  var wk=$("week"); wk.innerHTML="";
+  if(wn===0){
+    wk.appendChild(el("span","wk","Tu reto empieza el "+fdate(pd(S.start))));
+    wk.appendChild(el("span",null,"Puedes ir adelantando: marca cualquier casilla cuando guardes su monto."));
+  } else if(V.free){
+    wk.appendChild(el("span","wk","Semana "+wn+" de 52 · versión libre"));
+    var expected=wn, pend=Math.max(0,expected-n);
+    wk.appendChild(el("span","wa", pend? (pend===1?"Te toca 1 casilla":"Tienes "+pend+" casillas pendientes") : "¡Vas al día! 🎉"));
+    wk.appendChild(el("span",null,"Elige en tu tabla la casilla que mejor te acomode esta semana y táchala cuando guardes ese monto."));
+  } else {
+    var due=S.marks.indexOf(wn)<0;
+    wk.appendChild(el("span","wk","Semana "+wn+" de 52 · del "+weekDate(wn).getDate()+" de "+weekDate(wn).toLocaleDateString("es-EC",{month:"long"})));
+    wk.appendChild(el("span","wa num",due?"Te toca guardar "+money(V.amt(wn)):"¡Semana "+wn+" lista! ✅"));
+    if(due){ var b=el("button","btn wide","¡Ya lo guardé!"); b.type="button"; b.addEventListener("click",function(){ toggle(wn); }); wk.appendChild(b); }
+    var late=[]; for(var w=1;w<wn;w++) if(S.marks.indexOf(w)<0) late.push(w);
+    if(late.length) wk.appendChild(el("span","sub",late.length===1?"Tienes 1 semana pasada pendiente: la semana "+late[0]+".":"Tienes "+late.length+" semanas pasadas pendientes. Puedes ponerte al día cuando quieras."));
+  }
+
+  var ms=$("miles"); ms.innerHTML="";
+  [13,26,39,52].forEach(function(m,i){ var d=el("div","mile"+(n>=m?" on":"")); d.appendChild(el("b",null,["🥉","🥈","🥇","🏆"][i])); d.append(n>=m?"¡Logrado!":m+" casillas"); ms.appendChild(d); });
+
+  $("boardHint").textContent = V.free ? "Toca una casilla cuando guardes ese monto. Tú eliges el orden." : "Toca una casilla cuando guardes su monto. Cada casilla es una semana.";
+  var bd=$("board"); bd.innerHTML="";
+  for(var w2=1; w2<=52; w2++){ (function(w){
+    var on=S.marks.indexOf(w)>=0, c=el("button","cell"+(on?" on":"")+(!V.free&&w===wn?" now":"")+(!V.free&&!on&&wn&&w<wn?" pending":""));
+    c.type="button"; c.textContent=money(V.amt(w)); if(!V.free){ var sm=el("small",null,"sem "+w); c.appendChild(sm); }
+    c.setAttribute("aria-pressed",on?"true":"false"); c.setAttribute("aria-label",(V.free?"Casilla de ":"Semana "+w+", ")+money(V.amt(w))+(on?", ahorrado":", pendiente"));
+    c.addEventListener("click",function(){ toggle(w); }); bd.appendChild(c);
+  })(w2); }
+
+  // Ilustración de inversión: lo ahorrado al cierre de cada trimestre, invertido al 8% anual (ejemplo) hasta fin del reto.
+  var extra=0; [13,26,39].forEach(function(q){ var amt=0; for(var w=q-12;w<=q;w++) amt+=V.amt(w); var days=(52-q)*7; extra+=amt*0.08*days/360; });
+  $("invTxt").textContent="Si cada trimestre movieras lo ahorrado a una inversión de renta fija al 8% anual (tasa de ejemplo), al final del reto tendrías unos "+money(Math.round(extra))+" extra, sin ahorrar un dólar más. Y si dejas el total invertido un año más, ganarías otros "+money(Math.round(V.goal*0.08))+".";
+}
+function toggle(w){
+  var i=S.marks.indexOf(w), V=BYV[S.v];
+  if(i>=0){ S.marks.splice(i,1); toast("Casilla desmarcada"); }
+  else { S.marks.push(w); toast("+"+money(V.amt(w))+" ahorrados 💪"); }
+  save(); renderBoard(); checkMile(); window.dispatchEvent(new Event("r52change"));
+}
+function checkMile(){
+  var n=S.marks.length, V=BYV[S.v];
+  var M={13:["🥉","¡Primer trimestre completado!","Ya tienes una base. Es buen momento para separar este dinero en una cuenta aparte o ponerlo a trabajar."],26:["🥈","¡Llegaste a la mitad!","La mitad del camino está hecha. Lo más difícil es mantener el hábito, y ya lo tienes."],39:["🥇","¡Tres trimestres!","Ya superaste a la mayoría de quienes empiezan este reto. La recta final está a la vista."],52:["🏆","¡Completaste el reto!","Ahorraste durante 52 semanas. Ahora pon ese dinero a trabajar para que el próximo año crezca solo."]};
+  [13,26,39,52].forEach(function(m){
+    if(n>=m && S.miles.indexOf(m)<0){
+      S.miles.push(m); save(); confetti();
+      var sv=saved(), b=openDlg(); b.appendChild(el("div","e",M[m][0])); b.appendChild(el("h2",null,M[m][1]));
+      b.appendChild(el("div","v num",money(sv))); b.appendChild(el("p","sub",M[m][2]));
+      var ex=el("div","explain"); ex.textContent="Si inviertes "+money(sv)+" en renta fija al 8% anual (tasa de ejemplo), en un año ganarías unos "+money(Math.round(sv*0.08))+". En una cuenta de ahorros al 1%, solo "+money(Math.round(sv*0.01))+"."; b.appendChild(ex);
+      var a=el("div","actions");
+      var s1=el("button","btn","Compartir mi logro"); s1.type="button"; s1.addEventListener("click",function(){ share(M[m][0]+" ¡Llevo "+n+" casillas del Reto de las 52 semanas y ya ahorré "+money(sv)+"! ¿Te sumas? Es gratis en Retos Futuro."); });
+      var s2=el("a","btn ghost","Ver cómo invertirlo"); s2.href="https://futurocasadevalores.com/portafolio?utm_source=reto-52-semanas&utm_medium=hito&utm_campaign=hito-"+m; s2.target="_blank"; s2.rel="noopener";
+      var s3=el("button","link","Seguir con mi tabla"); s3.type="button"; s3.addEventListener("click",closeDlg);
+      a.appendChild(s1); a.appendChild(s2); a.appendChild(s3); b.appendChild(a);
+    }
+  });
+}
+function openDlg(){ var d=$("dlg"), b=$("dlgB"); b.innerHTML=""; if(!d.open){ if(d.showModal) d.showModal(); else d.setAttribute("open",""); } return b; }
+function closeDlg(){ var d=$("dlg"); if(d.close) d.close(); else d.removeAttribute("open"); }
+function confetti(){
+  if(reduce) return; var c=el("div","confetti"), cols=["#FD4CFF","#8B5CFF","#3F78FF","#2BB8F0","#F7C531"];
+  for(var k=0;k<70;k++){ var i=el("i"); i.style.left=(Math.random()*100)+"%"; i.style.background=cols[k%5]; i.style.animationDelay=(Math.random()*.5)+"s"; i.style.setProperty("--dx",(Math.random()*160-80)+"px"); i.style.setProperty("--r",(Math.random()*720-360)+"deg"); c.appendChild(i); }
+  document.body.appendChild(c); setTimeout(function(){ c.remove(); },3400);
+}
+
+// ---------- Acciones ----------
+$("share").addEventListener("click",function(){ var V=BYV[S.v], n=S.marks.length, wn=weekNow();
+  share("💪 "+(wn?"Voy en la semana "+wn+" del":"Empecé el")+" Reto de las 52 semanas ("+V.n.toLowerCase()+") y ya llevo "+money(saved())+" ahorrados, "+n+" de 52 casillas. Mi meta: "+money(V.goal)+". ¿Te animas? Es gratis en Retos Futuro."); });
+$("dare").addEventListener("click",function(){ share("📅 Te reto a hacer conmigo el Reto de las 52 semanas: ahorras $1 la primera semana, $2 la segunda… y terminas el año con $1.378. Hay versión estudiante y versión libre. ¿Aceptas? Es gratis en Retos Futuro."); });
+$("print").addEventListener("click",function(){ window.print(); });
+$("change").addEventListener("click",function(){ pick.v=S.v; pick.start=S.start; renderVers(); show("v-vers"); });
+$("leadf").addEventListener("submit",function(e){
+  e.preventDefault(); var n=$("lname").value.trim(), p=$("lphone").value.replace(/\D/g,"");
+  if(!n){ $("lerr").textContent="Escribe tu nombre."; return; }
+  if(!/^(09\d{8}|5939\d{8})$/.test(p)){ $("lerr").textContent="Escribe un celular ecuatoriano, por ejemplo 0991234567."; return; }
+  $("lerr").textContent=""; $("leadf").hidden=true; var ok=$("lok"); ok.hidden=false;
+  ok.textContent="Listo, "+n+". Te escribiremos cada semana con el monto que te toca. (Versión de prueba: aquí el contacto entraría al CRM y al flujo de WhatsApp.)";
+});
+
+// ---------- Inicio ----------
+if(S && S.v && BYV[S.v]){ renderBoard(); show("v-board"); } else { S=null; show("v-start"); }
+window.r52Refresh=function(){ if(S){ renderBoard(); } };
+})();
+</script>
+</body>
+</html>

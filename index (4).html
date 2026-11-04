@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retos Futuro · Millonario, valor de tu hora, gastos hormiga, estafas, pareja y SRI</title>
+<meta name="description" content="Retos financieros gratis: descubre a qué edad serías millonario, cuánto vale tu hora, cuánto se comen tus gastos hormiga y si caerías en una estafa. Por Futuro Casa de Valores.">
+<meta name="theme-color" content="#202A49">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F4FB; --surface:#FFFFFF; --ink:#1A2240; --muted:#4D5679; --line:#1A2240; --soft:#E9EBF8; --hair:#D5D9EE;
+  --navy:#202A49; --on-navy:#F3F4FB; --mag:#FD4CFF; --on-mag:#1A2240; --blue:#2F5BFF; --lav:#C9A8FF; --good:#0E9F6E; --mid:#D99A00; --bad:#E0245E;
+  --grad:linear-gradient(90deg,#FD4CFF 0%,#8B5CFF 45%,#3F78FF 100%);
+  --hero:linear-gradient(150deg,#202A49 0%,#202A49 50%,#2A2FB0 100%);
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --paper:#121834; --surface:#1C2447; --ink:#F1F2FA; --muted:#AEB4D3; --line:#F1F2FA; --soft:#262F57; --hair:#323C68; --blue:#6F92FF; --good:#34D399; --mid:#FBBF24; --bad:#FB7185; color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --paper:#121834; --surface:#1C2447; --ink:#F1F2FA; --muted:#AEB4D3; --line:#F1F2FA; --soft:#262F57; --hair:#323C68; --blue:#6F92FF; --good:#34D399; --mid:#FBBF24; --bad:#FB7185; color-scheme:dark; }
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.03rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--mag);outline-offset:3px}
+a{color:inherit}
+.num{font-variant-numeric:tabular-nums}
+.up{color:var(--good)}.down{color:var(--bad)}
+main{max-width:64rem;margin:0 auto;padding:1rem 1rem 2.5rem}
+.narrow{max-width:34rem;margin:0 auto}
+.view{display:none}.view.on{display:block;animation:in .25s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.view.on{animation:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--mag);color:var(--on-mag);border:3px solid var(--line);border-radius:14px;padding:.85rem 1.2rem;font-weight:900;font-size:1.05rem;box-shadow:5px 5px 0 var(--line);transition:transform .08s,box-shadow .08s;text-decoration:none;text-align:center}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--line)}
+.btn.ghost{background:var(--surface);color:var(--ink)}
+.btn.wide{width:100%}
+.btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none;transform:none}
+.link{background:none;border:0;padding:.3rem 0;font-weight:700;text-decoration:underline;color:var(--muted)}
+h1{font-size:clamp(2rem,6.5vw,3.2rem);line-height:1.02;font-weight:900;letter-spacing:-.03em;margin:0 0 .7rem}
+h2{font-size:clamp(1.45rem,4.5vw,1.9rem);line-height:1.1;font-weight:900;letter-spacing:-.02em;margin:0 0 .5rem}
+h3{font-size:1.1rem;font-weight:800;margin:0}
+.sub{color:var(--muted);margin:0 0 1.1rem}
+.logo{display:block;height:2rem;width:auto}
+
+/* Barra */
+.bar-top{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin:0 0 1rem}
+.bar-top .home{background:none;border:0;padding:0;display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--muted)}
+.mini-pass{display:flex;gap:.3rem;align-items:center;font-weight:800;font-size:.85rem;color:var(--muted)}
+.mini-pass i{width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.8rem;border:2px solid var(--line);background:var(--surface)}
+.mini-pass i.on{background:var(--mag);color:var(--on-mag)}
+
+/* Portada */
+.hero{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:26px;padding:1.5rem 1.4rem 1.7rem;box-shadow:7px 7px 0 var(--line);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-4rem;bottom:-1.6rem;width:60%;height:4.6rem;border-radius:999px;background:var(--grad);opacity:.9}
+.hero > *{position:relative;z-index:1}
+.kicker{display:inline-block;margin:1.4rem 0 .7rem;background:var(--mag);color:var(--on-mag);font-weight:900;font-size:.85rem;border-radius:999px;padding:.25rem .8rem}
+.hero p.lead{max-width:44ch;opacity:.92;margin:0 0 1.4rem;font-size:1.08rem}
+.hero .row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.hero .btn.ghost{background:transparent;color:var(--on-navy);border-color:var(--on-navy);box-shadow:5px 5px 0 #3F78FF}
+.facts{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.3rem;font-weight:700;font-size:.9rem;opacity:.9}
+.facts b{display:block;font-size:1.3rem;font-weight:900}
+
+/* Pasaporte */
+.pass{background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:1.1rem 1.1rem 1.2rem;box-shadow:5px 5px 0 var(--line);margin:1.6rem 0}
+.pass-h{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.stamps{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:.9rem}
+.stamp{aspect-ratio:1;border:3px dashed var(--hair);border-radius:50%;display:grid;place-items:center;font-size:clamp(1.4rem,5vw,2.1rem);filter:grayscale(1);opacity:.45;position:relative}
+.stamp.on{border-style:solid;border-color:var(--line);background:var(--soft);filter:none;opacity:1}
+.stamp.on::after{content:"✓";position:absolute;right:-2px;bottom:-2px;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--good);color:#fff;font-size:.8rem;font-weight:900;display:grid;place-items:center}
+.pbar{height:12px;border-radius:99px;background:var(--soft);border:2.5px solid var(--line);overflow:hidden;margin-top:.9rem}
+.pbar i{display:block;height:100%;background:var(--grad);transition:width .5s}
+
+/* Ruta */
+.route{display:grid;gap:.9rem}
+.step{display:grid;grid-template-columns:3.4rem 1fr auto;gap:.9rem;align-items:center;background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:1rem;box-shadow:5px 5px 0 var(--line);text-align:left;width:100%}
+.step .n{width:3.4rem;height:3.4rem;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;background:var(--soft);border:2.5px solid var(--line)}
+.step.done .n{background:var(--mag)}
+.step h3{font-size:1.12rem;line-height:1.2}
+.step .lvl{font-size:.78rem;font-weight:800;color:var(--muted);letter-spacing:.02em}
+.step p{margin:.25rem 0 0;color:var(--muted);font-size:.9rem;line-height:1.4}
+.step .go{font-weight:900;font-size:.88rem;white-space:nowrap;border:2.5px solid var(--line);border-radius:12px;padding:.35rem .7rem;background:var(--mag);color:var(--on-mag)}
+.step.done .go{background:var(--soft);color:var(--ink)}
+@media (max-width:520px){.step{grid-template-columns:3rem 1fr}.step .go{grid-column:2;justify-self:start}.step .n{width:3rem;height:3rem;font-size:1.45rem}}
+.season{display:grid;gap:.8rem;margin-top:.6rem}
+@media (min-width:700px){.season{grid-template-columns:repeat(4,1fr)}}
+.sc{background:var(--surface);border:2.5px solid var(--line);border-radius:18px;padding:.9rem;text-decoration:none;display:flex;flex-direction:column;gap:.3rem}
+.sc .e{font-size:1.8rem;line-height:1}
+.sc b{font-size:1rem;line-height:1.2}
+.sc small{color:var(--muted);font-weight:600;font-size:.82rem;line-height:1.35}
+.sc .when{margin-top:auto;font-size:.75rem;font-weight:900;color:var(--blue)}
+.sc.soon{opacity:.75;border-style:dashed}
+.seo{margin-top:2.2rem;display:grid;gap:1rem}
+@media (min-width:760px){.seo{grid-template-columns:1fr 1fr}}
+.seo details{background:var(--surface);border:2px solid var(--hair);border-radius:14px;padding:.8rem .95rem}
+.seo summary{font-weight:800;cursor:pointer}
+.seo p{color:var(--muted);margin:.5rem 0 0;font-size:.93rem}
+
+/* Componentes de reto */
+.prog{display:flex;gap:.3rem;margin:0 0 1.1rem}
+.prog i{flex:1;height:8px;border-radius:99px;background:var(--hair)}
+.prog i.on{background:var(--grad)}
+.card{background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:1.2rem 1.1rem;box-shadow:6px 6px 0 var(--line)}
+.intro .em{font-size:3.2rem;line-height:1}
+.q{font-size:clamp(1.35rem,5.4vw,1.75rem);line-height:1.15;font-weight:900;letter-spacing:-.02em;margin:0 0 .4rem}
+.opts{display:grid;gap:.6rem;margin-top:1rem}
+.opt{display:grid;grid-template-columns:2.2rem 1fr;gap:.55rem;align-items:center;text-align:left;background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.8rem .9rem;font-weight:700;box-shadow:4px 4px 0 var(--line);transition:transform .08s,box-shadow .08s}
+.opt .oe{font-size:1.4rem;line-height:1}
+.opt.picked{background:var(--mag);color:var(--on-mag);transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.opt.good{background:var(--good);color:#fff;border-color:var(--good)}
+.opt.badp{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt[disabled]{cursor:default}
+.explain{margin-top:1rem;background:var(--soft);border-radius:14px;padding:.8rem .9rem;font-weight:600;font-size:.95rem}
+.explain b{display:block;margin-bottom:.2rem}
+.slider{margin:.9rem 0 0}
+.slider .t{display:flex;justify-content:space-between;gap:.6rem;font-weight:700;font-size:.93rem}
+.slider .t output{font-weight:900}
+.slider input{width:100%;accent-color:var(--mag);height:1.6rem}
+.slider small{display:block;color:var(--muted);font-size:.78rem;font-weight:600}
+.sumbox{position:sticky;bottom:calc(.6rem + env(safe-area-inset-bottom,0px));background:var(--navy);color:var(--on-navy);border:3px solid var(--line);border-radius:16px;padding:.7rem .9rem;margin-top:1rem;display:flex;justify-content:space-between;gap:.6rem;font-weight:800;z-index:5}
+.sumbox b{font-size:1.15rem;font-weight:900}
+.fld{display:block;margin:.8rem 0}
+.fld span{display:block;font-weight:800;font-size:.9rem;margin-bottom:.3rem}
+.fld input{width:100%;padding:.8rem .9rem;border:3px solid var(--line);border-radius:14px;background:var(--surface);font-weight:800}
+.money{position:relative}
+.money::before{content:"$";position:absolute;left:.85rem;top:50%;transform:translateY(-50%);font-weight:900;color:var(--muted)}
+.money input{padding-left:1.8rem}
+.chips{display:flex;gap:.45rem;flex-wrap:wrap}
+.chip{border:2.5px solid var(--line);background:var(--surface);border-radius:999px;padding:.45rem .9rem;font-weight:800}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.err{color:var(--bad);font-weight:800;min-height:1.3rem;margin:.4rem 0}
+
+/* Resultado */
+.result{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:24px;padding:1.3rem 1.2rem 1.2rem;box-shadow:7px 7px 0 var(--line);text-align:center;position:relative;overflow:hidden}
+.result::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--grad)}
+.result .logo{margin:0 auto .9rem;height:1.8rem}
+.result .re{font-size:3.4rem;line-height:1}
+.result .rk{color:var(--lav);font-weight:800;margin:.5rem 0 .1rem;font-size:.92rem}
+.result .rt{font-size:clamp(1.6rem,7vw,2.2rem);font-weight:900;line-height:1.05;margin:0 0 .5rem}
+.result .rv{font-size:clamp(2.6rem,12vw,3.6rem);font-weight:900;line-height:1;margin:.3rem 0}
+.result p{margin:0 auto .6rem;max-width:32ch;opacity:.92}
+.result .ft{display:flex;justify-content:space-between;gap:.5rem;margin-top:.9rem;padding-top:.6rem;border-top:2px dashed rgba(255,255,255,.35);font-size:.8rem;font-weight:700;opacity:.85}
+.got{display:flex;align-items:center;gap:.7rem;background:var(--soft);border:2.5px solid var(--line);border-radius:16px;padding:.7rem .9rem;margin:1.2rem 0;font-weight:800}
+.got .e{font-size:1.8rem}
+.tips{display:grid;gap:.7rem;margin:1rem 0}
+.tip{display:grid;grid-template-columns:2.3rem 1fr;gap:.7rem;background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.85rem .9rem}
+.tip .e{font-size:1.6rem;line-height:1}
+.tip h3{font-size:1rem;margin:0 0 .2rem}
+.tip p{margin:0;color:var(--muted);font-size:.92rem}
+.actions{display:grid;gap:.75rem;margin-top:1.2rem}
+.cmp{display:grid;gap:.6rem;margin:1rem 0}
+.cr{background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.75rem .85rem}
+.cr .top{display:flex;justify-content:space-between;gap:.5rem;font-weight:800}
+.cr .top b{font-size:1.15rem;font-weight:900}
+.cr .bar{height:12px;border-radius:99px;background:var(--soft);overflow:hidden;margin:.45rem 0 .35rem}
+.cr .bar i{display:block;height:100%}
+.cr small{display:block;color:var(--muted);font-weight:600;font-size:.82rem;line-height:1.4}
+.cr.best{border-color:var(--mag);box-shadow:4px 4px 0 var(--mag)}
+.mixbar{display:flex;height:22px;border:3px solid var(--line);border-radius:99px;overflow:hidden;margin:.5rem 0;background:var(--soft)}
+.mixbar span{display:block;height:100%}
+.co{display:grid;grid-template-columns:2.4rem 1fr auto;gap:.6rem;align-items:center;background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.7rem .75rem;margin-bottom:.6rem}
+.co .oe{font-size:1.9rem;line-height:1;text-align:center}
+.co b{display:block;line-height:1.2}
+.co .ix{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.35rem}
+.co .ix span{font-size:.72rem;font-weight:800;border:2px solid var(--hair);border-radius:99px;padding:.05rem .45rem;background:var(--paper)}
+.ctr{display:flex;align-items:center;gap:.35rem}
+.ctr button{width:2.3rem;height:2.3rem;border:3px solid var(--line);border-radius:11px;background:var(--paper);font-weight:900;font-size:1.25rem;line-height:1}
+.ctr button.plus{background:var(--mag);color:var(--on-mag)}
+.ctr button[disabled]{opacity:.35}
+.ctr output{min-width:3.3rem;text-align:center;font-weight:900}
+.chart{width:100%;display:block}
+.yr{background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:1rem}
+.yr .val{font-size:clamp(2.2rem,10vw,3rem);font-weight:900;line-height:1}
+.news{min-height:3.6rem;background:var(--soft);border-radius:12px;padding:.6rem .8rem;font-weight:700;font-size:.93rem;margin-top:.7rem}
+.legal{font-size:.75rem;color:var(--muted);margin-top:2rem;line-height:1.45}
+.toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.65rem 1rem;border-radius:12px;font-weight:800;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.on{opacity:1}
+.cert{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:26px;padding:1.4rem 1.2rem;box-shadow:7px 7px 0 var(--line);text-align:center;position:relative;overflow:hidden}
+.cert::before{content:"";position:absolute;left:0;right:0;top:0;height:9px;background:var(--grad)}
+.cert .logo{margin:.5rem auto 1rem}
+.cert .nm{font-size:clamp(1.8rem,8vw,2.4rem);font-weight:900;line-height:1.05;margin:.4rem 0;overflow-wrap:anywhere}
+.cert .stamps{max-width:22rem;margin:1rem auto 0}
+.cert .stamp.on{background:rgba(255,255,255,.12);border-color:var(--on-navy)}
+/* ===== Retos virales ===== */
+.vhero{background:var(--hero);color:var(--on-navy);border:3px solid var(--line);border-radius:26px;padding:1.4rem 1.2rem 1.6rem;box-shadow:7px 7px 0 var(--line);position:relative;overflow:hidden}
+.vhero::after{content:"";position:absolute;right:-3rem;bottom:-1.4rem;width:62%;height:4.2rem;border-radius:999px;background:var(--grad);opacity:.9}
+.vhero > *{position:relative;z-index:1}
+.vhero h1{font-size:clamp(2.1rem,8.5vw,3rem);margin:.4rem 0 .6rem}
+.vhero p{opacity:.92;margin:0;max-width:34ch}
+.vgrid{display:grid;gap:1rem;margin-top:1.4rem}
+@media (min-width:640px){.vgrid{grid-template-columns:1fr 1fr}}
+.vcard{display:flex;flex-direction:column;gap:.35rem;text-align:left;width:100%;background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:1.1rem;box-shadow:6px 6px 0 var(--line);position:relative}
+.vcard .ve{font-size:2.6rem;line-height:1}
+.vcard .vq{font-size:1.3rem;font-weight:900;line-height:1.15;letter-spacing:-.01em}
+.vcard .vd{color:var(--muted);font-size:.92rem;font-weight:600}
+.vcard .vm{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;font-weight:800;font-size:.85rem;color:var(--muted)}
+.vcard .vgo{background:var(--mag);color:var(--on-mag);border:2.5px solid var(--line);border-radius:12px;padding:.3rem .7rem;font-weight:900}
+.vcard.done .vgo{background:var(--soft);color:var(--ink)}
+.vcard .vok{position:absolute;top:.8rem;right:.9rem;background:var(--good);color:#fff;font-weight:900;font-size:.75rem;border-radius:99px;padding:.15rem .55rem}
+.soon{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(10rem,46%);gap:.7rem;overflow-x:auto;padding:.2rem .1rem .8rem;margin-top:.6rem}
+.soon div{background:var(--surface);border:2.5px dashed var(--line);border-radius:16px;padding:.8rem;opacity:.85}
+.soon b{display:block;font-size:.95rem;line-height:1.2;margin-top:.3rem}
+.soon small{display:block;color:var(--blue);font-weight:900;font-size:.75rem;margin-top:.3rem}
+.counter{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--soft);border:2.5px solid var(--line);border-radius:16px;padding:.7rem .9rem;margin-top:1.2rem;font-weight:800}
+.counter .dots{display:flex;gap:.35rem}
+.counter .dots i{width:1.6rem;height:1.6rem;border-radius:50%;display:grid;place-items:center;font-style:normal;border:2px solid var(--line);background:var(--surface);font-size:.85rem}
+.counter .dots i.on{background:var(--mag)}
+.big-in{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin:.9rem 0 0}
+.big-in label{font-weight:800}
+.big-in output{font-size:1.5rem;font-weight:900}
+input[type=range]{width:100%;accent-color:var(--mag);height:1.7rem}
+.item{display:grid;grid-template-columns:2.2rem 1fr auto;gap:.6rem;align-items:center;background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.65rem .75rem;margin-bottom:.55rem}
+.item .ie{font-size:1.6rem;line-height:1;text-align:center}
+.item b{display:block;line-height:1.2;font-size:.98rem}
+.item small{display:block;color:var(--muted);font-weight:600;font-size:.8rem}
+.item.on{border-color:var(--mag);box-shadow:3px 3px 0 var(--mag)}
+.hours{display:grid;gap:.6rem;margin:1rem 0}
+.hr{background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:.75rem .85rem}
+.hr .t{display:flex;justify-content:space-between;gap:.6rem;font-weight:800}
+.hr .t b{font-size:1.1rem;font-weight:900;white-space:nowrap}
+.hr small{display:block;color:var(--muted);font-weight:600;font-size:.82rem;margin-top:.2rem}
+.hbar{height:12px;border-radius:99px;background:var(--soft);overflow:hidden;margin-top:.45rem}
+.hbar i{display:block;height:100%;background:var(--grad)}
+.alert-tag{display:inline-block;background:var(--bad);color:#fff;font-weight:900;font-size:.72rem;border-radius:99px;padding:.1rem .55rem;margin-bottom:.35rem}
+.safe-tag{display:inline-block;background:var(--good);color:#fff;font-weight:900;font-size:.72rem;border-radius:99px;padding:.1rem .55rem;margin-bottom:.35rem}
+.scene{background:var(--soft);border-radius:16px;padding:.9rem 1rem;font-weight:700;margin:.6rem 0 0;border-left:6px solid var(--mag)}
+.stat{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:1rem}
+.stat div{background:var(--surface);border:3px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-weight:700;font-size:.82rem;color:var(--muted)}
+.stat b{display:block;color:var(--ink);font-size:1.2rem;font-weight:900}
+.legend2{display:flex;gap:1rem;flex-wrap:wrap;font-size:.8rem;font-weight:700;color:var(--muted);margin-top:.4rem}
+.legend2 i{display:inline-block;width:.9rem;height:.9rem;border-radius:3px;vertical-align:middle;margin-right:.3rem}
+</style>
+</head>
+<body>
+<main>
+  <section class="view" id="v-home">
+    <div class="vhero">
+      <img class="logo" src="data:image/png;base64,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" alt="Futuro Casa de Valores">
+      <span class="kicker">🔥 Retos Futuro · los más compartidos</span>
+      <h1>¿Te atreves con los 4?</h1>
+      <p>Descubre a qué edad serías millonario, cuánto vale tu hora, cuánto se comen tus gastos hormiga y si caerías en una estafa. Gratis, en minutos.</p>
+    </div>
+    <div class="counter"><span id="cTxt"></span><span class="dots" id="cDots" aria-hidden="true"></span></div>
+    <div class="vgrid" id="vgrid"></div>
+    <h2 style="margin-top:2.2rem">Tests recomendados</h2>
+    <p class="sub">Herramientas útiles para momentos clave del año y la liga mensual. No cuentan para tus 4 retos.</p>
+    <div class="vgrid" id="tgrid" style="margin-top:0"></div>
+    <a class="btn ghost wide" style="margin-top:1.4rem" href="../app/" target="_blank" rel="noopener">Haz también la Ruta del Inversionista →</a>
+    <section class="seo" aria-label="Preguntas frecuentes">
+      <details><summary>¿Cómo se calcula a qué edad sería millonario?</summary><p>Se suma lo que tienes hoy y lo que inviertes cada mes, con interés compuesto mensual a la tasa que elijas, hasta llegar a $1.000.000. Es una proyección ilustrativa: los rendimientos reales varían y no están garantizados.</p></details>
+      <details><summary>¿Cómo calculo cuánto vale mi hora de trabajo?</summary><p>Divide tu ingreso mensual neto para todas las horas que dedicas al trabajo, incluido el tiempo de transporte. Así sabes cuántas horas de tu vida cuesta cada compra.</p></details>
+      <details><summary>¿Qué son los gastos hormiga?</summary><p>Son gastos pequeños y frecuentes, como el café, los snacks o el delivery, que parecen insignificantes pero suman cientos o miles de dólares al año.</p></details>
+      <details><summary>¿Cómo funciona la rebaja por gastos personales del SRI?</summary><p>Si pagas impuesto a la renta, tus gastos personales con factura (vivienda, educación, salud, alimentación, vestimenta y turismo) pueden darte una rebaja del impuesto, con un tope que depende de tus cargas familiares. Confirma los valores vigentes en el sitio del SRI.</p></details>
+      <details><summary>¿Cómo hablar de dinero en pareja?</summary><p>Agenden una conversación mensual, definan qué gastos son de los dos, acuerden un monto para consultar compras grandes y pónganse metas juntos con fecha y monto.</p></details>
+      <details><summary>¿Cómo saber si una inversión es una estafa?</summary><p>Desconfía de rendimientos altos garantizados, de la presión para decidir rápido y de los negocios que pagan por traer a otras personas. Verifica que la empresa esté autorizada por la Superintendencia de Compañías, Valores y Seguros, la Superintendencia de Bancos o la SEPS, según corresponda.</p></details>
+    </section>
+  </section>
+  <section class="view" id="v-reto"><div class="narrow" id="reto"></div></section>
+  <p class="legal">Retos Futuro es una iniciativa educativa y gratuita de Futuro Casa de Valores. Las proyecciones y tasas son ilustrativas, no constituyen promesa de rendimiento ni recomendación de inversión. Los escenarios del Detector de estafas son ejemplos educativos. El cálculo de impuestos es referencial y no reemplaza la asesoría tributaria. Toda inversión conlleva riesgos. Casa de Valores Futuro FUTUROCAPITAL S.A.</p>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(function(){
+"use strict";
+var $=function(id){ return document.getElementById(id); };
+function el(t,c,x){ var e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e; }
+var money=function(v){ return (v<0?"−":"")+"$"+Math.round(Math.abs(v)).toLocaleString("es-EC"); };
+var money2=function(v){ return "$"+v.toLocaleString("es-EC",{minimumFractionDigits:2,maximumFractionDigits:2}); };
+var num=function(v,d){ return v.toLocaleString("es-EC",{minimumFractionDigits:d||0,maximumFractionDigits:d||0}); };
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var LOGO=function(){ return document.querySelector(".logo").src; };
+function toast(m){ var t=$("toast"); t.textContent=m; t.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(function(){ t.classList.remove("on"); },2400); }
+function share(text){ if(navigator.share) navigator.share({title:"Retos Futuro",text:text}).catch(function(){}); else window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener"); }
+var UTM=function(path,c){ return "https://futurocasadevalores.com/"+path+"?utm_source=retos-virales&utm_medium=web&utm_campaign="+c; };
+var S={done:{}}; try{ var ls=JSON.parse(localStorage.getItem("retos-virales-v1")||"null"); if(ls&&ls.done) S=ls; }catch(e){}
+function save(){ try{ localStorage.setItem("retos-virales-v1",JSON.stringify(S)); }catch(e){} }
+
+var RETOS=[
+  {id:"millonario", e:"💸", q:"¿A qué edad serías millonario?", d:"Pon cuánto podrías invertir al mes y descubre la edad en que llegarías a $1.000.000.", min:2},
+  {id:"hora", e:"⏱️", q:"¿Cuánto vale tu hora?", d:"Calcula tu sueldo real por hora y cuántas horas de tu vida te cuesta cada compra.", min:3},
+  {id:"hormigas", e:"🐜", q:"Hormigómetro: ¿cuánto se comen tus antojos?", d:"Marca tus gastos hormiga y mira cuánto suman al año… y cuánto serían invertidos.", min:3},
+  {id:"estafas", e:"🛡️", q:"¿Caerías en una estafa?", d:"8 situaciones reales. Decide qué harías y descubre tu nivel de blindaje.", min:4},
+  {id:"pareja", e:"💕", q:"Test de pareja financiera", d:"Respondan por turnos y descubran qué tan compatibles son con el dinero.", min:6, extra:true},
+  {id:"sri", e:"🧾", q:"¿Cuánto te devuelve el SRI?", d:"Calcula cuánto impuesto podrías recuperar con tus gastos personales.", min:3, extra:true},
+  {id:"utilidades", e:"💼", q:"¿Qué hago con mis utilidades?", d:"Utilidades, fondos de reserva o décimo: arma tu plan y mira la diferencia en 5 años.", min:3, extra:true},
+  {id:"clases", e:"🎒", q:"Regreso a clases sin deudas", d:"Calcula cuánto necesitas y cuánto ahorrar al mes para no endeudarte.", min:3, extra:true},
+  {id:"liga", e:"🏆", q:"Liga de inversionistas", d:"Arma tu portafolio y compite cada mes con estudiantes de todo el país.", min:4, extra:true, cta:"Jugar →"}
+];
+var BY={}; RETOS.forEach(function(r){ BY[r.id]=r; });
+var MAIN=RETOS.filter(function(r){ return !r.extra; }), EXTRA=RETOS.filter(function(r){ return r.extra; });
+
+// ---------- Portada ----------
+function renderHome(){
+  var n=MAIN.filter(function(r){ return S.done[r.id]; }).length;
+  $("cTxt").textContent = n===MAIN.length ? "¡Completaste los "+MAIN.length+" retos! 🏆" : "Llevas "+n+" de "+MAIN.length+" retos";
+  var d=$("cDots"); d.innerHTML=""; MAIN.forEach(function(r){ d.appendChild(el("i",S.done[r.id]?"on":"",r.e)); });
+  function card(r,cta){
+    var b=el("button","vcard"+(S.done[r.id]?" done":"")); b.type="button";
+    if(S.done[r.id]) b.appendChild(el("span","vok","✓ "+S.done[r.id]));
+    b.appendChild(el("span","ve",r.e)); b.appendChild(el("span","vq",r.q)); b.appendChild(el("span","vd",r.d));
+    var m=el("span","vm"); m.appendChild(el("span",null,r.min+" min · gratis")); m.appendChild(el("span","vgo",S.done[r.id]?"Repetir":cta)); b.appendChild(m);
+    b.addEventListener("click",function(){ go(r.id); }); return b;
+  }
+  var g=$("vgrid"); g.innerHTML=""; MAIN.forEach(function(r){ g.appendChild(card(r,"Empezar →")); });
+  var t=$("tgrid"); t.innerHTML=""; EXTRA.forEach(function(r){ t.appendChild(card(r,r.cta||"Hacer el test →")); });
+}
+
+// ---------- Marco común ----------
+var box;
+function frame(stepIdx,steps){
+  box=$("reto"); box.innerHTML="";
+  var top=el("div","bar-top"); var h=el("button","home"); h.type="button"; var lg=el("img","logo"); lg.src=LOGO(); lg.alt="Futuro Casa de Valores"; lg.style.height="1.6rem"; h.appendChild(lg); h.append("← Retos"); h.addEventListener("click",function(){ go(""); }); top.appendChild(h); box.appendChild(top);
+  if(steps){ var p=el("div","prog"); p.setAttribute("aria-hidden","true"); for(var k=0;k<steps;k++) p.appendChild(el("i",k<=stepIdx?"on":"")); box.appendChild(p); }
+  window.scrollTo(0,0); return box;
+}
+function resultCard(o){
+  var c=el("div","result"); var lg=el("img","logo"); lg.src=LOGO(); lg.alt="Futuro Casa de Valores"; c.appendChild(lg);
+  if(o.e) c.appendChild(el("div","re",o.e)); if(o.k) c.appendChild(el("p","rk",o.k));
+  if(o.v) c.appendChild(el("p","rv num",o.v)); if(o.t) c.appendChild(el("p","rt",o.t)); if(o.p) c.appendChild(el("p",null,o.p));
+  var ft=el("div","ft"); ft.appendChild(el("span",null,"Retos Futuro")); ft.appendChild(el("span",null,"¿Y tú?")); c.appendChild(ft); return c;
+}
+function tipsBox(list,title){
+  var w=el("div"); if(title){ var h=el("h2",null,title); h.style.marginTop="1.4rem"; w.appendChild(h); }
+  var t=el("div","tips"); list.forEach(function(x){ var d=el("div","tip"); d.appendChild(el("span","e",x[0])); var s=el("div"); s.appendChild(el("h3",null,x[1])); s.appendChild(el("p",null,x[2])); d.appendChild(s); t.appendChild(d); }); w.appendChild(t); return w;
+}
+function finish(id,sum,shareText,dare,cta){
+  S.done[id]=sum; save();
+  var a=el("div","actions");
+  if(cta) a.appendChild(cta);
+  var s1=el("button","btn wide","Compartir mi resultado"); s1.type="button"; s1.addEventListener("click",function(){ share(shareText); }); a.appendChild(s1);
+  var s2=el("button","btn ghost wide","Retar a un amigo"); s2.type="button"; s2.addEventListener("click",function(){ share(dare); }); a.appendChild(s2);
+  var nx=MAIN.filter(function(r){ return !S.done[r.id]; })[0];
+  if(nx){ var n1=el("button","btn ghost wide","Siguiente: "+nx.q); n1.type="button"; n1.addEventListener("click",function(){ go(nx.id); }); a.appendChild(n1); }
+  var h1=el("button","link","Volver a los retos"); h1.type="button"; h1.addEventListener("click",function(){ go(""); }); a.appendChild(h1);
+  box.appendChild(a);
+}
+function intro(r,text,start){
+  var b=frame(0,0), c=el("div","card intro"); c.appendChild(el("div","em",r.e)); var s=el("p","sub",r.min+" minutos · gratis"); s.style.margin=".6rem 0 .2rem"; c.appendChild(s);
+  c.appendChild(el("h2",null,r.q)); c.appendChild(el("p",null,text));
+  var bt=el("button","btn wide","Empezar"); bt.type="button"; bt.addEventListener("click",start); c.appendChild(bt); b.appendChild(c);
+}
+function slider(parent,label,min,max,step,val,fmt,on){
+  var w=el("div"); var t=el("div","big-in"); var id="s"+Math.random().toString(36).slice(2,8); var l=el("label",null,label); l.htmlFor=id; var o=el("output","num",fmt(val)); t.appendChild(l); t.appendChild(o); w.appendChild(t);
+  var s=el("input"); s.type="range"; s.id=id; s.min=min; s.max=max; s.step=step; s.value=val; s.addEventListener("input",function(){ o.textContent=fmt(+s.value); on(+s.value); }); w.appendChild(s); parent.appendChild(w); return s;
+}
+function chips(parent,label,opts,cur,on){
+  var p=el("p",null,label); p.style.cssText="font-weight:800;margin:1rem 0 .4rem"; parent.appendChild(p);
+  var c=el("div","chips"); opts.forEach(function(o){ var b=el("button","chip",o[1]); b.type="button"; b.setAttribute("aria-pressed",cur===o[0]?"true":"false"); b.addEventListener("click",function(){ c.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed",x===b?"true":"false"); }); on(o[0]); }); c.appendChild(b); }); parent.appendChild(c);
+}
+
+// ================= 1. MILLONARIO =================
+function retoMillonario(){
+  var r=BY.millonario, D={edad:25, hoy:0, mes:200, tasa:8};
+  intro(r,"Elige tu edad, cuánto tienes hoy y cuánto podrías invertir al mes. Te diremos a qué edad llegarías a tu primer millón con el poder del interés compuesto.",step1);
+  function months(P,A,ann){ var i=ann/100/12, v=P, n=0; if(v>=1e6) return 0; while(v<1e6 && n<1200){ v=v*(1+i)+A; n++; } return n>=1200?null:n; }
+  function needed(P,ann,mths){ var i=ann/100/12, f=Math.pow(1+i,mths); var rest=1e6-P*f; if(rest<=0) return 0; return i===0?rest/mths:rest*i/(f-1); }
+  function step1(){
+    var b=frame(1,3); b.appendChild(el("h2","q","Tus números"));
+    b.appendChild(el("p","sub","Mueve los controles. El resultado se calcula al final."));
+    slider(b,"Tu edad",15,65,1,D.edad,function(v){ return v+" años"; },function(v){ D.edad=v; });
+    chips(b,"¿Cuánto tienes ahorrado hoy?",[[0,"$0"],[1000,"$1.000"],[5000,"$5.000"],[20000,"$20.000"],[50000,"$50.000"]],D.hoy,function(v){ D.hoy=v; });
+    slider(b,"¿Cuánto podrías invertir al mes?",25,3000,25,D.mes,money,function(v){ D.mes=v; });
+    chips(b,"¿Qué rendimiento anual usamos? (ilustrativo)",[[6,"6% conservador"],[8,"8% moderado"],[10,"10% agresivo"]],D.tasa,function(v){ D.tasa=v; });
+    var go1=el("button","btn wide","¿A qué edad sería millonario? 💸"); go1.type="button"; go1.style.marginTop="1.4rem"; go1.addEventListener("click",result); b.appendChild(go1);
+  }
+  function result(){
+    var b=frame(2,3), n=months(D.hoy,D.mes,D.tasa), age=n==null?null:D.edad+n/12;
+    var nSave=months(D.hoy,D.mes,0), ageSave=nSave==null?null:D.edad+nSave/12;
+    var e, t, v, p;
+    if(age===null || age>100){ e="🐢"; v="Más de 100 años"; t="Con este ritmo no llegarías… todavía"; p="La buena noticia: un pequeño aumento en tu aporte cambia todo. Mira abajo cuánto necesitarías."; }
+    else { var a=Math.ceil(age); e = a<=45?"🚀":a<=60?"💸":"🌳"; v="A los "+a+" años"; t="Serías millonario"; p="Invirtiendo "+money(D.mes)+" al mes al "+D.tasa+"% anual. "+(ageSave&&ageSave<=100?"Solo ahorrando sin invertir, llegarías a los "+Math.ceil(ageSave)+".":"Solo ahorrando sin invertir, nunca llegarías.")+"" ; }
+    b.appendChild(resultCard({e:e,k:"Con "+money(D.mes)+" al mes desde los "+D.edad,v:v,t:t,p:p}));
+    // gráfico: aportes vs intereses hasta el millón (o 40 años)
+    var yrs=Math.min(60,Math.max(5,Math.ceil((n||480)/12))), pts=[], aps=[], i=D.tasa/100/12, val=D.hoy, ap=D.hoy;
+    for(var y=0;y<=yrs;y++){ pts.push(val); aps.push(ap); for(var m=0;m<12;m++){ val=val*(1+i)+D.mes; ap+=D.mes; } }
+    var W=600,H=220,pl=58,pb=24,pt=10, mx=Math.max.apply(null,pts)*1.05, X=function(k){ return pl+k*(W-pl-10)/yrs; }, Y=function(v){ return pt+(mx-v)*(H-pt-pb)/mx; };
+    var h=""; [0,.5,1].forEach(function(g){ var gv=mx*g, gy=Y(gv); h+='<line x1="'+pl+'" x2="'+(W-10)+'" y1="'+gy+'" y2="'+gy+'" stroke="var(--hair)"/><text x="'+(pl-6)+'" y="'+(gy+4)+'" font-size="11" text-anchor="end" fill="var(--muted)" font-weight="700">'+(gv>=1e6?"$"+num(gv/1e6,1)+" M":"$"+num(gv/1000)+" k")+'</text>'; });
+    h+='<path d="M'+X(0)+','+Y(0)+' L'+pts.map(function(v,k){ return X(k).toFixed(1)+","+Y(v).toFixed(1); }).join(" L")+' L'+X(yrs)+','+Y(0)+' Z" fill="#FD4CFF" opacity=".25"/>';
+    h+='<path d="M'+X(0)+','+Y(0)+' L'+aps.map(function(v,k){ return X(k).toFixed(1)+","+Y(v).toFixed(1); }).join(" L")+' L'+X(yrs)+','+Y(0)+' Z" fill="#3F78FF" opacity=".55"/>';
+    if(mx>1e6){ h+='<line x1="'+pl+'" x2="'+(W-10)+'" y1="'+Y(1e6)+'" y2="'+Y(1e6)+'" stroke="var(--mag)" stroke-width="2.5" stroke-dasharray="7 5"/><text x="'+(W-12)+'" y="'+(Y(1e6)-6)+'" font-size="12" text-anchor="end" fill="var(--ink)" font-weight="900">$1 millón</text>'; }
+    h+='<text x="'+pl+'" y="'+(H-5)+'" font-size="11" fill="var(--muted)" font-weight="700">Hoy</text><text x="'+(W-10)+'" y="'+(H-5)+'" font-size="11" text-anchor="end" fill="var(--muted)" font-weight="700">'+yrs+' años</text>';
+    var c=el("div","card"); c.style.marginTop="1.2rem"; c.appendChild(el("h3",null,"Así crece tu dinero"));
+    var sv=document.createElement("div"); sv.innerHTML='<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Crecimiento de tu inversión">'+h+'</svg>'; c.appendChild(sv);
+    var lg=el("div","legend2"); lg.innerHTML='<span><i style="background:#3F78FF"></i>Lo que tú pones</span><span><i style="background:#FD4CFF;opacity:.6"></i>Lo que gana tu dinero</span>'; c.appendChild(lg);
+    var fin=pts[pts.length-1], tot=aps[aps.length-1];
+    c.appendChild(el("p","sub","En "+yrs+" años habrías puesto "+money(tot)+" y tu dinero habría ganado "+money(fin-tot)+" por sí solo.")).style.margin=".6rem 0 0";
+    b.appendChild(c);
+    var a60=needed(D.hoy,D.tasa,Math.max(1,(60-D.edad)*12)), a50=D.edad<50?needed(D.hoy,D.tasa,(50-D.edad)*12):null, n5=months(D.hoy,D.mes+50,D.tasa);
+    var T=[];
+    if(a50!=null) T.push(["🎯","Para ser millonario a los 50","Necesitarías invertir unos "+money(a50)+" al mes desde hoy."]);
+    if(D.edad<60) T.push(["🏁","Para ser millonario a los 60","Necesitarías invertir unos "+money(a60)+" al mes desde hoy."]);
+    if(n!=null && n5!=null) T.push(["➕","El poder de $50 más","Si subes tu aporte a "+money(D.mes+50)+" al mes, llegarías "+num(Math.max(0,(n-n5)/12),1)+" años antes."]);
+    T.push(["⏳","El mejor momento fue ayer","Cada año que esperas hace más difícil la meta. Empezar con poco hoy vale más que empezar con mucho después."]);
+    T.push(["🧾","Ojo con la inflación","Un millón dentro de varias décadas comprará menos que hoy. Lo importante es que tu dinero crezca más rápido que los precios."]);
+    b.appendChild(tipsBox(T.slice(0,3),"Juega con tu meta"));
+    var cta=el("a","btn wide","Empezar a invertir con Futuro"); cta.href=UTM("portafolio","millonario"); cta.target="_blank"; cta.rel="noopener";
+    var label = age===null||age>100 ? "Aún no llego, pero voy por más" : "Sería millonario a los "+Math.ceil(age);
+    finish("millonario", age===null||age>100?"Meta en construcción":"Millonario a los "+Math.ceil(age),
+      "💸 Hice el reto de Retos Futuro: invirtiendo "+money(D.mes)+" al mes, ¡sería millonario a los "+(age===null||age>100?"…mejor no te digo 😅":Math.ceil(age)+" años")+"! ¿A qué edad lo serías tú?",
+      "💸 Te reto: ¿a qué edad serías millonario? "+label+". Descúbrelo gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 2. ¿CUÁNTO VALE TU HORA? =================
+function retoHora(){
+  var r=BY.hora, D={ing:900, hs:40, tr:60};
+  var ITEMS=[["📱","Celular de gama alta",1100],["✈️","Viaje de vacaciones",1500],["👟","Zapatos de marca",130],["🍔","Delivery de fin de semana",18],["🎉","Una salida con amigos",50],["☕","Café diario durante un mes",66],["📺","Un año de streaming",130],["🚗","Cuota mensual de un carro",420]];
+  intro(r,"Tu sueldo no es lo que crees. Sumando el tiempo que pasas trabajando y en el transporte, calcularemos cuánto vale de verdad tu hora y cuántas horas de tu vida cuesta lo que compras.",step1);
+  function step1(){
+    var b=frame(1,3); b.appendChild(el("h2","q","Tu tiempo y tu sueldo"));
+    slider(b,"Ingreso mensual neto",300,6000,50,D.ing,money,function(v){ D.ing=v; });
+    slider(b,"Horas de trabajo a la semana",10,70,1,D.hs,function(v){ return v+" h"; },function(v){ D.hs=v; });
+    slider(b,"Transporte diario (ida y vuelta)",0,240,10,D.tr,function(v){ return v+" min"; },function(v){ D.tr=v; });
+    var go1=el("button","btn wide","Calcular el valor de mi hora ⏱️"); go1.type="button"; go1.style.marginTop="1.4rem"; go1.addEventListener("click",result); b.appendChild(go1);
+  }
+  function result(){
+    var b=frame(2,3);
+    var hMes=(D.hs+D.tr*5/60)*4.33, real=D.ing/hMes, ofi=D.ing/(D.hs*4.33);
+    b.appendChild(resultCard({e:"⏱️",k:"Tu hora real vale",v:money2(real),t:"por cada hora de tu vida",p:"Contando "+num(hMes)+" horas al mes entre trabajo y transporte. "+(D.tr>0?"Sin el transporte serían "+money2(ofi)+".":"")}));
+    var h=el("h2",null,"¿Cuántas horas de tu vida cuesta…?"); h.style.marginTop="1.4rem"; b.appendChild(h);
+    var list=el("div","hours"); var mx=Math.max.apply(null,ITEMS.map(function(x){ return x[2]; }))/real;
+    ITEMS.forEach(function(x){ var hh=x[2]/real, d=el("div","hr"); var t=el("div","t"); t.appendChild(el("span",null,x[0]+" "+x[1])); t.appendChild(el("b","num",num(hh,hh<10?1:0)+" h")); d.appendChild(t);
+      d.appendChild(el("small",null,money(x[2])+" · "+(hh>=8?num(hh/8,1)+" días de trabajo":num(hh*60)+" minutos de trabajo"))); var bar=el("div","hbar"); var bi=el("i"); bi.style.width=Math.max(2,hh/mx*100)+"%"; bar.appendChild(bi); d.appendChild(bar); list.appendChild(d); });
+    b.appendChild(list);
+    var own=el("div","card"); own.appendChild(el("h3",null,"Prueba con algo que quieras comprar"));
+    var row=el("div"); row.style.cssText="display:grid;grid-template-columns:1fr auto;gap:.6rem;margin-top:.6rem"; var m=el("div","money"); var inp=el("input"); inp.type="number"; inp.inputMode="decimal"; inp.placeholder="Precio"; inp.setAttribute("aria-label","Precio de lo que quieres comprar"); inp.style.cssText="width:100%;padding:.75rem .85rem .75rem 1.8rem;border:3px solid var(--line);border-radius:14px;background:var(--paper);font-weight:800"; m.appendChild(inp); row.appendChild(m);
+    var out=el("p","say2"); out.style.fontWeight="800"; var bt=el("button","btn","Calcular"); bt.type="button"; row.appendChild(bt); own.appendChild(row); own.appendChild(out);
+    bt.addEventListener("click",function(){ var v=parseFloat(inp.value); if(!(v>0)){ out.textContent="Escribe un precio."; return; } var hh=v/real; out.textContent="Te cuesta "+num(hh,1)+" horas de tu vida"+(hh>=8?", unos "+num(hh/8,1)+" días de trabajo.":"."); });
+    b.appendChild(own);
+    var inv=10000*0.08, invH=inv/real;
+    b.appendChild(tipsBox([["🤔","Antes de comprar, piensa en horas","Pregúntate: ¿cambiaría estas horas de mi vida por esto? Muchas compras dejan de ser tan atractivas."],["💼","Haz que tu dinero trabaje por ti","$10.000 invertidos al 8% anual (ejemplo) generarían unos "+money(inv)+" al año: "+num(invH)+" horas de tu trabajo que tu dinero haría por ti."],["📈","Sube el valor de tu hora","Capacitarte, negociar tu sueldo o reducir tu tiempo de transporte aumenta lo que vale cada hora."]],"Lo que te deja este dato"));
+    var cta=el("a","btn wide","Pon tu dinero a trabajar con Futuro"); cta.href=UTM("portafolio","valor-hora"); cta.target="_blank"; cta.rel="noopener";
+    var cel=1100/real;
+    finish("hora","Tu hora vale "+money2(real),
+      "⏱️ Descubrí que mi hora real vale "+money2(real)+" y que un celular de gama alta me cuesta "+num(cel)+" horas de mi vida 😳 ¿Cuánto vale la tuya? Calcúlalo gratis en Retos Futuro.",
+      "⏱️ Te reto: ¿cuánto vale tu hora de verdad? Spoiler: menos de lo que crees. Hazlo gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 3. HORMIGÓMETRO =================
+function retoHormigas(){
+  var r=BY.hormigas;
+  var H=[["cafe","☕","Café o bebida","$2,50 cada uno",2.5],["snack","🍫","Snack o golosina","$1,50 cada uno",1.5],["delivery","🛵","Delivery de comida","$12 cada pedido",12],["taxi","🚕","Taxi o app de transporte por comodidad","$5 cada viaje",5],["almuerzo","🍔","Almuerzo fuera en vez de llevar","$6 cada uno",6],["impulso","🛍️","Compra por impulso","$20 cada una",20],["apps","🎮","Compras en apps o juegos","$5 cada una",5],["salida","🍻","Salida entre semana","$15 cada una",15]];
+  var Q={}; H.forEach(function(x){ Q[x[0]]=0; });
+  intro(r,"Los gastos hormiga son pequeños, frecuentes y casi invisibles. Marca cuántas veces a la semana caes en cada uno y mira cuánto se comen al año.",step1);
+  function weekly(){ return H.reduce(function(s,x){ return s+Q[x[0]]*x[4]; },0); }
+  function step1(){
+    var b=frame(1,3); b.appendChild(el("h2","q","¿Cuántas veces a la semana…?"));
+    b.appendChild(el("p","sub","Sé honesto: nadie más lo va a ver."));
+    var sum=el("div","sumbox"); var s1=el("span","","Tus hormigas al año"), s2=el("b","num","$0"); sum.appendChild(s1); sum.appendChild(s2);
+    H.forEach(function(x){ var d=el("div","item"); d.appendChild(el("span","ie",x[1])); var t=el("span"); t.appendChild(el("b",null,x[2])); t.appendChild(el("small",null,x[3])); d.appendChild(t);
+      var ct=el("div","ctr"); var mi=el("button",null,"−"); mi.type="button"; mi.setAttribute("aria-label","Menos "+x[2]); var o=el("output",null,"0×"); var pl=el("button","plus","+"); pl.type="button"; pl.setAttribute("aria-label","Más "+x[2]);
+      function upd(){ o.textContent=Q[x[0]]+"×"; mi.disabled=!Q[x[0]]; d.classList.toggle("on",Q[x[0]]>0); s2.textContent=money(weekly()*52); }
+      mi.addEventListener("click",function(){ if(Q[x[0]]>0){ Q[x[0]]--; upd(); } }); pl.addEventListener("click",function(){ if(Q[x[0]]<21){ Q[x[0]]++; upd(); } });
+      ct.appendChild(mi); ct.appendChild(o); ct.appendChild(pl); d.appendChild(ct); b.appendChild(d); upd(); });
+    b.appendChild(sum);
+    var go1=el("button","btn wide","Ver cuánto se comen mis hormigas 🐜"); go1.type="button"; go1.style.marginTop="1rem"; go1.addEventListener("click",function(){ if(weekly()===0){ toast("Marca al menos un gasto hormiga"); return; } result(); }); b.appendChild(go1);
+  }
+  function fv(monthly,yrs,ann){ var i=ann/100/12, v=0; for(var m=0;m<yrs*12;m++) v=v*(1+i)+monthly; return v; }
+  function result(){
+    var b=frame(2,3), w=weekly(), y=w*52, mo=y/12, ten=fv(mo,10,8), half=fv(mo/2,10,8);
+    var P = y<500?["🐜","Hormiguita","Tus antojos están bajo control."]:y<1500?["🐜🐜","Colonia de hormigas","Pequeños gastos que ya suman bastante."]:y<3000?["👑🐜","Reina del hormiguero","Tus antojos tienen su propio presupuesto… y es grande."]:["🦖","Hormiga gigante","Tus gastos hormiga ya son un gasto elefante."];
+    b.appendChild(resultCard({e:P[0],k:"Tus gastos hormiga suman",v:money(y)+" al año",t:"Eres "+P[1],p:P[2]+" Son unos "+money(mo)+" al mes."}));
+    var st=el("div","stat");
+    [["En 5 años gastarías",money(y*5)],["Invertido 10 años al 8%*",money(ten)],["Recortando solo la mitad, en 10 años",money(half)],["Al año equivale a",num(y/1100,1)+" celulares de gama alta"]].forEach(function(x){ var d=el("div"); d.appendChild(el("b","num",x[1])); d.append(x[0]); st.appendChild(d); });
+    b.appendChild(st);
+    b.appendChild(el("p","note","*Rendimiento ilustrativo, no garantizado.")).style.cssText="font-size:.78rem;color:var(--muted);margin:.5rem 0 0";
+    var top=H.map(function(x){ return [x, Q[x[0]]*x[4]*52]; }).filter(function(z){ return z[1]>0; }).sort(function(a,c){ return c[1]-a[1]; }).slice(0,2);
+    var T=top.map(function(z){ return [z[0][1],"Tu hormiga más grande: "+z[0][2].toLowerCase(),"Te cuesta "+money(z[1])+" al año. Bajándola a la mitad ahorras "+money(z[1]/2)+"."]; });
+    T.push(["📅","Convierte tus hormigas en ahorro","Lo que dejes de gastar, guárdalo cada semana. El Reto de las 52 semanas te ayuda a hacerlo hábito."]);
+    b.appendChild(tipsBox(T,"Tu plan contra las hormigas"));
+    var cta=el("a","btn wide","Hacer el Reto de las 52 semanas"); cta.href="../reto-52-semanas/"; cta.target="_blank"; cta.rel="noopener";
+    finish("hormigas",P[1]+" · "+money(y)+" al año",
+      "🐜 El Hormigómetro me dijo que mis gastos hormiga suman "+money(y)+" al año. ¡Soy "+P[1]+"! Invertido, en 10 años serían "+money(ten)+" 😱 ¿Cuánto se comen tus hormigas?",
+      "🐜 Te reto a hacer el Hormigómetro y descubrir cuánto se comen tus antojos al año. Yo salí "+P[1]+". Gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 4. DETECTOR DE ESTAFAS =================
+function retoEstafas(){
+  var r=BY.estafas, pts=0, tips=[];
+  var Q=[
+    {s:"Un amigo te invita a un negocio que paga 10% mensual garantizado. Mientras más personas traigas, más ganas.", o:[["Invierto y traigo a mi familia",0],["Invierto poquito para probar",0],["No entro: pagar por traer gente y ganar 10% mensual es señal de pirámide",2]], tag:"Pirámide", x:"Un 10% mensual garantizado equivale a más de 200% al año. Si el negocio depende de traer gente nueva, el dinero de los nuevos paga a los antiguos… hasta que colapsa."},
+    {s:"Te escribe por WhatsApp “tu banco”: hay un cargo sospechoso y debes enviar el código que te llegó por SMS para bloquearlo.", o:[["Envío el código, es urgente",0],["No envío nada y llamo al número oficial del banco",2],["Pido que me llamen para confirmar",1]], tag:"Suplantación", x:"Ningún banco te pedirá claves ni códigos por WhatsApp o llamada. Ese código es la llave de tu cuenta. Comunícate siempre por los canales oficiales."},
+    {s:"En redes, un “mentor” muestra autos y viajes. Promete duplicar tu dinero en una semana operando criptomonedas por ti.", o:[["Le transfiero para que opere por mí",0],["Desconfío: nadie puede prometer duplicar el dinero",2],["Le pido capturas de sus ganancias",0]], tag:"Falso mentor", x:"Las capturas y los lujos se fingen fácilmente. Nadie puede garantizar duplicar tu dinero; si fuera así de fácil, no necesitaría tu plata."},
+    {s:"Una app te aprueba un préstamo en minutos, sin buró. Antes del desembolso te piden pagar $50 de “seguro”.", o:[["Pago los $50, es poco",0],["No pago nada por adelantado y busco una entidad regulada",2],["Negocio que me lo descuenten del préstamo",1]], tag:"Cobro anticipado", x:"Pedir dinero por adelantado para liberar un préstamo es una estafa clásica. Además, las apps de préstamos informales suelen cobrar intereses abusivos."},
+    {s:"Una casa de valores te ofrece invertir en bonos del Estado. ¿Cómo verificas que es legítima?", o:[["Si tiene página web, es confiable",0],["Reviso que esté registrada en la Superintendencia de Compañías, Valores y Seguros",2],["Pregunto a mis amigos",1]], tag:"Verificación", safe:true, x:"Las casas de valores deben estar autorizadas e inscritas en el Catastro Público del Mercado de Valores. Verificarlo toma minutos en el sitio de la Superintendencia."},
+    {s:"Te llega un mensaje: ganaste un premio en un sorteo en el que nunca participaste. Para cobrarlo debes depositar el “impuesto”.", o:[["Deposito, el premio vale más",0],["Lo ignoro y lo reporto",2],["Pido más información",1]], tag:"Falso premio", x:"Si no participaste, no ganaste. Y ningún premio legítimo te pide pagar antes de recibirlo."},
+    {s:"Un conocido te pide recibir una transferencia en tu cuenta y pasarle el dinero, a cambio de una comisión.", o:[["Acepto, es dinero fácil",0],["Me niego: podría ser lavado de dinero y quedaría a mi nombre",2],["Acepto solo una vez",0]], tag:"Cuenta prestada", x:"Prestar tu cuenta para mover dinero ajeno puede involucrarte en delitos como el lavado de activos, aunque no lo sepas. La responsabilidad recae sobre el titular."},
+    {s:"Ves un video de un famoso recomendando una plataforma que da 30% anual “sin riesgo”, con cupos limitados por hoy.", o:[["Me inscribo antes de que se acaben los cupos",0],["Desconfío: los videos se falsifican y la urgencia es una trampa",2],["Invierto poco para ver si paga",0]], tag:"Video falso", x:"Hoy se pueden falsificar videos de famosos con inteligencia artificial. Rentabilidad alta “sin riesgo” y prisa por decidir son las dos señales más claras de estafa."}
+  ];
+  intro(r,"Te mostraremos 8 situaciones que le pasan a miles de personas. Decide qué harías y descubre tu nivel de blindaje contra estafas.",function(){ ask(0); });
+  function ask(i){
+    var q=Q[i], best=2, b=frame(i+1,Q.length+2);
+    var sp=el("p","sub","Situación "+(i+1)+" de "+Q.length); sp.style.margin="0 0 .3rem"; b.appendChild(sp);
+    b.appendChild(el("h2","q","¿Qué harías?"));
+    b.appendChild(el("p","scene",q.s));
+    var list=el("div","opts"), locked=false;
+    q.o.forEach(function(o,j){ var bt=el("button","opt"); bt.type="button"; bt.appendChild(el("span","oe","•")); bt.appendChild(el("span",null,o[0]));
+      bt.addEventListener("click",function(){ if(locked) return; locked=true; pts+=o[1]; if(o[1]<best) tips.push(q);
+        list.querySelectorAll(".opt").forEach(function(x,k){ x.disabled=true; if(q.o[k][1]===best) x.classList.add("good"); else if(k===j) x.classList.add("badp"); });
+        var ex=el("div","explain"); ex.appendChild(el("span",q.safe?"safe-tag":"alert-tag",q.safe?"✔ "+q.tag:"⚠ "+q.tag)); ex.appendChild(el("b",null,o[1]===best?"¡Bien hecho!":"Cuidado")); ex.append(q.x); b.appendChild(ex);
+        var n=el("button","btn wide",i<Q.length-1?"Siguiente situación →":"Ver mi nivel de blindaje →"); n.type="button"; n.style.marginTop="1rem"; n.addEventListener("click",function(){ if(i<Q.length-1) ask(i+1); else result(); }); b.appendChild(n);
+        n.scrollIntoView({behavior:reduce?"auto":"smooth",block:"nearest"});
+      }); list.appendChild(bt); });
+    b.appendChild(list);
+  }
+  function result(){
+    var b=frame(Q.length+1,Q.length+2), pc=Math.round(pts/16*100);
+    var L = pc>=90?["🛡️","Blindado","Detectas las trampas a kilómetros. Ahora ayuda a tu familia a blindarse también."]:pc>=70?["🧐","Alerta","Tienes buen olfato, pero alguna trampa podría pasar. Repasa las señales de abajo."]:pc>=45?["😬","Vulnerable","Algunas estafas podrían engañarte. Las señales de abajo te van a proteger."]:["🎣","En el anzuelo","Los estafadores buscan personas como tú. La buena noticia: con estas señales, ya no te van a pescar."];
+    b.appendChild(resultCard({e:L[0],k:"Tu nivel de blindaje: "+pc+"%",t:L[1],p:L[2]}));
+    var T=[["💯","Si es demasiado bueno para ser verdad, no lo es","Rendimientos altos garantizados no existen. A mayor ganancia, mayor riesgo, siempre."],["⏰","Desconfía de la prisa","“Solo por hoy” o “últimos cupos” buscan que decidas sin pensar."],["🔑","Tus claves y códigos son solo tuyos","Ningún banco ni empresa seria te los pedirá por mensaje o llamada."],["🏛️","Verifica antes de invertir","Revisa que la empresa esté autorizada por la Superintendencia de Compañías, Valores y Seguros, la Superintendencia de Bancos o la SEPS."]];
+    b.appendChild(tipsBox(T,"Las 4 reglas para no caer"));
+    var cta=el("a","btn wide","Invierte de forma segura con una casa de valores regulada"); cta.href=UTM("portafolio","detector-estafas"); cta.target="_blank"; cta.rel="noopener";
+    finish("estafas",L[1]+" · "+pc+"%",
+      "🛡️ Hice el Detector de estafas de Retos Futuro y mi nivel de blindaje es "+pc+"% ("+L[1]+"). Hay estafas que engañan a cualquiera: ¿tú caerías? Hazlo y compártelo con tu familia.",
+      "🛡️ Te reto: 8 situaciones reales de estafas, ¿cuántas detectas? Yo saqué "+pc+"%. Gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 5. TEST DE PAREJA FINANCIERA =================
+function retoPareja(){
+  var r=BY.pareja, N={a:"",b:""}, ANS={a:[],b:[]};
+  var Q=[
+    {q:"Les llega un dinero extra (décimo, bono, utilidades). ¿Qué haces?", o:["Lo ahorro o lo invierto","Pago deudas","Mitad ahorro, mitad gusto","Me doy un gusto, me lo gané"], ord:true, talk:"Definan juntos qué porcentaje del dinero extra va a ahorro y cuánto a disfrutar."},
+    {q:"¿Cómo prefieres manejar el dinero en pareja?", o:["Todo en una cuenta común","Cuentas separadas","Una cuenta común para gastos de los dos y cada uno la suya"], talk:"Conversen qué gastos son de los dos y cómo los van a repartir: mitad y mitad o según lo que gana cada uno."},
+    {q:"¿Hacen presupuesto mensual?", o:["Sí, lo hago y lo sigo","Más o menos","No, vamos viendo"], ord:true, talk:"Un presupuesto sencillo de 15 minutos al mes evita la mayoría de discusiones por dinero."},
+    {q:"Quieres hacer una compra grande que no estaba planificada (más de $300). ¿Qué haces?", o:["Siempre lo consulto antes","Depende de qué sea","La hago y después le cuento"], ord:true, talk:"Acuerden un monto a partir del cual una compra se conversa antes. Elimina sorpresas."},
+    {q:"Tus vacaciones ideales son…", o:["Un gran viaje al año, aunque cueste","Varios viajes cortos y económicos","Prefiero guardar ese dinero"], talk:"Pongan un fondo de viajes con un monto mensual: así ninguno siente que el otro gasta de más o de menos."},
+    {q:"¿Qué piensas de las deudas?", o:["Cero deudas, si no tengo no compro","Solo para cosas grandes como casa o carro","La tarjeta es parte de la vida"], ord:true, talk:"Hablen de las deudas que tiene cada uno hoy. En pareja, la deuda de uno termina afectando a los dos."},
+    {q:"¿Cuál es tu prioridad para los próximos 5 años?", o:["Comprar casa","Viajar y disfrutar","Invertir o emprender","Estudios o hijos"], talk:"Escriban juntos sus 3 metas de los próximos 5 años y cuánto cuesta cada una."},
+    {q:"Si invirtieras $1.000 y bajaran a $800, tú…", o:["Vendería para no perder más","Esperaría a que se recupere","Compraría más"], ord:true, talk:"Tienen distinta tolerancia al riesgo: está bien. Pueden tener inversiones de los dos más conservadoras y una parte individual más arriesgada."},
+    {q:"¿Ayudar económicamente a la familia de cada uno?", o:["Sí, siempre que podamos","Solo en emergencias","Preferimos no mezclar"], ord:true, talk:"Acuerden un monto o una regla para ayudar a la familia antes de que llegue el pedido."},
+    {q:"¿Cada cuánto hablan de dinero?", o:["Seguido, sin problema","Solo cuando hay un problema","Casi nunca","Evitamos el tema"], ord:true, talk:"Agenden una “cita financiera” al mes: un café, sus números y sus metas. Hablar de dinero sin pelear se aprende."}
+  ];
+  intro(r,"Respondan por turnos en el mismo celular, sin mirar las respuestas del otro. Al final verán qué tan compatibles son con el dinero y de qué temas les conviene conversar.",names);
+  function names(){
+    var b=frame(1,4); b.appendChild(el("h2","q","¿Quiénes hacen el test?"));
+    b.appendChild(el("p","sub","Solo para mostrar los resultados. No se guarda nada."));
+    function fld(label,ph,k){ var l=el("label","fld"); l.appendChild(el("span",null,label)); var i=el("input"); i.maxLength=20; i.placeholder=ph; i.value=N[k]; l.appendChild(i); b.appendChild(l); return i; }
+    var ia=fld("Persona 1","Ej. Andrea","a"), ib=fld("Persona 2","Ej. Carlos","b");
+    var er=el("p","err"); b.appendChild(er);
+    var g=el("button","btn wide","Empezar 💕"); g.type="button"; g.addEventListener("click",function(){ var a=ia.value.trim(), c=ib.value.trim(); if(!a||!c){ er.textContent="Escriban los dos nombres."; return; } N.a=a; N.b=c; ANS={a:[],b:[]}; cover("a"); }); b.appendChild(g);
+  }
+  function cover(who){
+    var b=frame(who==="a"?1:2,4), c=el("div","card intro"); c.style.textAlign="center";
+    c.appendChild(el("div","em",who==="a"?"🙈":"🔄"));
+    c.appendChild(el("h2",null,who==="a"?"Turno de "+N.a:"Ahora pásale el celular a "+N.b));
+    c.appendChild(el("p","sub",who==="a"?N.b+", no mires 😉. Son 10 preguntas rápidas.":N.a+" ya respondió. "+N.b+", ahora te toca a ti, sin mirar lo que eligió."));
+    var g=el("button","btn wide","Soy "+(who==="a"?N.a:N.b)+", empezar"); g.type="button"; g.addEventListener("click",function(){ ask(who,0); }); c.appendChild(g); b.appendChild(c);
+  }
+  function ask(who,i){
+    var q=Q[i], b=frame(who==="a"?1:2,4);
+    var s=el("p","sub",(who==="a"?N.a:N.b)+" · pregunta "+(i+1)+" de "+Q.length); s.style.margin="0 0 .3rem"; b.appendChild(s);
+    b.appendChild(el("h2","q",q.q));
+    var list=el("div","opts"), locked=false;
+    q.o.forEach(function(t,j){ var bt=el("button","opt"); bt.type="button"; bt.appendChild(el("span","oe",String.fromCharCode(65+j))); bt.appendChild(el("span",null,t));
+      bt.addEventListener("click",function(){ if(locked) return; locked=true; ANS[who][i]=j; bt.classList.add("picked");
+        setTimeout(function(){ if(i<Q.length-1) ask(who,i+1); else if(who==="a") cover("b"); else result(); }, reduce?0:260); });
+      list.appendChild(bt); });
+    b.appendChild(list);
+  }
+  function result(){
+    var b=frame(3,4), score=0, diffs=[], same=[];
+    Q.forEach(function(q,i){ var a=ANS.a[i], c=ANS.b[i], s = a===c ? 1 : (q.ord && Math.abs(a-c)===1 ? 0.5 : 0); score+=s; if(s<1) diffs.push({q:q,i:i,s:s}); else same.push(q); });
+    var pc=Math.round(score/Q.length*100);
+    var P = pc>=85?["💞","Almas gemelas financieras","Piensan casi igual sobre el dinero. Aprovéchenlo para ponerse metas grandes juntos."]:
+            pc>=65?["🤝","Equipo en construcción","Coinciden en lo importante y tienen algunos temas por afinar. Nada que una buena conversación no resuelva."]:
+            pc>=45?["🧲","Polos opuestos que se complementan","Ven el dinero distinto, y eso puede ser una fortaleza si lo conversan y llegan a acuerdos."]:
+                   ["☕","Necesitan una cita con su presupuesto","Tienen visiones muy distintas del dinero. Empiecen por los temas de abajo, uno por semana."];
+    b.appendChild(resultCard({e:P[0],k:N.a+" + "+N.b,v:pc+"% compatibles",t:P[1],p:P[2]}));
+    var c=el("div","card"); c.style.marginTop="1.2rem"; c.appendChild(el("h3",null,"Respuesta por respuesta"));
+    var tw=el("div"); tw.style.overflowX="auto"; var tb=el("table","tb"); tb.style.cssText="width:100%;border-collapse:collapse;font-size:.85rem;margin-top:.5rem";
+    var th=el("tr"); ["Tema",N.a,N.b,""].forEach(function(x){ var t=el("th",null,x); t.style.cssText="text-align:left;padding:.35rem;border-bottom:2px solid var(--hair);font-size:.78rem;color:var(--muted)"; th.appendChild(t); }); tb.appendChild(th);
+    var short=["Dinero extra","Cuentas","Presupuesto","Compras grandes","Vacaciones","Deudas","Prioridad 5 años","Riesgo","Ayuda a la familia","Hablar de dinero"];
+    Q.forEach(function(q,i){ var a=ANS.a[i], cc=ANS.b[i], tr=el("tr"); [short[i],String.fromCharCode(65+a),String.fromCharCode(65+cc),a===cc?"✅":(q.ord&&Math.abs(a-cc)===1?"🟡":"💬")].forEach(function(x,k){ var td=el("td",null,x); td.style.cssText="padding:.4rem .35rem;border-bottom:1px solid var(--hair);"+(k===0?"font-weight:700":"text-align:center"); tr.appendChild(td); }); tb.appendChild(tr); });
+    tw.appendChild(tb); c.appendChild(tw);
+    c.appendChild(el("p","sub","✅ coinciden · 🟡 están cerca · 💬 tema para conversar")).style.cssText="margin:.6rem 0 0;font-size:.82rem;color:var(--muted)";
+    b.appendChild(c);
+    var T=diffs.sort(function(x,y){ return x.s-y.s; }).slice(0,3).map(function(d){ return ["💬",short[d.i],d.q.talk]; });
+    if(!T.length) T=[["🎯","Pónganse una meta grande","Con tanta sintonía, el siguiente paso es una meta de los dos con fecha y monto."]];
+    T.push(["📅","Ahorren juntos","Hagan el Reto de las 52 semanas en versión doble: en un año juntan $2.756 entre los dos."]);
+    b.appendChild(tipsBox(T,"Sus temas para la próxima cita"));
+    var cta=el("a","btn wide","Hacer juntos el Reto de las 52 semanas"); cta.href="../reto-52-semanas/"; cta.target="_blank"; cta.rel="noopener";
+    finish("pareja",pc+"% compatibles",
+      "💕 Hicimos el Test de pareja financiera de Retos Futuro y somos "+pc+"% compatibles con el dinero: “"+P[1]+"”. ¿Y ustedes qué tan compatibles son?",
+      "💕 Les reto a hacer el Test de pareja financiera: ¿qué tan compatibles son con el dinero? Nosotros sacamos "+pc+"%. Gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 6. ¿CUÁNTO TE DEVUELVE EL SRI? =================
+function retoSRI(){
+  // PARÁMETROS REFERENCIALES: validar con el equipo tributario y el SRI antes de publicar.
+  var CFB=800;            // valor referencial de la canasta familiar básica (USD)
+  var REBAJA=0.18;        // porcentaje de rebaja sobre los gastos personales
+  var TOPE=[7,9,11,14,17,20]; // canastas máximas según número de cargas familiares (0 a 5 o más)
+  var r=BY.sri, D={rel:"dep", cargas:0, imp:500, proy:"no", g:{viv:150,edu:80,sal:60,ali:200,ves:50,tur:40}};
+  var CATS=[["viv","🏠","Vivienda","Arriendo, intereses de crédito de vivienda, servicios básicos"],["edu","🎓","Educación, arte y cultura","Pensiones, útiles, uniformes, cursos, libros"],["sal","🩺","Salud","Consultas, medicinas, seguros médicos"],["ali","🛒","Alimentación","Compras de supermercado y alimentos"],["ves","👕","Vestimenta","Ropa y calzado"],["tur","🧳","Turismo","Hospedaje y paquetes turísticos dentro del país"]];
+  intro(r,"Si pagas impuesto a la renta y no estás aprovechando tus gastos personales, podrías estar dejando dinero sobre la mesa. Te mostramos una estimación en 3 minutos.",step1);
+  function step1(){
+    var b=frame(1,4); b.appendChild(el("h2","q","Tu situación"));
+    chips(b,"¿Cómo trabajas?",[["dep","En relación de dependencia"],["ind","Por mi cuenta"]],D.rel,function(v){ D.rel=v; });
+    chips(b,"¿Cuántas cargas familiares tienes? (hijos u otros dependientes)",[[0,"Ninguna"],[1,"1"],[2,"2"],[3,"3"],[4,"4"],[5,"5 o más"]],D.cargas,function(v){ D.cargas=v; });
+    chips(b,"¿Cuánto impuesto a la renta pagas o te retienen al año?",[[0,"No pago"],[200,"Unos $200"],[500,"Unos $500"],[1500,"Unos $1.500"],[4000,"Más de $3.000"]],D.imp,function(v){ D.imp=v; });
+    var hint=el("p","sub","Lo encuentras en tu comprobante de retenciones anual (formulario 107) o en tu rol de pagos."); hint.style.marginTop=".5rem"; b.appendChild(hint);
+    chips(b,"¿Entregaste a tu empleador la proyección de gastos personales?",[["si","Sí"],["no","No"],["nose","No sé qué es"]],D.proy,function(v){ D.proy=v; });
+    var g=el("button","btn wide","Siguiente: mis gastos →"); g.type="button"; g.style.marginTop="1.4rem"; g.addEventListener("click",step2); b.appendChild(g);
+  }
+  function step2(){
+    var b=frame(2,4); b.appendChild(el("h2","q","¿Cuánto gastas al mes en…?"));
+    b.appendChild(el("p","sub","Solo cuentan los gastos con factura a tu nombre y número de cédula."));
+    var sum=el("div","sumbox"); var s1=el("span","","Gastos personales al año"), s2=el("b","num",""); sum.appendChild(s1); sum.appendChild(s2);
+    function upd(){ var t=0; CATS.forEach(function(c){ t+=D.g[c[0]]*12; }); s2.textContent=money(t); }
+    CATS.forEach(function(c){ var w=el("div","slider"); var id="g-"+c[0]; var t=el("div","t"); var l=el("label",null,c[1]+" "+c[2]); l.htmlFor=id; var o=el("output","num",money(D.g[c[0]])); t.appendChild(l); t.appendChild(o); w.appendChild(t); w.appendChild(el("small",null,c[3]));
+      var s=el("input"); s.type="range"; s.id=id; s.min="0"; s.max="1500"; s.step="10"; s.value=D.g[c[0]]; s.addEventListener("input",function(){ D.g[c[0]]=+s.value; o.textContent=money(+s.value); upd(); }); w.appendChild(s); b.appendChild(w); });
+    b.appendChild(sum); upd();
+    var g=el("button","btn wide","Ver cuánto podría recuperar 🧾"); g.type="button"; g.style.marginTop="1rem"; g.addEventListener("click",result); b.appendChild(g);
+  }
+  function result(){
+    var b=frame(3,4), tot=0; CATS.forEach(function(c){ tot+=D.g[c[0]]*12; });
+    var tope=TOPE[Math.min(5,D.cargas)]*CFB, ded=Math.min(tot,tope), rebaja=ded*REBAJA, real=Math.min(rebaja,D.imp);
+    var e,t,p;
+    if(D.imp===0){ e="🧾"; t="Hoy no pagas impuesto a la renta"; p="Por eso no tendrías una rebaja por gastos personales. Igual vale la pena pedir factura siempre: si tus ingresos suben, ya tendrás el hábito."; }
+    else if(D.proy==="si"){ e="✅"; t="Ya podrías estar aprovechándolo"; p="Si entregaste tu proyección, tu empleador ya habría aplicado parte de la rebaja cada mes. Revisa al cierre del año que tus gastos reales coincidan con lo proyectado: si gastaste más, la diferencia también cuenta."; }
+    else { e="💰"; t="en rebaja de tu impuesto a la renta"; p="Por tus gastos personales de "+money(tot)+" al año"+(tot>tope?", de los que cuentan hasta "+money(tope)+" por tu número de cargas":"")+". Es una estimación: depende de tu declaración y de los requisitos vigentes del SRI."; }
+    b.appendChild(resultCard({e:e,k:D.imp===0?"Estimación de rebaja":(D.proy==="si"?"Rebaja estimada al año":"Podrías recuperar hasta"),v:D.imp===0?"$0":money(real)+" al año",t:t,p:p}));
+    var st=el("div","stat");
+    [["Tus gastos personales al año",money(tot)],["Tope según tus cargas",money(tope)],["Rebaja estimada ("+Math.round(REBAJA*100)+"%)",money(rebaja)],["Limitada a tu impuesto anual",money(D.imp)]].forEach(function(x){ var d=el("div"); d.appendChild(el("b","num",x[1])); d.append(x[0]); st.appendChild(d); });
+    b.appendChild(st);
+    var T=[["🧾","Pide factura con tu cédula, siempre","Solo cuentan los gastos con factura electrónica a tu nombre. Revisa en SRI en línea que aparezcan."],
+           ["📋","Entrega tu proyección a inicio de año","Si trabajas en relación de dependencia, entregar la proyección de gastos personales a tu empleador hace que te retengan menos cada mes."],
+           ["📅","Presenta tus gastos a tiempo","Revisa en el sitio del SRI las fechas para el anexo de gastos personales y la declaración, que dependen del noveno dígito de tu cédula o RUC."]];
+    if(D.rel==="ind") T.push(["💼","Si trabajas por tu cuenta","Tu régimen (general o RIMPE) cambia cómo declaras. Conviene revisarlo con un contador."]);
+    T.push(["💸","¿Te devolvieron con nota de crédito?","Si el SRI te entrega una nota de crédito, Nota Fácil de Futuro puede ayudarte a convertirla en liquidez."]);
+    b.appendChild(tipsBox(T.slice(0,4),"Para no dejar dinero sobre la mesa"));
+    var note=el("p",null,"Simulación educativa y referencial. Los topes, porcentajes y el valor de la canasta familiar básica cambian; confirma los valores y requisitos vigentes en sri.gob.ec o con un contador."); note.style.cssText="font-size:.78rem;color:var(--muted);margin:.4rem 0 0"; b.appendChild(note);
+    var cta=el("a","btn wide","Conocer Nota Fácil de Futuro"); cta.href=UTM("","sri"); cta.target="_blank"; cta.rel="noopener";
+    finish("sri", D.imp===0?"Sin impuesto a la renta":"Hasta "+money(real)+" de rebaja",
+      "🧾 Hice el reto “¿Cuánto te devuelve el SRI?” de Retos Futuro: "+(D.imp===0?"aprendí cómo funciona la rebaja por gastos personales.":"podría recuperar hasta "+money(real)+" al año con mis gastos personales.")+" ¿Tú estás dejando dinero sobre la mesa?",
+      "🧾 Te reto a calcular cuánto podrías recuperar del SRI con tus gastos personales. Gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 7. ¿QUÉ HAGO CON MIS UTILIDADES? =================
+function retoUtilidades(){
+  var r=BY.utilidades, D={tipo:"utilidades", monto:800, deuda:"no", fondo:"parcial"}, A=null;
+  var DEST=[["deuda","💳","Pagar deudas caras","#E0245E"],["fondo","🛟","Fondo de emergencia","#12B5E8"],["inv","📈","Invertir","#3F78FF"],["gusto","🎉","Darme un gusto","#FD4CFF"]];
+  intro(r,"Utilidades, fondos de reserva, décimo o un bono: el dinero extra llega pocas veces al año y se va rapidísimo. Arma tu plan en 3 minutos y mira la diferencia en 5 años.",step1);
+  function step1(){
+    var b=frame(1,4); b.appendChild(el("h2","q","¿Qué dinero extra vas a recibir?"));
+    chips(b,"Tipo de ingreso",[["utilidades","Utilidades"],["reserva","Fondos de reserva"],["decimo","Décimo"],["bono","Bono o extra"]],D.tipo,function(v){ D.tipo=v; });
+    slider(b,"¿Cuánto vas a recibir?",100,10000,50,D.monto,money,function(v){ D.monto=v; });
+    chips(b,"¿Tienes deudas de tarjeta o préstamos caros?",[["no","No"],["poco","Algo"],["mucho","Bastante"]],D.deuda,function(v){ D.deuda=v; });
+    chips(b,"¿Tienes fondo de emergencia (3 a 6 meses de gastos)?",[["no","No"],["parcial","Algo"],["si","Sí, completo"]],D.fondo,function(v){ D.fondo=v; });
+    var g=el("button","btn wide","Armar mi plan →"); g.type="button"; g.style.marginTop="1.4rem"; g.addEventListener("click",function(){ A=suggest(); step2(); }); b.appendChild(g);
+  }
+  function suggest(){
+    var s = D.deuda==="mucho" ? {deuda:60,fondo:15,inv:5,gusto:20} : D.deuda==="poco" ? {deuda:35,fondo:20,inv:25,gusto:20} : D.fondo==="no" ? {deuda:0,fondo:45,inv:35,gusto:20} : D.fondo==="parcial" ? {deuda:0,fondo:25,inv:55,gusto:20} : {deuda:0,fondo:0,inv:75,gusto:25};
+    return s;
+  }
+  function step2(){
+    var b=frame(2,4), S0=suggest(); b.appendChild(el("h2","q","Reparte tu "+(D.tipo==="reserva"?"fondo de reserva":D.tipo==="utilidades"?"utilidad":D.tipo==="decimo"?"décimo":"dinero extra")+" de "+money(D.monto)));
+    b.appendChild(el("p","sub","Te dejamos una sugerencia según tu situación. Muévela como quieras: cada control es un porcentaje y siempre suma 100%."));
+    var mb=el("div","mixbar"); b.appendChild(mb); var rows={};
+    DEST.forEach(function(d){ var w=el("div","slider"); var id="u-"+d[0]; var t=el("div","t"); var l=el("label",null,d[1]+" "+d[2]); l.htmlFor=id; var o=el("output","num"); t.appendChild(l); t.appendChild(o); w.appendChild(t);
+      var s=el("input"); s.type="range"; s.id=id; s.min="0"; s.max="100"; s.step="5"; s.value=A[d[0]]; s.addEventListener("input",function(){ rebalance(d[0],+s.value); }); w.appendChild(s); rows[d[0]]={s:s,o:o}; b.appendChild(w); });
+    function rebalance(k,v){ A[k]=v; var others=DEST.map(function(d){ return d[0]; }).filter(function(x){ return x!==k; }), rest=100-v, sum=others.reduce(function(s,x){ return s+A[x]; },0);
+      others.forEach(function(x){ A[x]= sum>0 ? Math.round(A[x]/sum*rest/5)*5 : Math.round(rest/others.length/5)*5; });
+      var diff=100-DEST.reduce(function(s,d){ return s+A[d[0]]; },0); if(diff){ var last=others[others.length-1]; A[last]=Math.max(0,A[last]+diff); } draw(); }
+    function draw(){ mb.innerHTML=""; DEST.forEach(function(d){ rows[d[0]].s.value=A[d[0]]; rows[d[0]].o.textContent=A[d[0]]+"% · "+money(D.monto*A[d[0]]/100); if(A[d[0]]){ var s=el("span"); s.style.width=A[d[0]]+"%"; s.style.background=d[3]; mb.appendChild(s); } }); }
+    draw();
+    var rs=el("button","link","Volver a la sugerencia"); rs.type="button"; rs.addEventListener("click",function(){ A=suggest(); draw(); }); b.appendChild(rs);
+    var g=el("button","btn wide","Ver mi plan en 5 años →"); g.type="button"; g.style.marginTop="1rem"; g.addEventListener("click",result); b.appendChild(g);
+  }
+  function result(){
+    var b=frame(3,4), m=D.monto;
+    var debt=m*A.deuda/100, fondo=m*A.fondo/100, inv=m*A.inv/100, gus=m*A.gusto/100;
+    var invFv=inv*Math.pow(1.08,5), fondoFv=fondo*Math.pow(1.04,5), debtSaved=debt*0.16*1.5; // intereses evitados (ilustrativo, tasa 16% durante ~1,5 años)
+    var value=invFv+fondoFv+debtSaved, gain=value-inv-fondo;
+    var P = A.gusto>=60?["🎉","Modo celebración","Disfrutar está bien, pero gran parte de tu dinero extra se irá sin dejar rastro."]:A.inv>=50?["📈","Inversionista inteligente","Tu dinero extra va a trabajar por ti durante años."]:A.deuda>=40?["🧹","Limpiador de deudas","Pagar deuda cara es una de las mejores “inversiones” que existen."]:["⚖️","Plan equilibrado","Cuidas tu presente sin olvidar tu futuro."];
+    b.appendChild(resultCard({e:P[0],k:"Tu plan para "+money(m),t:P[1],p:P[2]}));
+    var st=el("div","stat");
+    [["Para disfrutar hoy",money(gus)],["Intereses que te ahorras al pagar deudas*",money(debtSaved)],["Lo invertido valdría en 5 años*",money(invFv)],["Tu fondo de emergencia en 5 años*",money(fondoFv)]].forEach(function(x){ var d=el("div"); d.appendChild(el("b","num",x[1])); d.append(x[0]); st.appendChild(d); });
+    b.appendChild(st);
+    var n=el("p",null,"*Ilustrativo: inversión al 8% anual, fondo de emergencia al 4% y deuda de tarjeta al 16% anual. No es promesa de rendimiento."); n.style.cssText="font-size:.78rem;color:var(--muted);margin:.5rem 0 0"; b.appendChild(n);
+    var T=[["🧹","Primero, la deuda más cara","Pagar una tarjeta que cobra 16% es como ganar 16% seguro. Ninguna inversión segura te da eso."],["🛟","Luego, tu colchón","Con un fondo de emergencia, un imprevisto no te obliga a endeudarte ni a vender tus inversiones."],["📈","Después, a invertir","Lo que no necesitas en el corto plazo puede crecer en renta fija o acciones según tu perfil."],["🎉","Y sí, date un gusto","Reservar una parte para disfrutar sin culpa hace que el plan sea sostenible."]];
+    if(D.tipo==="reserva") T.unshift(["🏛️","Sobre tus fondos de reserva","Antes de retirarlos, compara lo que te rinden donde están con lo que harías con ese dinero. Retirarlos solo vale la pena si tiene un buen destino."]);
+    b.appendChild(tipsBox(T.slice(0,4),"El orden que más te conviene"));
+    var cta=el("a","btn wide","Invertir mi dinero extra con Futuro"); cta.href=UTM("portafolio","utilidades"); cta.target="_blank"; cta.rel="noopener";
+    finish("utilidades",P[1],
+      "💼 Armé mi plan para mi dinero extra en Retos Futuro: "+A.inv+"% a invertir, "+A.fondo+"% a mi fondo de emergencia"+(A.deuda?", "+A.deuda+"% a deudas":"")+" y "+A.gusto+"% para disfrutar. ¿Tú qué haces con tus utilidades?",
+      "💼 Te reto a armar tu plan para tus utilidades o tu décimo antes de que se esfumen. Gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 8. REGRESO A CLASES SIN DEUDAS =================
+function retoClases(){
+  var r=BY.clases, D={reg:"costa", hijos:1, tipo:"fiscal", meses:3, pago:"contado"}, IT=null;
+  function items(){ var base=[["utiles","✏️","Útiles escolares",60],["uniformes","👕","Uniformes",70],["zapatos","👟","Zapatos",40],["mochila","🎒","Mochila y loncheras",30],["textos","📚","Textos y libros",D.tipo==="particular"?90:20]];
+    if(D.tipo==="particular") base.push(["matricula","🏫","Matrícula",180]); base.push(["tecno","💻","Tecnología (opcional)",0]); return base; }
+  intro(r,"Útiles, uniformes, zapatos, libros y matrícula llegan todos juntos. Calcula cuánto necesitas, cuánto debes ahorrar cada mes y cómo evitar pagarlo con deudas.",step1);
+  function step1(){
+    var b=frame(1,4); b.appendChild(el("h2","q","Tu regreso a clases"));
+    chips(b,"¿En qué régimen estudian tus hijos?",[["costa","Costa y Galápagos"],["sierra","Sierra y Amazonía"]],D.reg,function(v){ D.reg=v; });
+    chips(b,"¿Cuántos hijos van a clases?",[[1,"1"],[2,"2"],[3,"3"],[4,"4 o más"]],D.hijos,function(v){ D.hijos=v; });
+    chips(b,"Tipo de institución",[["fiscal","Fiscal o fiscomisional"],["particular","Particular"]],D.tipo,function(v){ D.tipo=v; });
+    chips(b,"¿Cuántos meses faltan para el inicio de clases?",[[1,"1 mes"],[2,"2 meses"],[3,"3 meses"],[4,"4 meses"],[6,"6 meses"]],D.meses,function(v){ D.meses=v; });
+    var g=el("button","btn wide","Siguiente: la lista →"); g.type="button"; g.style.marginTop="1.4rem"; g.addEventListener("click",function(){ IT=items().map(function(x){ return x.slice(); }); step2(); }); b.appendChild(g);
+  }
+  function step2(){
+    var b=frame(2,4); b.appendChild(el("h2","q","Tu lista por "+(D.hijos>1?"cada hijo":"tu hijo")));
+    b.appendChild(el("p","sub","Valores de referencia. Ajústalos a tu realidad."));
+    var sum=el("div","sumbox"); var s1=el("span","","Total para "+D.hijos+(D.hijos>1?" hijos":" hijo")), s2=el("b","num"); sum.appendChild(s1); sum.appendChild(s2);
+    function tot(){ return IT.reduce(function(s,x){ return s+x[3]; },0)*D.hijos; }
+    IT.forEach(function(x){ var w=el("div","slider"); var id="c-"+x[0]; var t=el("div","t"); var l=el("label",null,x[1]+" "+x[2]); l.htmlFor=id; var o=el("output","num",money(x[3])); t.appendChild(l); t.appendChild(o); w.appendChild(t);
+      var s=el("input"); s.type="range"; s.id=id; s.min="0"; s.max=x[0]==="matricula"?"800":x[0]==="tecno"?"1200":"300"; s.step="5"; s.value=x[3]; s.addEventListener("input",function(){ x[3]=+s.value; o.textContent=money(x[3]); s2.textContent=money(tot()); }); w.appendChild(s); b.appendChild(w); });
+    b.appendChild(sum); s2.textContent=money(tot());
+    chips(b,"¿Cómo pensabas pagarlo?",[["contado","Al contado, con lo ahorrado"],["tarjeta","Con tarjeta, diferido a 6 meses"]],D.pago,function(v){ D.pago=v; });
+    var g=el("button","btn wide","Ver mi plan →"); g.type="button"; g.style.marginTop="1rem"; g.addEventListener("click",function(){ result(tot()); }); b.appendChild(g);
+  }
+  function result(total){
+    var b=frame(3,4), mes=total/D.meses, semana=total/(D.meses*4.33), interes=total*0.16*3.5/12; // diferido 6 meses: saldo promedio ~3,5 meses (ilustrativo)
+    b.appendChild(resultCard({e:"🎒",k:"Tu regreso a clases cuesta unos",v:money(total),t:"Ahorra "+money(mes)+" al mes",p:"Son unos "+money(semana)+" por semana durante "+D.meses+(D.meses>1?" meses":" mes")+". Así llegas al inicio de clases sin deudas."}));
+    var st=el("div","stat");
+    [["Por hijo",money(total/D.hijos)],["Ahorro mensual",money(mes)],[D.pago==="tarjeta"?"Intereses si lo difieres*":"Intereses que evitas*",money(interes)],["Régimen",D.reg==="costa"?"Costa":"Sierra"]].forEach(function(x){ var d=el("div"); d.appendChild(el("b","num",x[1])); d.append(x[0]); st.appendChild(d); });
+    b.appendChild(st);
+    var n=el("p",null,"*Ilustrativo con una tasa de tarjeta de 16% anual. Revisa la tasa real de tu tarjeta."); n.style.cssText="font-size:.78rem;color:var(--muted);margin:.5rem 0 0"; b.appendChild(n);
+    b.appendChild(tipsBox([["📅","Empieza hoy, no el mes anterior","Separar un monto fijo cada quincena desde ahora es mucho más fácil que juntarlo todo de golpe."],["♻️","Reutiliza y comparte","Uniformes, mochilas y libros en buen estado pueden pasar entre hermanos o intercambiarse con otras familias."],["🛒","Compra con lista y con tiempo","Las compras de última hora son las más caras. Compara precios y compra lo no urgente antes de la temporada alta."],["💳","Si usas tarjeta, que no se junte con las pensiones","Diferir los útiles a 6 meses se suma a las pensiones y otros gastos. Mejor al contado con lo ahorrado."]],"Tu plan para llegar sin deudas"));
+    var cta=el("a","btn wide","Ahorrar con el Reto de las 52 semanas"); cta.href="../reto-52-semanas/"; cta.target="_blank"; cta.rel="noopener";
+    finish("clases","Ahorra "+money(mes)+" al mes",
+      "🎒 Calculé mi regreso a clases en Retos Futuro: necesito "+money(total)+" y voy a ahorrar "+money(mes)+" al mes para no endeudarme. ¿Tú ya tienes tu plan?",
+      "🎒 Te reto a calcular cuánto te va a costar el regreso a clases y armar tu plan para no endeudarte. Gratis en Retos Futuro.", cta);
+  }
+}
+
+// ================= 9. LIGA DE INVERSIONISTAS =================
+function retoLiga(){
+  var r=BY.liga, now=new Date(), Y=now.getFullYear(), Mo=now.getMonth();
+  var MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  var season=Y+"-"+(Mo+1), sname=MESES[Mo]+" "+Y;
+  var INS=[["sup","🏪","Supermercados",.08,.012,"#FD4CFF"],["cem","🏗️","Cementera",.07,.018,"#F59E0B"],["ban","🏦","Banco",.07,.02,"#8B5CFF"],["cam","🦐","Camaronera",.12,.035,"#E0245E"],["beb","🥤","Bebidas",.06,.011,"#14B8A6"],["bon","🇪🇨","Bono del Estado",.0,.0,"#3F78FF"],["pap","📄","Papel comercial",.0,.0,"#12B5E8"],["efe","💵","Efectivo",.0,.0,"#C9A8FF"]];
+  function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; var t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+  function gauss(R){ var u=0,v=0; while(!u)u=R(); while(!v)v=R(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+  // Retornos semanales de la temporada: iguales para todos (semilla = mes)
+  var R=rng(Y*100+Mo+7), MK=[0,1,2,3].map(function(){ return gauss(R)*0.01; }), RET={};
+  INS.forEach(function(x){ RET[x[0]]=[0,1,2,3].map(function(w){ if(x[0]==="bon") return 0.085/52; if(x[0]==="pap") return 0.08/52; if(x[0]==="efe") return 0; return x[3]/52+MK[w]*(x[0]==="ban"?1.3:0.9)+gauss(R)*x[4]; }); });
+  var NEWS=["📈 Arranca la temporada: los mercados abren con "+(MK[0]>=0?"optimismo.":"cautela."),"🌎 "+(RET.cam[1]>=0?"Sube el precio del camarón en el mundo.":"Cae el precio del camarón en el mundo."),"🏦 "+(MK[2]>=0?"Buenas noticias para los bancos: baja el riesgo país.":"Sube el riesgo país y los bancos lo sienten."),"🏁 Última semana: "+(MK[3]>=0?"cierre con buen ánimo.":"cierre con nervios.")];
+  var day=now.getDate(), wkNow=Math.min(4,Math.floor((day-1)/7)+1);
+  var L={}; try{ L=JSON.parse(localStorage.getItem("liga-v1")||"{}")||{}; }catch(e){ L={}; }
+  function saveL(){ try{ localStorage.setItem("liga-v1",JSON.stringify(L)); }catch(e){} }
+  var me=L[season]||null, demo=false;
+  function path(al){ var v=[10000], val=10000; for(var w=0;w<4;w++){ var r2=INS.reduce(function(s,x){ return s+(al[x[0]]||0)/10*RET[x[0]][w]; },0); val*=1+r2; v.push(val); } return v; }
+  function score(p,upto){ var ret=(p[upto]/p[0]-1)*100, pk=p[0], dd=0; for(var i=1;i<=upto;i++){ pk=Math.max(pk,p[i]); dd=Math.min(dd,(p[i]-pk)/pk); } return {ret:ret, dd:-dd*100, pts:ret-0.5*(-dd*100)}; }
+  var BOTS=[["Valentina R.","UEES"],["Diego M.","Univ. Central"],["Camila P.","ESPOL"],["Andrés T.","PUCE"],["Sofía L.","USFQ"],["Mateo G.","UTPL"],["Isabella C.","UDLA"],["Sebastián V.","Univ. de Cuenca"],["Martina A.","UCSG"]];
+  function botAlloc(i){ var R2=rng(Y*1000+Mo*31+i*97), a={}, left=10; INS.forEach(function(x){ a[x[0]]=0; }); while(left>0){ var k=INS[Math.floor(R2()*INS.length)][0]; a[k]++; left--; } return a; }
+  intro(r,"Cada mes empieza una nueva temporada. Arma tu portafolio con $10.000 simulados, compite con estudiantes de todo el país y gana quien obtiene el mejor rendimiento cuidando el riesgo.",function(){ me?board():build(); });
+  function build(){
+    var b=frame(1,3), A={}; INS.forEach(function(x){ A[x[0]]=0; });
+    b.appendChild(el("h2","q","Temporada de "+sname));
+    b.appendChild(el("p","sub","Reparte 10 fichas de $1.000. Una vez inscrito, tu portafolio queda fijo toda la temporada: como un inversionista disciplinado."));
+    var rows=[];
+    INS.forEach(function(x){ var d=el("div","item"); d.appendChild(el("span","ie",x[1])); var t=el("span"); t.appendChild(el("b",null,x[2])); t.appendChild(el("small",null,x[0]==="bon"?"Renta fija · 8,5% anual":x[0]==="pap"?"Renta fija · 8% anual":x[0]==="efe"?"Sin riesgo, sin ganancia":"Acción · riesgo "+(x[4]>=.03?"alto":x[4]>=.015?"medio":"bajo"))); d.appendChild(t);
+      var ct=el("div","ctr"); var mi=el("button",null,"−"); mi.type="button"; mi.setAttribute("aria-label","Quitar de "+x[2]); var o=el("output",null,"$0"); var pl=el("button","plus","+"); pl.type="button"; pl.setAttribute("aria-label","Agregar a "+x[2]);
+      mi.addEventListener("click",function(){ if(A[x[0]]>0){ A[x[0]]--; upd(); } }); pl.addEventListener("click",function(){ if(used()<10){ A[x[0]]++; upd(); } });
+      ct.appendChild(mi); ct.appendChild(o); ct.appendChild(pl); d.appendChild(ct); rows.push({x:x,o:o,mi:mi,pl:pl,d:d}); b.appendChild(d); });
+    function used(){ return INS.reduce(function(s,x){ return s+A[x[0]]; },0); }
+    var l=el("label","fld"); l.appendChild(el("span",null,"Tu nombre en la liga")); var ni=el("input"); ni.maxLength=24; ni.placeholder="Ej. Daniela T."; l.appendChild(ni); b.appendChild(l);
+    var l2=el("label","fld"); l2.appendChild(el("span",null,"Tu universidad o colegio (opcional)")); var ii=el("input"); ii.maxLength=40; ii.placeholder="Ej. UEES"; l2.appendChild(ii); b.appendChild(l2);
+    var er=el("p","err"); b.appendChild(er);
+    var g=el("button","btn wide"); g.type="button"; b.appendChild(g);
+    function upd(){ var u=used(); rows.forEach(function(z){ z.o.textContent=money(A[z.x[0]]*1000); z.mi.disabled=!A[z.x[0]]; z.pl.disabled=u>=10; z.d.classList.toggle("on",A[z.x[0]]>0); }); g.textContent=u<10?"Te faltan "+(10-u)+" fichas":"Inscribirme en la temporada 🏆"; g.disabled=u<10; }
+    upd();
+    g.addEventListener("click",function(){ var n=ni.value.trim(); if(n.length<2){ er.textContent="Escribe tu nombre para la liga."; return; } me={n:n, inst:ii.value.trim(), al:A, ts:Date.now()}; L[season]=me; saveL(); toast("¡Inscrito en la temporada de "+sname+"!"); board(); });
+  }
+  function board(){
+    var b=frame(2,3), wk=demo?4:wkNow;
+    var players=BOTS.map(function(x,i){ var p=path(botAlloc(i)); return {n:x[0],inst:x[1],p:p}; });
+    var mine={n:me.n+" (tú)",inst:me.inst||"",p:path(me.al),me:true}; players.push(mine);
+    players.forEach(function(x){ x.s=score(x.p,wk); }); players.sort(function(a,c){ return c.s.pts-a.s.pts; });
+    var pos=players.indexOf(mine)+1, ms=mine.s;
+    b.appendChild(resultCard({e:pos===1?"🥇":pos===2?"🥈":pos===3?"🥉":"📊",k:"Temporada de "+sname+" · semana "+wk+" de 4",v:"#"+pos+" de "+players.length,t:(ms.ret>=0?"+":"")+num(ms.ret,2)+"% de rendimiento",p:"Tu portafolio vale "+money(mine.p[wk])+". Peor caída: "+num(ms.dd,2)+"%. Puntaje Futuro: "+num(ms.pts,2)+"."+(ms.ret<0?" Un mes malo no define a un inversionista: en el largo plazo gana la disciplina. La próxima temporada empieza el día 1.":"")}));
+    var c=el("div","card"); c.style.marginTop="1.2rem"; c.appendChild(el("h3",null,"Tabla de posiciones"));
+    var tb=el("table"); tb.style.cssText="width:100%;border-collapse:collapse;font-size:.86rem;margin-top:.5rem";
+    var hr=el("tr"); ["#","Inversionista","Rend.","Puntaje"].forEach(function(x,k){ var t=el("th",null,x); t.style.cssText="padding:.35rem;border-bottom:2px solid var(--hair);font-size:.76rem;color:var(--muted);text-align:"+(k>1?"right":"left"); hr.appendChild(t); }); tb.appendChild(hr);
+    players.forEach(function(x,i){ var tr=el("tr"); if(x.me) tr.style.background="var(--soft)"; var nm=el("td"); nm.appendChild(el("b",null,x.n)); if(x.inst) nm.appendChild(el("small",null," · "+x.inst)); 
+      [[i<3?["🥇","🥈","🥉"][i]:String(i+1)],[nm],[(x.s.ret>=0?"+":"")+num(x.s.ret,2)+"%"],[num(x.s.pts,2)]].forEach(function(v,k){ var td=v[0] instanceof HTMLElement?v[0]:el("td",null,v[0]); td.style.cssText+=";padding:.45rem .35rem;border-bottom:1px solid var(--hair);text-align:"+(k>1?"right":"left")+(x.me?";font-weight:800":""); tr.appendChild(td); }); tb.appendChild(tr); });
+    c.appendChild(tb);
+    c.appendChild(el("p",null,"Puntaje Futuro = rendimiento − la mitad de tu peor caída. Gana quien obtiene buen rendimiento sin arriesgarlo todo.")).style.cssText="font-size:.8rem;color:var(--muted);margin:.6rem 0 0";
+    b.appendChild(c);
+    var nw=el("div","card"); nw.appendChild(el("h3",null,"Noticias de la temporada")); for(var w=0;w<wk;w++){ var p=el("p",null,"Semana "+(w+1)+": "+NEWS[w]); p.style.cssText="margin:.5rem 0 0;font-weight:600;font-size:.92rem"; nw.appendChild(p); }
+    if(wk<4){ var p2=el("p",null,"Los resultados de la semana "+(wk+1)+" se publican el lunes."); p2.style.cssText="margin:.6rem 0 0;color:var(--muted);font-size:.88rem"; nw.appendChild(p2); }
+    b.appendChild(nw);
+    if(!demo && wk<4){ var dm=el("button","btn ghost wide","Ver cómo terminaría la temporada (demo)"); dm.type="button"; dm.addEventListener("click",function(){ demo=true; board(); }); b.appendChild(dm); }
+    var note=el("p",null,"Vista de prueba: los rivales y los precios son simulados. En la versión final competirás con estudiantes reales inscritos en la temporada."); note.style.cssText="font-size:.78rem;color:var(--muted);margin:.8rem 0 0"; b.appendChild(note);
+    var cta=el("a","btn wide","Aprender más en Bolsa Lab"); cta.href="../bolsa-lab/"; cta.target="_blank"; cta.rel="noopener";
+    finish("liga","#"+pos+" en "+MESES[Mo],
+      "🏆 Voy #"+pos+" de "+players.length+" en la Liga de inversionistas de "+sname+" de Retos Futuro, con "+(ms.ret>=0?"+":"")+num(ms.ret,2)+"% de rendimiento. ¿Te atreves a competir?",
+      "🏆 Te reto a la Liga de inversionistas de Retos Futuro: armas tu portafolio con $10.000 simulados y compites todo el mes. ¿Me ganas?", cta);
+    var rs=el("button","link","Reiniciar mi inscripción (prueba)"); rs.type="button"; rs.addEventListener("click",function(){ delete L[season]; saveL(); me=null; demo=false; build(); }); box.appendChild(rs);
+  }
+}
+
+// ================= NAVEGACIÓN =================
+var RUN={millonario:retoMillonario, hora:retoHora, hormigas:retoHormigas, estafas:retoEstafas, pareja:retoPareja, sri:retoSRI, utilidades:retoUtilidades, clases:retoClases, liga:retoLiga};
+function go(h){ if(location.hash.replace("#","")!==h) location.hash=h; else route(); }
+function route(){
+  var h=location.hash.replace("#","");
+  $("v-home").classList.remove("on"); $("v-reto").classList.remove("on");
+  if(RUN[h]){ $("v-reto").classList.add("on"); RUN[h](); } else { $("v-home").classList.add("on"); renderHome(); }
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+route();
+})();
+</script>
+</body>
+</html>
